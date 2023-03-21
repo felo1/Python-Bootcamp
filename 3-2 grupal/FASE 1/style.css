@@ -1,0 +1,56 @@
+header>h1,h2{
+    width: 100%;
+    text-align: center;
+    background-color:grey
+  }
+  #noticias, footer{
+    width: 100%;
+    text-align: center;
+  }
+  footer{
+    bottom:0;
+    padding-bottom:2%;
+      
+  }
+
+  #redes-sociales>a{
+    display:list-item;
+    width:100%;
+  }
+
+  nav>ul>li{
+    display:inline-block;
+  }
+  #imagen-beneficios{
+    width:100%;
+  }
+/*Inicio @media only responsive*/
+  @media only screen and (min-width: 768px) {
+ 
+
+ 
+  .col-3 {width: 25%;}
+  .col-2, .col-4 {width: 50%;}
+  
+  [class*="col-"] {
+  float: left;
+  }
+  .row::after {
+  content: "";
+  clear: both;
+  display: table;
+  }
+  }
+/*fin @media only responsive*/
+
+  body {
+  background-color:#FF9A59; 
+  }
+/* para hacer flotar verticalmente las imagenes */
+footer>img {
+  display: block;
+}
+
+.container > div {
+    float: left;
+}
