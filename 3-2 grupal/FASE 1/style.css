@@ -1,56 +1,112 @@
+* {
+  font-family:calibri;
+  font-weight:lighter;
+  color: rgb(85, 85, 85)
+}
+header, footer{
+  text-align:center;
+  width:100%
+ 
+}
+header>img {
+width: 50vw;
+height: auto;
+}
+
+#pdf>a{
+background-color: grey;
+display:block;
+}
+
+
+input {font-size: 40px;}
+
 header>h1,h2{
-    width: 100%;
-    text-align: center;
-    background-color:grey
-  }
-  #noticias, footer{
-    width: 100%;
-    text-align: center;
-  }
-  footer{
-    bottom:0;
-    padding-bottom:2%;
-      
-  }
-
-  #redes-sociales>a{
-    display:list-item;
-    width:100%;
-  }
-
-  nav>ul>li{
-    display:inline-block;
-  }
-  #imagen-beneficios{
-    width:100%;
-  }
-/*Inicio @media only responsive*/
-  @media only screen and (min-width: 768px) {
- 
-
- 
-  .col-3 {width: 25%;}
-  .col-2, .col-4 {width: 50%;}
+  text-align: center;
+  background-color: rgb(241, 239, 239)
   
-  [class*="col-"] {
-  float: left;
-  }
-  .row::after {
-  content: "";
-  clear: both;
-  display: table;
-  }
-  }
-/*fin @media only responsive*/
+  
 
-  body {
-  background-color:#FF9A59; 
-  }
-/* para hacer flotar verticalmente las imagenes */
-footer>img {
-  display: block;
+}
+#noticias, footer{
+  width: 100%;
+  text-align: center;
+}
+footer{
+  bottom:0;
+  padding-bottom:2%;
+    
 }
 
-.container > div {
-    float: left;
+ul {
+  width:100%;
+  text-align:center;
+  padding:0;
+   
 }
+li {
+list-style-type: none;
+}
+li>a>img {
+width: 100px;
+height: auto;
+}
+
+
+
+img {
+  background:grey;
+  width:fit-content;
+  
+}
+
+#imagen-beneficios{
+width: 30vw;
+display: block;
+margin: auto;
+
+}
+
+footer img{
+width: 100px;
+height: auto;
+}
+
+.contenedor-footer>div{
+padding: 5px;
+}
+
+.formulario-item {
+  padding: 5px;
+  text-align: center;
+}
+
+/*
+--sección responsive--
+distribución default es horizontal*/
+
+.contenedor-footer, .contenedor-header,.contenedor-nav, .formulario, .logos, footer{
+display: flex;
+flex-direction: row; 
+list-style:none;
+align-items:center; /*recordar que se alinea el contenedor, no el item en sí*/
+}
+
+  /*distribución para breakpoints menores a 768 (celulares)*/
+  .contenedor-footer, .contenedor-header, .contenedor-nav, .logos, .formulario{
+    flex-direction: column; 
+    justify-content: center;
+  }
+  
+  @media (min-width: 768px) {
+    .contenedor-footer, .contenedor-header,.contenedor-nav, .formulario, .logos{
+    display: flex;
+    flex-direction: row; 
+    list-style:none;
+    align-items:center; /*recordar que se alinea el contenedor, no el item en sí*/
+    }
+    nav>ul>li{
+      text-align:center
+ }
+ 
+  }

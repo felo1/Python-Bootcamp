@@ -26,6 +26,10 @@ footer img{
  height: auto;
 }
 
+img.pdf {
+  width: 25px;
+  height: auto;
+}
 
 /*
 --sección responsive--
@@ -36,6 +40,7 @@ distribución default es horizontal*/
   list-style:none;
   align-items:center; /*recordar que se alinea el contenedor, no el item en sí*/
 }
+
 
 @media (max-width: 768px) {
   /*distribución para breakpoints menores a 768 (celulares)*/
@@ -130,7 +135,7 @@ table tr {
 }
 
 li {
-  float: left;
+  list-style-type: none
 }
 
 li a {
