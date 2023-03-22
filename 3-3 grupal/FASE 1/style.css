@@ -52,47 +52,56 @@ img {
   width:fit-content;
   
 }
-
-#imagen-beneficios{
-width: 30vw;
-display: block;
-margin: auto;
-
-}
-
 footer img{
 width: 100px;
 height: auto;
 }
-
 .contenedor-footer>div{
 padding: 5px;
 }
-
 .formulario-item {
   padding: 5px;
   text-align: center;
+  background-color:gainsboro;
+  border: 3px;
+  border-style: solid;
+  border-color: whitesmoke;
+  width: 100%;
+  font-size: 1em;
+
 }
+#imagen-beneficios{
+  width: 30vw;
+  display: block;
+  margin: auto;
+  }
+
+  .benefocios-columna2-container{
+    display: flex;
+    flex-direction: row;
+    background-color: bisque;
+    justify-content: safe;
+    
+  }
+  .beneficios-columna2{
+width: 50%;  
+  }
 
 /*
 --sección responsive--
 distribución default es horizontal*/
 
-.contenedor-footer, .contenedor-header,.contenedor-nav, .formulario, .logos, footer{
+.contenedor-footer, .contenedor-header,.contenedor-nav, .logos, footer{
 display: flex;
 flex-direction: column; 
 list-style:none;
-align-items:center; /*recordar que se alinea el contenedor, no el item en sí*/
+align-items:center;
+/*recordar que se alinea el contenedor, no el item en sí*/
 }
 
-  /*distribución para breakpoints menores a 768 (celulares)*/
-  .contenedor-footer, .contenedor-header, .contenedor-nav, .logos, .formulario{
-    flex-direction: column; 
-    justify-content:space-around;
-  }
   
-  @media (min-width: 768px) {
-    .contenedor-footer, .contenedor-header,.contenedor-nav, .formulario, .logos{
+  
+  .contenedor-footer, .contenedor-header,.contenedor-nav, .formulario, .logos{
     display: flex;
     flex-direction: row; 
     list-style:none;
@@ -101,10 +110,12 @@ align-items:center; /*recordar que se alinea el contenedor, no el item en sí*/
     nav>ul>li{
       text-align:center
  }
- 
+  @media (max-width: 768px) {
+    .contenedor-footer, .contenedor-header, .contenedor-nav, .logos, .formulario{
+      flex-direction: column; 
+      justify-content:space-around;
+    }
   }
-
-  
 body{
  background-color: #e0D8B0; 
 }
