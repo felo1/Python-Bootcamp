@@ -1,0 +1,110 @@
+* {
+  font-family:calibri;
+  font-weight:lighter;
+  color: rgb(85, 85, 85)
+}
+header, footer{
+  text-align:center;
+  width:100%
+}
+header>img {
+width: 50vw;
+max-width: 550px;
+height: auto;
+}
+
+#pdf>a{
+background-color: grey;
+display:block;
+}
+input {font-size: 40px;}
+
+header>h1,h2{
+  text-align: center;
+  background-color: rgb(241, 239, 239)
+}
+#noticias, footer{
+  width: 100%;
+  text-align: center;
+}
+footer{
+  bottom:0;
+  padding-bottom:2%;
+    
+}
+
+ul {
+  width:100%;
+  text-align:center;
+  padding:0;
+   
+}
+li {
+list-style-type: none;
+}
+li>a>img {
+width: 100px;
+height: auto;
+}
+
+img {
+  background:grey;
+  width:fit-content;
+  
+}
+
+#imagen-beneficios{
+width: 30vw;
+display: block;
+margin: auto;
+
+}
+
+footer img{
+width: 100px;
+height: auto;
+}
+
+.contenedor-footer>div{
+padding: 5px;
+}
+
+.formulario-item {
+  padding: 5px;
+  text-align: center;
+}
+
+/*
+--sección responsive--
+distribución default es horizontal*/
+
+.contenedor-footer, .contenedor-header,.contenedor-nav, .formulario, .logos, footer{
+display: flex;
+flex-direction: column; 
+list-style:none;
+align-items:center; /*recordar que se alinea el contenedor, no el item en sí*/
+}
+
+  /*distribución para breakpoints menores a 768 (celulares)*/
+  .contenedor-footer, .contenedor-header, .contenedor-nav, .logos, .formulario{
+    flex-direction: column; 
+    justify-content:space-around;
+  }
+  
+  @media (min-width: 768px) {
+    .contenedor-footer, .contenedor-header,.contenedor-nav, .formulario, .logos{
+    display: flex;
+    flex-direction: row; 
+    list-style:none;
+    align-items:center; /*recordar que se alinea el contenedor, no el item en sí*/
+    }
+    nav>ul>li{
+      text-align:center
+ }
+ 
+  }
+
+  
+body{
+ background-color: #e0D8B0; 
+}
