@@ -98,9 +98,7 @@ distribución default es horizontal*/
   justify-content:space-around;
   display: flex;
 }
-
 .logos img{
-  
 }
 
   @media (min-width: 768px) {
@@ -111,9 +109,6 @@ distribución default es horizontal*/
       align-items:center;
       /*recordar que se alinea el contenedor, no el item en sí*/
       }
-      
-        
-        
         .contenedor-footer, .contenedor-header,.contenedor-nav, .formulario, .logos{
           display: flex;
           flex-direction: row; 
@@ -123,9 +118,14 @@ distribución default es horizontal*/
           nav>ul>li{
             text-align:center
        }
-
-
+  .benefocios-columna2-container{
+    flex-wrap: wrap;
   }
+  .beneficios-columna2{
+    flex: 1;
+  }
+
+  } /*LIMITE RESPONSIVO SOBRE 768PX*/
 body{
  background-color: #e0D8B0; 
 }
