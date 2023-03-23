@@ -1,86 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Industrias ABPro</title>
-</head>
-<body>
-          <nav>
-            <div class="container-nav">
-                <div class="nav-item" id="branding">
-                    <h1 class="nav-item">Industrias ABPRO</h1>
-                    <h3>Lo mejor en galerías de fotos y boilerplates</h3>
-                </div>
-            <ul class="nav-item">
-            
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="ComoComprar.html">Cómo comprar</a></li>
-                <li><a href="Marcas.html">Nuestras Marcas</a></li>
-                <li><a href="PagosYTransferencias.html">Pagos y Transferencias</a></li>
-                <li><a href="Contacto.html">Contacto</a></li>
-            </ul>
-        </div>
-          </nav>
-    
-    <div class="contenedor-galeria">
-    <div class="row">
-        <div class="col-3">
-          <a href="img_5terre.jpg">
-            <img src="img_5terre.jpg">
-          </a>
-          <div class="tags">
-            <ul>
-                <li>Ciudad</li>
-                <li>Costa</li>
-            </ul>
-          </div>
-        </div>
+    <title>La Galería de Jordi</title>
+    <style>
+      body {
+        font-family: monospace;
+        background-color: black;
+        color: lightgray;
+        font-weight: lighter;
+      }
+      p {
+        text-align: justify;
+      }
+      img {
+        width: 96%;
+      }
+
+      * {
+        margin: 10px;
+        padding: 0;
+        border: 0;
+      }
+
+      li {
+        list-style-type: none;
+        background-color: rgb(58, 58, 58);
+        width: 95%;
+        margin: 10px;
+        padding: 5px;
+      }
+      div {
+        background-color: rgb(28, 28, 29);
+        padding-bottom: 10px;
+      }
+
+      @media only screen and (min-width: 1280px) {
+        div {
+          display: inline-block;
+          max-width: 31%;
+          background-color: rgb(28, 28, 29);
+        }
+        ul {
+          width: fit-content;
+          display: flex;
+          max-width: 30%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <br>
+    <h1>Jordi Pastell</h1>
+    <h3>Fotografía</h3>
+    <br>
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto, natus
+      quibusdam! Possimus vel quae impedit iste est magnam delectus veritatis
+      quaerat nulla soluta cum aliquid maiores, non tenetur accusantium
+      reiciendis?
+    </p>
+    <br>
+    <div class="foto">
+      <img src="foto1.jpg" alt="foto1">
+      <ul>
+        <li>#montaña</li>
+        <li>#atardecer</li>
+        <li>#nieve</li>
+      </ul>
     </div>
-    <div class="row">
-        <div class="col-3">
-            <a href="img_forest.jpg">
-            <img src="img_forest.jpg">
-          </a>
-          <div class="tags">
-            <ul>
-                <li>Ciudad</li>
-                <li>Costa</li>
-            </ul>
-          </div>
-        </div>
+    <div class="foto">
+      <img src="foto2.jpg" alt="foto2">
+      <ul>
+        <li>#martínpescador</li>
+        <li>#naturaleza</li>
+        <li>#ornitología</li>
+      </ul>
     </div>
-    <div class="row">
-        <div class="col-3">
-          <a href="img_lights.jpg">
-            <img src="img_lights.jpg">
-          </a>
-          <div class="tags">
-            <ul>
-                <li>Ciudad</li>
-                <li>Costa</li>
-            </ul>
-          </div>
-        </div>
+    <div class="foto">
+      <img src="foto3.jpg" alt="foto3">
+      <ul>
+        <li>#montaña</li>
+        <li>#escalada</li>
+        <li>#outdoor</li>
+      </ul>
     </div>
-    <div class="row">
-        <div class="col-3">
-            <a href="img_mountains.jpg">
-            <img src="img_mountains.jpg">
-          </a>
-          <div class="tags">
-            <ul>
-                <li>Ciudad</li>
-                <li>Costa</li>
-            </ul>
-          </div>
-        </div>
+    <div class="foto">
+      <img src="foto4.jpg" alt="foto5">
+      <ul>
+        <li>#bolivia</li>
+        <li>#uyuni</li>
+        <li>#pululos</li>
+      </ul>
     </div>
+    <div class="foto">
+      <img src="foto5.jpg" alt="foto5">
+      <ul>
+        <li>#árboles</li>
+        <li>#bosque</li>
+        <li>#trekking</li>
+      </ul>
     </div>
-     <footer>
-     Copyright &copy; 2023 Fbazignan
-     </footer>
-    </body>
+  </body>
 </html>

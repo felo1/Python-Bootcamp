@@ -4,42 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style type="text/css">
-        .tg  {border-collapse:collapse;border-spacing:0;}
-        .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-          overflow:hidden;padding:10px 5px;word-break:normal;}
-        .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-          font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-        .tg .tg-73oq{border-color:#000000;text-align:left;vertical-align:top}
-        .tg .tg-0lax{text-align:left;vertical-align:top}
-        
-        .flexcontainer {
-  display: flex;
-  align-items: center;
-}
-@media (max-width: 320px) {
-  .flexcontainer {
-    display: block;
-  }
-}
-        </style>
+    <link rel="stylesheet" href="styles.css">
     <title>Tienda Fénix</title>
-   
+    <style>
+      body {background-color: antiquewhite;}
+    </style>
 </head>
 <body>
-    <header>
-        <img height="250px"  src="fenix.webp" alt="Fénix">
-        <h1>Fénix Compras Online</h1>
-        <h2>Lo tenemos todo!</h2>
-    </header>
-    <ul>
-        <li style="display:inline-block;"><a href="index.html">Inicio | </a></li>
-        <li style="display:inline-block;"><a href="ComoComprar.html">Cómo comprar | </a></li>
-        <li style="display:inline-block;"><a href="Marcas.html">Nuestras Marcas | </a></li>
-        <li style="display:inline-block;"><a href="PagosYTransferencias.html">Pagos y Transferencias | </a></li>
-        <li style="display:inline-block;"><a href="Contacto.html">Contacto | </a></li>
+  <header>
+      <div class="contenedor-header">
+        <div class="col-2">
+          <img height="250"  src="fenix.webp" alt="Fénix">
+        </div>
+        <div class="col-2">
+          <h1>Fénix Compras Online</h1>
+          <h2>Lo tenemos todo!</h2>
+        </div>
+  </div>
+</header>
+  
+  <nav>
+    
+    <ul class="contenedor-nav">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="ComoComprar.html">Cómo comprar</a></li>
+        <li><a href="Marcas.html">Nuestras Marcas</a></li>
+        <li><a href="PagosYTransferencias.html">Pagos y Transferencias</a></li>
+        <li><a href="Contacto.html">Contacto</a></li>
     </ul>
-
+ 
+  </nav>
+  
 <section>
     <h3>Zapato escolar</h3>
     <h4>Sencillo y funcional</h4>
@@ -57,5 +52,16 @@
           <li>$18.990 c/u sobre 5 unidades</li>
         </ul>
       </div>
+
+      <footer>
+        <hr>
+
+      <h2>Nuestras redes</h2>
+      <div class="contenedor-footer">
+      <div class="col-2"><a href="http://facebook.com/fenix"><img alt="" src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/1200px-Facebook_f_logo_%282021%29.svg.png"></a></div>
+      <div class="col-2"><a href="http://instagram.com/fenix"><img alt="" src="https://cdn-icons-png.flaticon.com/512/1409/1409946.png"></a></div>
+    </div>
+      Copyright &copy; 2023 Cacifero
+      </footer>
 </body>
 </html>
