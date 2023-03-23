@@ -174,7 +174,8 @@ footer {
 .contenedor-header,
 .contenedor-nav,
 .logos,
-.formulario {
+.formulario,
+.contenedor-producto {
   flex-direction: column;
   justify-content: center;
 }
@@ -184,6 +185,10 @@ footer {
   max-height: 20vw;
  } 
 
+.contenedor-producto{
+  display: flex;
+    flex-direction: column;
+}
 
 /*MODO BREAKPOINT======================================== */
 @media (min-width: 768px) and (max-width: 969px) {
@@ -198,16 +203,13 @@ footer {
   .contenedor-header,
   .contenedor-nav,
   .formulario,
-  .logos {
+  .logos{
     display: flex;
     flex-direction: row;
     list-style: none;
     align-items: center;
     /*recordar que se alinea el contenedor, no el item en sí*/
   }
-
-  
-   
 
   .contenedor-nav {
     margin: 0 10px;
@@ -217,7 +219,7 @@ footer {
     width: 100%
   }
 
-  .col-3 {
+  .col-3{
     width: 25%;
   }
 
