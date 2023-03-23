@@ -89,6 +89,7 @@ distribución default es horizontal*/
 display: flex;
 flex-direction: row; 
 list-style:none;
+width: 100%;
 align-items:center; /*recordar que se alinea el contenedor, no el item en sí*/
 }
 

@@ -1,0 +1,60 @@
+ *{
+  
+  font-family:Calibri;
+  font-weight: lighter;
+}
+.container-logos li,
+.container-footer li {
+  list-style-type: none;
+}
+.container-logos img {
+  width: 15vw;
+  display: block;
+  margin: auto;
+}
+
+#img-beneficios{
+  display: block;
+  margin: 3% auto;
+  max-width: 100%;
+}
+#beneficios-form:{
+  margin:200px}
+
+.container-footer img {
+  width: 5vw;
+  display: block;
+  margin: auto;
+}
+
+.form-group{
+  margin:2%
+}
+.card{
+  margin:3%
+}
+
+.card {
+  height: max-content;
+}
+.contacto{
+  text-align:center;
+  margin:"2%"
+}
+.encuentranos{
+  margin:2%;
+}
+.redes{
+  margin:2%;
+}
+
+h4{
+  background-color: lightgrey;
+  color:rgb(51, 51, 51)
+}
+
+.contacto li{
+  background-color:lightgray;
+  color:rgb(51, 50, 50);
+  
+}
