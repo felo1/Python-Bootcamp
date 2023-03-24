@@ -1,0 +1,46 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+}
+h1{
+    font-family: 'Courier New', Courier, monospace;
+    border: 10px blue dashed;
+    background-image: URL(https://images.pexels.com/photos/1227511/pexels-photo-1227511.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);
+}
+
+nav{
+    border: 5px;
+    border-radius: 10px;  
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: yellow;
+}
+header p{
+    background-color: black;
+    color:white;
+    text-align: center;
+}
+
+.col-md-4{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color:lightgreen;
+}
+#motores-de-busqueda{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color:lightgreen;
+}
+.destacadas{
+border: 1px solid red;
+border-radius: 5px;
+}
+section h3{
+}
+
+section h3:hover{
+    color:white;
+}
+
+footer{
+    font-family: 'Courier New', Courier, monospace;
+    background-color: gray;
+    text-align: center;
+    color:whitesmoke;
+}
