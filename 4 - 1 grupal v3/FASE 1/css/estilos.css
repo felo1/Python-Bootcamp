@@ -1,0 +1,176 @@
+ *{
+  font-family: 'Montserrat', sans-serif;
+
+  font-family: 'Roboto', sans-serif;
+
+  font-family: 'Source Sans Pro', sans-serif;
+
+
+  font-weight: lighter;
+margin:0;
+border:0;
+padding:0;
+}
+.container-logos li,
+.container-footer li {
+  list-style-type: none;
+}
+.container-logos img {
+  width: 15vw;
+  display: block;
+  margin: auto;
+}
+body{
+  background-color:lightgrey;
+}
+
+.zoom {
+
+  transition: transform .2s; /* Animation */
+  
+}
+
+
+.zoom:hover {
+  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+
+#img-beneficios{
+  display: block;
+  margin: 2% auto;
+  
+  border:3px grey solid;
+  border-radius :5px;
+  box-shadow:5px 5px 5px 5px rgb(139, 138, 138);
+  padding:10px 5px;
+}
+#beneficios-form{
+  margin:0px;
+ 
+}
+
+.cuadro{
+  background-color:rgb(140, 180, 180)
+  
+}
+.beneficios-y-formulario{
+  background-color:lightseagreen;  
+  border:2px grey;
+  padding:10px 5px;
+  
+}
+figcaption{
+  text-align:center;
+
+}
+
+.container-footer img {
+  width: 5vw;
+  display: block;
+  margin: auto;
+}
+
+.form-group{
+  margin:2%
+}
+.card{
+  margin:2%
+}
+
+.card {
+  height: max-content;
+}
+.contacto{
+  text-align:center;
+}
+
+.redes{
+  padding-left: 2%;
+  padding-right: 2%;
+
+}
+
+#fenix {
+  width:100%;
+  position:absolute;
+  margin:0;
+  padding:0;
+  
+}
+
+#lotinimo {
+  width: 100%;
+  position:absolute;
+  margin:0;
+  padding:0;
+  
+}
+
+h4{
+  background-color: lightgrey;
+  color:rgb(51, 51, 51)
+}
+
+.contacto li{
+  background-color:lightgray;
+  color:rgb(51, 50, 50);
+}
+
+nav {
+  background-color: black ;
+}
+
+
+
+  /*recordar que se alinea el contenedor, no el item en sí*/
+
+ .contenedor-nav{
+  margin-top:14.5vw;
+  flex-direction: column; 
+  justify-content:space-around;
+  display: flex;
+  list-style: none;
+  width: 100%;
+  align-items: center;
+ }
+.contenedor-nav a{
+  color:white;
+  text-decoration-line: none;  
+}
+
+.container-fluid .row {
+  position: relative;
+}
+
+
+.container-branding-nav{
+ height: fit-content;
+}
+
+iframe{
+  width:80%;
+}
+
+@media (min-width: 768px) {
+.contenedor-nav{
+    display: flex;
+    flex-direction: row; 
+    list-style:none;
+    align-items:center;
+    }
+      .contenedor-nav{
+        display: flex;
+        flex-direction: row; 
+        list-style:none;
+        align-items:center; 
+        }
+        nav>ul>li{
+          text-align:center
+     }
+    }
+    #beneficios-y-formulario{
+      background-color:lightseagreen;  
+      border:2px grey;
+      
+    }

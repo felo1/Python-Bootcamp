@@ -14,7 +14,7 @@
 
 #img-beneficios{
   display: block;
-  margin: 3% auto;
+  margin: 2% auto;
   max-width: 100%;
 }
 #beneficios-form:{
@@ -30,7 +30,7 @@
   margin:2%
 }
 .card{
-  margin:3%
+  margin:2%
 }
 
 .card {
@@ -38,17 +38,21 @@
 }
 .contacto{
   text-align:center;
-  margin:"2%"
 }
 .encuentranos{
-  margin:2%;
 }
 .redes{
-  margin:2%;
+  padding-left: 2%;
+  padding-right: 2%;
+
 }
 
-body{
+#fenix {
+  width:50%;
+}
 
+#lotinimo {
+  width: 50%;
 }
 
 h4{
@@ -59,11 +63,58 @@ h4{
 .contacto li{
   background-color:lightgray;
   color:rgb(51, 50, 50);
-  
 }
+
+nav {
+  background-color: black ;
+}
+
+.contenedor-nav{
+
+  /*recordar que se alinea el contenedor, no el item en sí*/
+}
+ .contenedor-nav{
+  margin-top:5px;
+  flex-direction: column; 
+  justify-content:space-around;
+  display: flex;
+  list-style: none;
+  width: 100%;
+  align-items: center;
+  position:relative;
+}
+.contenedor-nav a{
+  color:white;
+  text-decoration-line: none;  
+}
+
+.container-fluid .row {
+  position: relative;
+}
+
 
 .container-branding-nav{
-
+ height: fit-content;
 }
 
-* {border: 1px solid red;}
+iframe{
+  width:80%;
+}
+
+@media (min-width: 768px) {
+.contenedor-nav{
+    display: flex;
+    flex-direction: row; 
+    list-style:none;
+    align-items:center;
+    }
+      .contenedor-nav{
+        display: flex;
+        flex-direction: row; 
+        list-style:none;
+        align-items:center; 
+        }
+        nav>ul>li{
+          text-align:center
+     }
+    }

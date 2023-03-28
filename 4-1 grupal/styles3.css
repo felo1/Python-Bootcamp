@@ -7,6 +7,11 @@
   min-height: 700px;
 }
 
+.html{
+  height: 100%;
+}
+
+
 .navbar a {
   font-weight: bold;
 }
@@ -57,7 +62,6 @@ nav{
 }
 
 #equipo {
-  padding-top: 60px;
   padding-bottom: 60px;
 }
 
@@ -85,16 +89,6 @@ textarea {
 
 /*seccion para ajustar altura navbar vs body*/
 
-body{
-  margin-top: 3.9%;
-}
-
-.fixed-top {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-}
 
 .card {
   margin-top: 20px;
@@ -180,6 +174,10 @@ body, html {
   box-sizing: border-box;
 }
 
+.sidebar{
+  width: 200px;
+}
+
 .bg-image {
   /* The image used */
   background-image: url(/4-1\ grupal/img/imagen3.jpg);
@@ -242,4 +240,16 @@ img {
 }
 img:hover {
   --_s: 0px
+}
+
+.container-fluid{
+  padding-left: 0px;
+}
+
+.sidebar{
+  padding-left: 0px;
+}
+
+.btn-dark{
+    background-color: #8064A2 !important;
 }

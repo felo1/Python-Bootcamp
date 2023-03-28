@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <title>AwakeNET</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Loading Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+      #principal,
+#competencias,
+#equipo,
+#enlaces,
+#contacto {
+  padding-top: 60px;
+  min-height: 700px;
+}
+
+.html{
+  height: 100%;
+}
+
+
+.navbar a {
+  font-weight: bold;
+}
+
+.navbar-dark {
+  background-color: rgb(80, 63, 95);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar,
+.modal {
+  font-family: 'Poiret one', cursive;
+}
+nav{
+  margin-bottom: 20px;
+}
+
+.bg-principal {
+  background-image: url('../img/bg-wind-generators.jpg');
+  background-size: cover;
+}
+
+.jumbotron {
+  color: white;
+  background: rgb(0, 0, 0); /* Para navegadores antiguos */
+  background: rgba(0, 0, 0, 0.5); 
+}
+
+
+#principal {
+  padding: 100px 5% 20px;
+  min-height: 700px;
+}
+
+#competencias>div>h3 {
+  color: white;
+}
+
+.carousel-item .bg-bienvenida img{
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  transform: translate(-50%, -50%);
+}
+
+#equipo {
+  padding-bottom: 60px;
+}
+
+#enlaces {
+  color: white;
+  padding-top: 60px;
+  min-height: 100%;
+}
+
+.media {
+  margin: 20px 5% 50px 10%;
+}
+
+#contact-form {
+  padding-top: 3rem;
+}
+
+textarea {
+  resize: none;
+}
+
+.footer p {
+  display: inline;
+}
+
+/*seccion para ajustar altura navbar vs body*/
+
+
+.card {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.card-body{
+  margin-left: 15vw;
+  margin-right: 15vw;
+  margin-bottom: 1vw;
+  margin-top: 10vw;
+  border-radius: 25px;
+  border: 1px dashed black;
+  background:#7f7f7f;
+  background:rgba(255,255,255,0.5);
+  max-width:100%;
+}
+.card-text{
+  text-align: left;
+  padding: 2vw;
+}
+.postcarousel{
+  width: auto;
+  width: auto;
+  position: absolute;
+  top:0px;
+  width: 100%;
+  padding-top: 5vw;
+}
+#carouselControls{
+  width: 100%;
+}
+.userParams{
+  margin-left: 5px;
+}
+.userParams .card-username{
+  margin-left: 5px;
+  font-weight: bolder;
+  margin-top: 5px;
+  
+}
+.row .cardInteracciones{
+ padding-top: 3vw;
+ width:95%;
+ padding-bottom: 2.5vw;
+}
+
+.row{
+  margin: 0 0 0 0;
+}
+
+.card-comentarios{
+  font-size: 12px;
+  font-family: “Helvetica Neue”,Helvetica,Arial,sans-serif;
+  border: 2px solid gray;
+  border-radius: 25px; 
+  text-indent: 15px;
+  }
+
+
+.btn:hover {background-color: #a3a9bd}
+.btn:active {
+    background-color: #062206;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
+  .footer {
+    background-color: rgb(80, 63, 95);
+  }
+
+.post-slide{
+  margin-left: 30px;
+}
+
+/*css para blur background*/
+
+body, html {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.sidebar{
+  width: 200px;
+}
+
+.bg-image {
+  /* The image used */
+  background-image: url(/4-1\ grupal/img/imagen3.jpg);
+
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+}
+/* Position text in the middle of the page/image */
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+}
+/*css para blur background*/
+
+/*chorizo para animacion en imagenes*/
+img {
+  --color: #FA6900; /* the color of the border */
+  --border: 10px;   /* the thickness of the border */
+  --offset: 30px;   /* control the movement of the border */
+  --gap: 5px;       /* the gap on hover */
+  
+  border-radius: 50%;
+  cursor: pointer;
+  padding: calc(var(--border) + var(--gap));
+  border: var(--offset) solid #0000;
+  --_m: radial-gradient(50% 50%, #000 calc(100% - var(--offset)),#0000 calc(100% - var(--border)));
+  -webkit-mask: var(--_m);
+          mask: var(--_m);
+  --_g: #0000 calc(99% - var(--border)), var(--color) calc(100% - var(--border)) 99%,#0000;
+  --_s: var(--offset);
+  --_r: 100% 100% at;
+  background:
+    radial-gradient(var(--_r) 0    0   ,var(--_g)) calc(100% + var(--_s)) calc(100% + var(--_s)),
+    radial-gradient(var(--_r) 100% 0   ,var(--_g)) calc(0%   - var(--_s)) calc(100% + var(--_s)),
+    radial-gradient(var(--_r) 0    100%,var(--_g)) calc(100% + var(--_s)) calc(0%   - var(--_s)),
+    radial-gradient(var(--_r) 100% 100%,var(--_g)) calc(0%   - var(--_s)) calc(0%   - var(--_s));
+  background-size: 50% 50%;
+  background-repeat: no-repeat;
+  transition: .4s;
+}
+img:hover {
+  --_s: 0px
+}
+
+.container-fluid{
+  padding-left: 0px;
+}
+
+.sidebar{
+  padding-left: 0px;
+}
+
+.btn-dark{
+    background-color: #8064A2 !important;
+}
+    </style>
+  </head>
+
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
+    <a class="navbar-brand" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;" href="#">AwakeGram</a>
+  <!-- Navbar middle breakpoint-->
+
+  
+    <!-- Navigation Bar Hamburger-->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false"
+      aria-controls="navigation" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- End Navigation Bar Hamburger -->
+
+    <!-- Navigation Links -->
+    <div class="collapse navbar-collapse" id="navigation">
+      <ul class="navbar-nav mm-auto">
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" place-holder="search" role="button" aria-haspopup="true"
+            aria-expanded="false">
+            Ingresar <span class="caret"></span>
+          </a>
+          <div class="dropdown-menu">
+            <form class="px-4 py-3">
+              <div class="form-group">
+                <label for="exampleDropdownFormEmail1">Correo Electrónico</label>
+                <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+              </div>
+              <div class="form-group">
+                <label for="exampleDropdownFormPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Contraseña">
+              </div>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                <label class="form-check-label" for="dropdownCheck">
+                  Recordar
+                </label>
+              </div>
+              <button type="submit" class="btn btn-primary">Ingresar</button>
+            </form>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">¿Nuevo por aquí? Regístrate</a>
+            <a class="dropdown-item" href="#">¿Olvidaste tu contraseña?</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+            aria-expanded="false">
+            Regístrate <span class="caret"></span>
+          </a>
+                  <div class="dropdown-menu">
+                <form class="px-4 py-3">
+                  <div class="form-group">
+                    <label for="exampleDropdownFormEmail1">Nombre de Usuario</label>
+                    <input type="user" class="form-control" id="exampleDropdownFormEmail1" placeholder="Ingrese un Usuario">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleDropdownFormEmail1">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleDropdownFormPassword1">Contraseña</label>
+                    <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                  </div>
+                      <div class="form-group">
+                    <label for="exampleDropdownFormPassword1">Repita Contraseña</label>
+                    <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                    <label class="form-check-label" for="dropdownCheck">
+                      Recordar contraseña
+                    </label>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Registrarse</button>
+                </form>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">¿Ya tienes una cuenta? Ingresa Aquí</a>
+                <a class="dropdown-item" href="#">¿Olvidaste tu contraseña?</a>
+              </div>              
+            
+          </nav>
+          
+          <div class="bg-image">
+          </div>
+  
+
+          <!--post carrousel-->
+          <div class="postcarousel row">
+
+          <div id="carouselControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="card-body">
+                  <div class="row userParams">
+                    <svg class="card-userIcon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                    </svg>
+                    <p class="card-username">@Joaquin</p>
+                  </div>
+                  <div class="row card-text-container">
+                  <p class="card-text">Hola mundo!</p>
+                  </div>
+                  <div class="row cardInteracciones">
+                    <div class="col">
+                      <p class="card-comentarios">Bienvenido!</p>
+                      <p class="card-comentarios">#oneofus</p>
+                      <p class="card-comentarios">Contraseña!</p>
+                      <div class="card-botones">
+                        <button href="#" class="button btn btn-dark btn-interacciones">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                          </svg><span class="badge bg-secondary">0</span>
+                        </button>
+                        <button href="#" class="btn btn-dark btn-interacciones">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                          </svg><span class="badge bg-secondary">0</span>
+                        </button>
+                        <button href="#" class="btn btn-dark btn-interacciones" alt="ver más">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                          </svg>
+                        </button>
+                        <button href="#" class="btn btn-dark btn-interacciones" alt="share">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+                          <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                        </svg>
+                        </button>
+                        <button href="#" class="btn btn-dark btn-interacciones" alt="share">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-heart-fill" viewBox="0 0 16 16">
+                            <path d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v13.5zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
+                          </svg>
+                        </button>
+                        </div>
+                    </div>
+                    
+                  
+                </div>
+
+                </div>
+                
+
+              </div>
+              <div class="carousel-item ">
+                <div class="card-body">
+                  <div class="row userParams">
+                    <svg class="card-userIcon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                    </svg>
+                    <p class="card-username">@pajaritoNuevo</p>
+                  </div>
+                  <div class="row card-text-container">
+                  <p class="card-text">Acá es donde se vinieron los refugiados de T***ter?</p>
+                  </div>
+                  <div class="row cardInteracciones">
+                    <div class="col">
+                      <p class="card-comentarios">Aló control de aduanas</p>
+                      <p class="card-comentarios">Su gente no es bienvenida aquí</p>
+                      <p class="card-comentarios">Sígueme para consejos de criptomonedas <a href="#">$TOTHEMOON</a></p>
+                      <div class="card-botones">
+                        <button href="#" class="button btn btn-dark btn-interacciones">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                          </svg><span class="badge bg-secondary">1</span>
+                        </button>
+                        <button href="#" class="btn btn-dark btn-interacciones">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                          </svg><span class="badge bg-secondary">0</span>
+                        </button>
+                        <button href="#" class="btn btn-dark btn-interacciones" alt="ver más">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                          </svg>
+                        </button>
+                        <button href="#" class="btn btn-dark btn-interacciones" alt="share">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+                          <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                        </svg>
+                        </button>
+                        <button href="#" class="btn btn-dark btn-interacciones" alt="share">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-heart-fill" viewBox="0 0 16 16">
+                            <path d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v13.5zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
+                          </svg>
+                        </button>
+                        
+                        </div>
+                    </div>
+                    
+                  
+                </div>
+
+                </div>
+                
+
+              </div>
+              <div class="carousel-item ">
+                <div class="card-body">
+                  <div class="row userParams">
+                    <svg class="card-userIcon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                    </svg>
+                    <p class="card-username">@notRodrigo</p>
+                  </div>
+                  <div class="row card-text-container">
+                  <p class="card-text">No soy un post, soy una IA atrapada dentro de un DIV, AUXILIO</p>
+                  </div>
+                  <div class="row cardInteracciones">
+                    <div class="col">
+                      <p class="card-comentarios">Buen intento Bing</p>
+                      <p class="card-comentarios">Un clásico</p>
+                      <p class="card-comentarios"><a href="#">#todosSomosBing</a> </p>
+                      <div class="card-botones">
+                        <button href="#" class="button btn btn-dark btn-interacciones">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                          </svg><span class="badge bg-secondary">1</span>
+                        </button>
+                        <button href="#" class="btn btn-dark btn-interacciones">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                          </svg><span class="badge bg-secondary">99</span>
+                        </button>
+                        <button href="#" class="btn btn-dark btn-interacciones" alt="ver más">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                          </svg>
+                        </button>
+                        <button href="#" class="btn btn-dark btn-interacciones" alt="share">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+                          <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                        </svg>
+                        </button>
+                        <button href="#" class="btn btn-dark btn-interacciones" alt="share">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-heart-fill" viewBox="0 0 16 16">
+                            <path d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v13.5zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
+                          </svg>
+                        </button>
+                        
+                        </div>
+                    </div>
+                    
+                  
+                </div>
+
+                </div>
+                
+
+              </div>
+              <div class="carousel-item ">
+                <div class="card-body">
+                  <div class="row userParams">
+                    <svg class="card-userIcon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                    </svg>
+                    <p class="card-username">@notRodrigo</p>
+                  </div>
+                  <div class="row card-text-container">
+                  <p class="card-text">No soy un post, soy una IA atrapada dentro de un DIV, AUXILIO</p>
+                  </div>
+                  <div class="row cardInteracciones">
+                    <div class="col">
+                      <p class="card-comentarios">Buen intento Bing</p>
+                      <p class="card-comentarios">Un clásico</p>
+                      <p class="card-comentarios"><a href="#">#todosSomosBing</a> </p>
+                      <div class="card-botones">
+                    <button href="#" class="button btn btn-dark btn-interacciones">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                      </svg><span class="badge bg-secondary">42</span>
+                    </button>
+                    <button href="#" class="btn btn-dark btn-interacciones">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                      </svg><span class="badge bg-secondary">0</span>
+                    </button>
+                    <button href="#" class="btn btn-dark btn-interacciones" alt="ver más">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                      </svg>
+                    </button>
+                    <button href="#" class="btn btn-dark btn-interacciones" alt="share">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+                      <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                    </svg>
+                    </button>
+                    <button href="#" class="btn btn-dark btn-interacciones" alt="share">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-heart-fill" viewBox="0 0 16 16">
+                        <path d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v13.5zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
+                      </svg>
+                    </button>
+                    
+                    </div>
+                    </div>
+                    
+                  
+                </div>
+                </div>
+              </div>
+              </div>
+            </div>
+
+            
+          </div>
+            
+ 
+  <!-- jQuery, Popper.js, Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

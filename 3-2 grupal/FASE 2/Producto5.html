@@ -1,61 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style type="text/css">
-        .tg  {border-collapse:collapse;border-spacing:0;}
-        .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-          overflow:hidden;padding:10px 5px;word-break:normal;}
-        .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-          font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-        .tg .tg-73oq{border-color:#000000;text-align:left;vertical-align:top}
-        .tg .tg-0lax{text-align:left;vertical-align:top}
-        
-        .flexcontainer {
-  display: flex;
-  align-items: center;
-}
-@media (max-width: 320px) {
-  .flexcontainer {
-    display: block;
-  }
-}
-        </style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Tienda Fénix</title>
-   
-</head>
-<body>
+    <style>
+      body {
+        background-color: antiquewhite;
+      }
+    </style>
+  </head>
+  <body>
     <header>
-        <img height="250px"  src="fenix.webp" alt="Fénix">
-        <h1>Fénix Compras Online</h1>
-        <h2>Lo tenemos todo!</h2>
-    </header>
-    <ul>
-        <li style="display:inline-block;"><a href="index.html">Inicio | </a></li>
-        <li style="display:inline-block;"><a href="ComoComprar.html">Cómo comprar | </a></li>
-        <li style="display:inline-block;"><a href="Marcas.html">Nuestras Marcas | </a></li>
-        <li style="display:inline-block;"><a href="PagosYTransferencias.html">Pagos y Transferencias | </a></li>
-        <li style="display:inline-block;"><a href="Contacto.html">Contacto | </a></li>
-    </ul>
-
-<section>
-    <h3>Producto 5</h3>
-    <h4>De toda la vida</h4>
-</section>
-
-    <div class="flexcontainer">
-   
-        <div>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVUPq0jvGRsvDBBr1e4g5JJfTC0c1ZPgejnA&usqp=CAU" alt="prod5" />
+      <div class="contenedor-header">
+        <div class="col-2">
+          <img height="250" src="fenix.webp" alt="Fénix" />
         </div>
-    
-        <ul>
-          <li>$45.000</li>
-          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem ea saepe, placeat corrupti aspernatur excepturi esse et, voluptate sit sequi magni. Provident, libero? Velit, exercitationem aperiam perferendis laborum amet est?</li>
-          <li>$44.000 c/u sobre 5 unidades</li>
-        </ul>
+        <div class="col-2">
+          <h1>Fénix Compras Online</h1>
+          <h2>Lo tenemos todo!</h2>
+        </div>
       </div>
+    </header>
+
+    <nav>
+      <ul class="contenedor-nav">
+        <a href="index.html">Inicio</a>
+        <a href="ComoComprar.html">Cómo comprar</a>
+        <a href="Marcas.html">Nuestras Marcas</a>
+        <a href="PagosYTransferencias.html">Pagos y Transferencias</a>
+        <a href="Contacto.html">Contacto</a>
+      </ul>
+    </nav>
+<section>
+
+  <div class="row row-producto">
+    <div class="parametro-producto"> 
+      <h3>Negro plataforma</h3>
+    </div>
+    <div class="parametro-producto"> 
+      <h4>De toda la vida</h4>
+    </div>
+    <div class="parametro-producto">          
+          <img src="data:image/jpeg;base64,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" alt="">
+    </div>
+  <div class="parametro-producto">          
+    Lorem ipsum dolor sit amet 
+  </div>
+  <div class="parametro-producto">          
+    $45.000
+  </div>
+  <div class="parametro-producto">          
+    $44.000 c/u sobre 5 unidades
+  </div>
+</div>
+
+</section>
+<footer>
+  <h2>Nuestras redes</h2>
+  <div class="contenedor-footer">
+    <div class="col-2">
+      <a href="http://facebook.com/fenix"
+        ><img
+          alt=""
+          src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/1200px-Facebook_f_logo_%282021%29.svg.png"
+      /></a>
+    </div>
+    <div class="col-2">
+      <a href="http://instagram.com/fenix"
+        ><img
+          alt=""
+          src="https://cdn-icons-png.flaticon.com/512/1409/1409946.png"
+      /></a>
+    </div>
+  </div>
+  Copyright &copy; 2023 Cacifero
+</footer>
 </body>
 </html>

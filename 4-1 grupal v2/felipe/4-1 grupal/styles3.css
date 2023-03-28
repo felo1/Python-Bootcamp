@@ -1,0 +1,245 @@
+#principal,
+#competencias,
+#equipo,
+#enlaces,
+#contacto {
+  padding-top: 60px;
+  min-height: 700px;
+}
+
+.navbar a {
+  font-weight: bold;
+}
+
+.navbar-dark {
+  background-color: rgb(80, 63, 95);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar,
+.modal {
+  font-family: 'Poiret one', cursive;
+}
+nav{
+  margin-bottom: 20px;
+}
+
+.bg-principal {
+  background-image: url('../img/bg-wind-generators.jpg');
+  background-size: cover;
+}
+
+.jumbotron {
+  color: white;
+  background: rgb(0, 0, 0); /* Para navegadores antiguos */
+  background: rgba(0, 0, 0, 0.5); 
+}
+
+
+#principal {
+  padding: 100px 5% 20px;
+  min-height: 700px;
+}
+
+#competencias>div>h3 {
+  color: white;
+}
+
+.carousel-item .bg-bienvenida img{
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  transform: translate(-50%, -50%);
+}
+
+#equipo {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+#enlaces {
+  color: white;
+  padding-top: 60px;
+  min-height: 100%;
+}
+
+.media {
+  margin: 20px 5% 50px 10%;
+}
+
+#contact-form {
+  padding-top: 3rem;
+}
+
+textarea {
+  resize: none;
+}
+
+.footer p {
+  display: inline;
+}
+
+/*seccion para ajustar altura navbar vs body*/
+
+body{
+  margin-top: 3.9%;
+}
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.card {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.card-body{
+  margin-left: 15vw;
+  margin-right: 15vw;
+  margin-bottom: 1vw;
+  margin-top: 10vw;
+  border-radius: 25px;
+  border: 1px dashed black;
+  background:#7f7f7f;
+  background:rgba(255,255,255,0.5);
+  max-width:100%;
+}
+.card-text{
+  text-align: left;
+  padding: 2vw;
+}
+.postcarousel{
+  width: auto;
+  width: auto;
+  position: absolute;
+  top:0px;
+  width: 100%;
+  padding-top: 5vw;
+}
+#carouselControls{
+  width: 100%;
+}
+.userParams{
+  margin-left: 5px;
+}
+.userParams .card-username{
+  margin-left: 5px;
+  font-weight: bolder;
+  margin-top: 5px;
+  
+}
+.row .cardInteracciones{
+ padding-top: 3vw;
+ width:95%;
+ padding-bottom: 2.5vw;
+}
+
+.row{
+  margin: 0 0 0 0;
+}
+
+.card-comentarios{
+  font-size: 12px;
+  font-family: “Helvetica Neue”,Helvetica,Arial,sans-serif;
+  border: 2px solid gray;
+  border-radius: 25px; 
+  text-indent: 15px;
+  }
+
+
+.btn:hover {background-color: #a3a9bd}
+.btn:active {
+    background-color: #062206;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
+  .footer {
+    background-color: rgb(80, 63, 95);
+  }
+
+.post-slide{
+  margin-left: 30px;
+}
+
+/*css para blur background*/
+
+body, html {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-image {
+  /* The image used */
+  background-image: url(/4-1\ grupal/img/imagen3.jpg);
+
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+}
+/* Position text in the middle of the page/image */
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+}
+/*css para blur background*/
+
+/*chorizo para animacion en imagenes*/
+img {
+  --color: #FA6900; /* the color of the border */
+  --border: 10px;   /* the thickness of the border */
+  --offset: 30px;   /* control the movement of the border */
+  --gap: 5px;       /* the gap on hover */
+  
+  border-radius: 50%;
+  cursor: pointer;
+  padding: calc(var(--border) + var(--gap));
+  border: var(--offset) solid #0000;
+  --_m: radial-gradient(50% 50%, #000 calc(100% - var(--offset)),#0000 calc(100% - var(--border)));
+  -webkit-mask: var(--_m);
+          mask: var(--_m);
+  --_g: #0000 calc(99% - var(--border)), var(--color) calc(100% - var(--border)) 99%,#0000;
+  --_s: var(--offset);
+  --_r: 100% 100% at;
+  background:
+    radial-gradient(var(--_r) 0    0   ,var(--_g)) calc(100% + var(--_s)) calc(100% + var(--_s)),
+    radial-gradient(var(--_r) 100% 0   ,var(--_g)) calc(0%   - var(--_s)) calc(100% + var(--_s)),
+    radial-gradient(var(--_r) 0    100%,var(--_g)) calc(100% + var(--_s)) calc(0%   - var(--_s)),
+    radial-gradient(var(--_r) 100% 100%,var(--_g)) calc(0%   - var(--_s)) calc(0%   - var(--_s));
+  background-size: 50% 50%;
+  background-repeat: no-repeat;
+  transition: .4s;
+}
+img:hover {
+  --_s: 0px
+}

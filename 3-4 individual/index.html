@@ -1,49 +1,167 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+  <title>AwakeNET</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Loading Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+  <style>
 
+    /*estilos de navegacion*/
+    .navbar a {
+  font-weight: bold;
+}
+.navbar-dark {
+  background-color: rgb(80, 63, 95);
+}
+nav{
+  margin-bottom: 20px;
+}
+
+    /*colores de body y footer, fijar footer a base*/
+
+body{
+  background-color: #062206;
+}
+
+.footerbar{
+  border: 5px solid red;
+  position: absolute;
+}
+  
+/*fijar el nav*/
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+  
+/*parametros para ajustar posicion de tarjetas de info, bien concretas*/
+.card-body{
+  margin-left: 15vw;
+  margin-right: 15vw;
+  margin-bottom: 1vw;
+  margin-top: 10vw;
+  border-radius: 25px;
+  border: 1px dashed black;
+  background:#7f7f7f;
+  background:rgba(255,255,255,0.5);
+  max-width:100%;
+}
+
+/*aseguro que el contenedor de las tarjetas no se pase para encima del nav*/
+.cards-container{
+  width: auto;
+  position: absolute;
+  top:0px;
+  width: 100%;
+  padding-top: 5vw;
+}
+/*estilos para el texto en la tarjetas y nav*/
+.userParams .card-username{
+  font-weight: bolder;
+  margin-top: 5px;
+  text-align: center;
+}
+.navbar{
+  text-indent: 10vw;
+}
+
+  </style>
 </head>
-<body>
-<div class="container-fluid nav-container">
-    <div class="row">
-        <!--Home&about, acerca Referencias, Experiencia, Proyectos, Social        sib 5
-            1 home, 1 espacio, 4 secciones, x2
-        -->
-        <div class="col-md-2 nav-item">
-            <a href="#"><i class="bi bi-person-circle"></i></a>
-        </div>
-        <div class="col-md-2 nav-item">
-            <a href="#"><i class="bi bi-explicit"></i></a>
-        </div>
-        <div class="col-md-2 nav-item">
-            <a href="#"><i class="bi bi-code-slash"></i></a>
-        </div>
-        <div class="col-md-2 nav-item">
-            <a href="#"><i class="bi bi-blockquote-left"></i></a>
-        </div>
-        <div class="col-md-2 nav-item">
-            <a href="#"><i class="bi bi-github"></i></a>
-        </div>
-    </div>
-</div>
-    
-<div class="container-fluid body-container">
+<body >
 
-</div>
+  <!--definicion de nav con bootstrap-->
+  <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
+    <a class="navbar-brand" style="font-family:'Trebuchet MS'" href="#">ResumeView Alpha</a>
 
-<div class="container-fluid footer-container">
+    <div class="collapse navbar-collapse" id="navigation"></div>
+          </nav>
+          <!--post carrousel-->
+          <div class="cards-container row">
 
-</div>
+                <!--defino contenedor para tarjetas-->
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+                <div class="card-body">
+                  <div class="row userParams">
+                    <!--llamado a un icono svg de bootstrap, como si fuera mi foto-->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-circle card-userIcon" viewBox="0 0 16 16">
+                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                    </svg>
+                    <!--html del relleno de las tarjetas, separadas en columnas
+                    con 2(3?) breakpoints segun medidas xs, md y lg-->
+                    <p class="card-username">Felipe Bazignan | Python Developer</p>
+                  </div>
+                  <div class="row card-text-container">
+                    
+                    <div class="col-xs-12 col-md-6 col-lg-4">
+                      <ul>
+                      <li>Ingeniero en Informática</li>
+                      <li>Administración de sistemas</li>
+                      <li>Moodle OpenLMS</li>
+                    </ul>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-4">
+                      <ul>
+                        <li>UMAS</li>
+                        <li>Koha admin</li>
+                        <li>Python Bootcamp, Java Masterclass</li>
+                      </ul>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-4">
+                      <ul>
+                        <li>Python</li>
+                      <li>Java</li>
+                      <li>Google Workspace admin</li>
+                      </ul>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-4">
+                       <ul>
+                        <li>Idiomas</li>
+                      <li>Paseo de perros</li>
+                      <li>Peluquería</li>
+                      </ul>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-4">
+                       <ul>
+                        <li>Bootstrap</li>
+                      <li>Boilerplating</li>
+                      <li>Chistes malos</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--footer semivacio basado en bootstrap-->
+    <footer class="bg-dark text-center text-white fixed-bottom">
+      <!-- Grid container -->
+      <div class="container p-4 pb-0">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+         <div class="row"><h3>+56990649450 | felipe.bazignan@gmail.com | <a href="">@notadev</a></h3>
+         </div></section>
+        <!-- Section: Social media -->
+      </div>
+      <!-- Grid container -->
+
+  </footer>
+  <!--javascript scripts recomendados para compatibilidad con bootstrap-->
+  <!-- jQuery, Popper.js, Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
 </body>
+
 </html>

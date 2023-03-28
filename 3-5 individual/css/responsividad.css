@@ -1,0 +1,107 @@
+
+html,body { height:100%; }
+
+    
+    /*estilos de navegacion*/
+    .navbar a {
+        font-weight: bold;
+      }
+      .navbar-dark {
+        background-color: rgb(80, 63, 95);
+      }
+      nav{
+        margin-bottom: 20px;
+        height: 5%;
+      }
+      
+          /*colores de body y footer, fijar footer a base*/
+      
+      body{
+        background-color: #062206;
+      }
+      
+      .footerbar{
+        border: 5px solid red;
+        position: absolute;
+      }
+        
+      /*fijar el nav*/
+      .fixed-top {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+      }
+        
+
+      /*aseguro que el contenedor de las tarjetas no se pase para encima del nav*/
+      .cards-container{
+        padding-top: 80px;
+      }
+      /*estilos para el texto en la tarjetas y nav*/
+      .userParams .card-username{
+        font-weight: bolder;
+        margin-top: 5px;
+        text-align: center;
+      }
+      .navbar{
+        text-indent: 10vw;
+      }
+    body{
+        background-color: #223 !important;
+        }
+
+              /*parametros para ajustar posicion de tarjetas de info, bien concretas*/
+      .card-body{
+        border-radius: 25px;
+        padding: 5px 5px 5px 5px;
+        background:rgba(76, 84, 145, 0.804);
+      }
+
+      .c30p{
+        width: 30%;
+        border:5px gray solid;
+        padding: 10px;
+        border-radius: 15px;
+      }
+      .c70p{
+        width: 70%;
+        height: 100%;
+        border:5px gray solid;
+        padding: 10px;
+        border-radius: 15px;
+        background-image: url("https://amymhaddad.s3.amazonaws.com/oriental-tiles.png");
+      }
+      .cards-container{
+        height: 89%;
+      }
+
+      footer{
+        height: 10%
+      }
+
+      .inner{
+        background-color: white;
+      }
+
+      .inner:hover{
+        color:blue;
+      }
+
+      .movable{
+      position: relative;
+      animation-name: ejemplo;
+      animation-duration: 1s;
+      animation-timing-function:linear;
+      animation-delay: 1s;
+      animation-iteration-count: 1;
+      animation-direction:normal;
+      }
+      @keyframes ejemplo {
+      0% {background-color:white; left:0px; top:0px;}
+      25% {background-color:white; left:0px; top:-20px;}
+      75% {background-color:lightgray; left:0px; top:20px;}
+      100% {background-color:white; left:0px; top:0px;}
+      }
+
+      /*perdón por la estética y no jugar mucho con las opciones de animación, estoy realmente contra el tiempo*/
