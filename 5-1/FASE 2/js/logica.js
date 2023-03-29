@@ -26,43 +26,46 @@ function sumaItems(){
        document.getElementById("suma-items").innerHTML = carritoItems.length;
 }
 
-/*
-Atrapa cada btn click del selector de cantidad.
-Chequea si ya está el item. Si está, agrega 1, si no:
-Agrega 1 al total tomando codigo, precio y nombre, foto tb quizá?
 
+//logica para el modal demo
 
-mockup
-
-
-
-
-carritoCheck(item){
-   found = false
-   for(let i of carritoItems){
-      if(item=carritoItems(i)){
-         found = true;
-         return i (donde I es la posicion del arreglo donde encontró el item.)
-         break;
+function modalPOP(){
+   let newState = -1;
+   setTimeout(function(){
+      if(newState == -1){
+         //funciona, lanzar a pagina de inicio con carrito vacio
+         carritoItems.length = 0;
+         window.location.replace("index.html");
       }
-   }
-   if(found){
-      return (carritoItems(i));
-   }  
-   else{
-      return null
-   }
-
+  }, 5000);
 }
 
-btnAdd(item){
-   if(carritoCheck(item)!=null){ //chequear si está el item, la funcion me devuelve un null o ubicacion en arreglo 
-      carritoUpdate(item);
-   }
-   else{
-      carritoAdd(item);
-   }
+
+var count = 0;
+var count = document.getElementById("count");
+function plus(){
+    count++;
+    count.value = count;
+}
+function minus(){
+  if (count > 1) {
+    count--;
+    count.value = count;
+  }  
 }
 
-*/
+/*
+function fillList() {
+    const txt = document.getElementById('inputText').value;
+    const ul = document.getElementById('listaItems'); //targetea el UL a rellenar
+    const li = document.createElement('li');
+    li.textContent = txt; //lo rellena con contenido desde el arreglo
+    li.id = liIndex;
+    liIndex++;
+    ul.appendChild(li);
+    li.onclick = function() { 
+    this.parentNode.removeChild(this); //gracias stack overflow.
+    };
 
+    ul.appendChild(li);
+}*/
