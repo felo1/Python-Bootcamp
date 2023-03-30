@@ -80,9 +80,12 @@ $(document).ready(function () {
 
 
     
-  $("#example tr").css("padding-bottom","5px");
+  //$("#example tr").css("padding-bottom","555px");
   $("#example tr").prepend("<div><tr><td><button>+</button><p>0</p><button>-</button></td></div>");
-
+/*   $("table").css({
+    "background-color": "yellow",
+    "width": "50%"
+            }) */
 
 
 
