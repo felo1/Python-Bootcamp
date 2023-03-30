@@ -25,13 +25,7 @@ html,body { height:100%; }
         position: absolute;
       }
         
-      /*fijar el nav*/
-      .fixed-top {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-      }
+
         
 
       /*aseguro que el contenedor de las tarjetas no se pase para encima del nav*/
@@ -47,9 +41,7 @@ html,body { height:100%; }
       .navbar{
         text-indent: 10vw;
       }
-    body{
-        background-color: #223 !important;
-        }
+    
 
               /*parametros para ajustar posicion de tarjetas de info, bien concretas*/
       .card-body{
@@ -66,20 +58,20 @@ html,body { height:100%; }
       }
       .c70p{
         width: 70%;
-        height: 100%;
         border:5px gray solid;
         padding: 10px;
         border-radius: 15px;
+        height: 10%;
       }
       .cards-container{
-        height: 80%;
       }
-
+      body{
+        background-color: #223 !important;
+        padding-bottom:30px;
+        margin-bottom:30px;
+        }
       footer{
-        height: 20%
-      }
-
-      .inner{
+        height: 25%;
       }
 
       .inner:hover{

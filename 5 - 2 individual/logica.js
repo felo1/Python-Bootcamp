@@ -1,33 +1,38 @@
-/* 
-const inputText = document.getElementById('inputPalabra');
-const outputText = document.getElementById('outputPalabra');
+document.addEventListener('DOMContentLoaded', function() { //importante que las cosas carguen luego del dom, 
+  //eso rompia la logica. No sabía esto.
 
-window.onload = function formatText(text) {
-    //regex??? para limpiar simbolos
-  const cleanedText = text.replace(/\d+/g, '');
+const inputPalabra = document.getElementById('inputPalabra');
+const outputPalabra = document.getElementById('outputPalabra');
 
-    //capitalizar
-  const firstLetter = cleanedText.charAt(0).toUpperCase();
-  const lastLetter = cleanedText.charAt(cleanedText.length - 1).toUpperCase();
-  const middleText = cleanedText.slice(1, -1);
-  const formattedText = `${firstLetter}${middleText}${lastLetter}`;
+inputPalabra.addEventListener('input', function() {
+const palabra = inputPalabra.value.replace(/[^a-zA-Z]/g, '');
 
-  return formattedText;
-} */
+outputPalabra.value = palabra;
 
- /*inputText.addEventListener('', () => {
-    const text = inputText.value;
-    const formattedText = formatText(text);
-    outputText.textContent = formattedText; 
-  });
+if(palabra.length>1){
+const ini = palabra.charAt(0).toUpperCase();
+const fin = palabra.charAt(palabra.length - 1).toUpperCase();
+outputPalabra.value = ini + palabra.slice(1, -1) + fin;
+}
+else if(palabra.length==1){
+  outputPalabra.value = palabra.charAt(0).toUpperCase();;
+}
 
-*/
-  
-const input = document.querySelector("input");
-const log = document.getElementById("log");
+});
+});
 
-input.addEventListener("keydown", logKey);
 
-function logKey(e) {
-  log.textContent += ` ${e.code}`;
+function fillList() {
+  const txt = document.getElementById('inputText').value;
+  const ul = document.getElementById('listaItems'); //targetea el UL a rellenar
+  const li = document.createElement('li');
+  li.textContent = txt; //lo rellena con contenido desde el arreglo
+  li.id = liIndex;
+  liIndex++;
+  ul.appendChild(li);
+  li.onclick = function() { 
+  this.parentNode.removeChild(this); //gracias stack overflow.
+  };
+
+  ul.appendChild(li);
 }

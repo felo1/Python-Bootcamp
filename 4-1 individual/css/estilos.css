@@ -13,11 +13,7 @@ nav{
     font-family: Arial, Helvetica, sans-serif;
     background-color: yellow;
 }
-header p{
-    background-color: black;
-    color:white;
-    text-align: center;
-}
+
 
 .lowerc{
     font-family: Arial, Helvetica, sans-serif;
@@ -33,7 +29,7 @@ border-radius: 5px;
 }
 
 
-.card-title:hover{
+h3:hover{
     color:white;
     text-shadow: 5px 5px #343333a2;
 }
