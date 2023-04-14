@@ -6,18 +6,29 @@ usuarios = {"Felipe": ([], 0), "Juan": ([], 0), "Marcelo": ([], 0), "Angelo": ([
 formus = ["formulario de hábitos alimenticios", "formulario de empleabilidad", "formulario de experiencia laboral", 
          "formulario de actividades recreativas", "formulario de deportes", "formulario de atletismo",
           "formulario de natación"]
-#me funcionaba sin la idea de la tupla dentro de la lista, veré alternativas mñn.
 full_send= False
+usuarios_spammeados = []
 while(full_send==False):
-    def enviar():
-        formulario_elegido = random.choice(formus)
-        usuario_elegido = random.choice(list(usuarios.keys()))
-        contador_usuario = usuarios[usuario_elegido][1]
-        if formulario_elegido not in usuarios[usuario_elegido][0] and contador_usuario < 5:
-            usuarios[usuario_elegido][0].append(formulario_elegido)
-            print(f"Se agregó {formulario_elegido} a {usuario_elegido}")
-    break
-enviar()
+    #mejorable: seguramente se pueden reducir las iteraciones de alguna con un mejor método.
+    #me tinca que el error 
+    formulario_elegido = random.choice(formus)
+    usuario_elegido = random.choice(list(usuarios.keys()))
+    contador_usuario = usuarios[usuario_elegido][1]
+    if formulario_elegido not in usuarios[usuario_elegido][0] and contador_usuario < 5:
+        usuarios[usuario_elegido][0].append(formulario_elegido)
+        print(f"Se agregó {formulario_elegido} a {usuario_elegido}")
+        if usuario_elegido not in usuarios_spammeados:
+            usuarios_spammeados.append(usuario_elegido)
+        contador_usuario += 1
+    if len(usuarios_spammeados)>=7:
+        full_send = True
+print(f"Espameamos a {usuarios_spammeados}")
+print("================================")
+print("Los usuarios recibieron los siguientes formularios")
+#me ENCANTAN estas dos líneas pero no las entiendo :v (gracias stackoverflow)
+for usuario, (formularios, _) in usuarios.items():
+    print(f"{usuario}: {formularios}")
+        
 #7 personas responderan, x random
 #mismos cuestionarios
 #requisitos:
