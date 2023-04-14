@@ -11,8 +11,8 @@ full_send= False
 while(full_send==False):
     def enviar():
         formulario_elegido = random.choice(formus)
-        contador_usuario = usuarios[usuario_elegido][1]
         usuario_elegido = random.choice(list(usuarios.keys()))
+        contador_usuario = usuarios[usuario_elegido][1]
         if formulario_elegido not in usuarios[usuario_elegido][0] and contador_usuario < 5:
             usuarios[usuario_elegido][0].append(formulario_elegido)
             print(f"Se agregó {formulario_elegido} a {usuario_elegido}")
