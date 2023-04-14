@@ -1,5 +1,4 @@
 
-
 password = input("Bienvenido.\nPor favor, ingrese su contraseña."
                  "\nAsegúrese de incluír al menos 8 caracteres, con mayúsculas, minúsculas y cifras \n")
 errores = []
@@ -19,5 +18,10 @@ else:
     print("Gracias por crear su cuenta")   
 
 """
+ingresen la contraseña de a 1 caracter, no usar splits y eso. rodrigo recomendo no sobre-complicarse con esto
 
+Investigar sobre:
+-Elementos random en python
+-Tiempos de espera o sleep en python ;)
 """
+
