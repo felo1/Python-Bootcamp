@@ -26,8 +26,8 @@ JJVV = [Ignacio, Alberta, Jeanne, Panchito, Panchita, Antonio, Benja]
 JJVV2 = [Ignacio, Alberta, Jeanne, Panchito, Panchita, Antonio, Benja]
 JJVV3 = [Ignacio, Alberta, Jeanne, Panchito, Panchita, Antonio, Benja]
 JJVV4 = [Ignacio, Alberta, Jeanne, Panchito, Panchita, Antonio, Benja]
-
 JJVVS = [JJVV, JJVV2, JJVV3, JJVV4]
+#JJVVS podría alojar multiples listas de diccionarios. Levante la mano si esto es un crímen de almacenamiento de datos en memoria.
 
 for usuario in JJVV:
     print(f"Los datos del usuario {usuario['nombre']} son: {usuario['edad']}, {usuario['género']}, \
@@ -45,3 +45,4 @@ for usuario in JJVV:
 #    print(f"Los datos del usuario son: {data}")
     
     #print(f"{usuario}: recibió {len(formularios)} formularios: {formularios}")
+
