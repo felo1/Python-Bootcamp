@@ -33,8 +33,6 @@ def main():
             stock_productos[producto_seleccionado] -=  numero_productos
             for producto in (stock_productos.keys()):
                 print(f"quedan {stock_productos[producto]} {producto}")
-            #print(f"quedan {stock_productos['Densimetro nuclear']} densimetros")
-            #print(f"quedan {stock_productos['Lámparas de sal']} lamparas")
             contador_compras += 1
             if(contador_compras % 10==0):
                 print(f"Nos van quedando {stock_productos[producto_seleccionado]} del producto {producto_seleccionado}")
@@ -43,19 +41,19 @@ def main():
                 stock_proveedor[producto_seleccionado]-=50
             if stock_productos[producto_seleccionado] == 0:
                 print(f"No quedan más unidades del producto {producto_seleccionado}")
-                #time.sleep(3)
+                time.sleep(3)
                 continue
             if any(stock_productos) == 0:
                 break
-            #time.sleep(3)
+            time.sleep(3)
         else:
-            print("No hay suficiente stock para completar esa compra")
-            print("final:\n")
-            print(f"quedan {stock_productos['Densimetro nuclear']} densimetros")
-            print(f"quedan {stock_productos['Lámparas de sal']} lamparas")       
+            print("No hay suficiente stock para completar esa compra, se rechaza esa venta")
+            print("\nresultado final:==========================\n")
+            for producto in (stock_productos.keys()):
+                print(f"quedan {stock_productos[producto]} {producto}")
             if all(value == 0 for value in stock_productos.values()):
+                print("Saliendo de la función")
                 break
             continue
 
 main()
-#deliberadamente sin break
