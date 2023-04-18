@@ -22,18 +22,29 @@ Antonio = {"nombre":"Antonio","edad": 42, "género": "masculino", "dirección": 
 Benja = {"nombre":"Benja","edad": 50, "género": "no menciona", "dirección": "Calle Norte #234", "teléfono": 6789, "correo": "benja@ejemplo.tk", "ocupación": "jubilado", "nombre_usuario": "benja07", "id_unico": 7, "antiguedad": 5, "fecha_de_incorporacion": "2019-03-01"}
 
 
-JJVV = [Ignacio, Alberta, Jeanne, Panchito, Panchita, Antonio, Benja]
-JJVV2 = [Ignacio, Alberta, Jeanne, Panchito, Panchita, Antonio, Benja]
-JJVV3 = [Ignacio, Alberta, Jeanne, Panchito, Panchita, Antonio, Benja]
-JJVV4 = [Ignacio, Alberta, Jeanne, Panchito, Panchita, Antonio, Benja]
-JJVVS = [JJVV, JJVV2, JJVV3, JJVV4]
-#JJVVS podría alojar multiples listas de diccionarios. Levante la mano si esto es un crímen de almacenamiento de datos en memoria.
+JJVV_vina = [Ignacio, Alberta, Jeanne, Panchito, Panchita, Antonio, Benja]
+JJVV_stgo = [Ignacio, Alberta, Jeanne, Panchito, Panchita, Antonio, Benja]
+JJVV_ata = [Ignacio, Alberta, Jeanne, Panchito, Panchita, Antonio, Benja]
+JJVV_puren = [Ignacio, Alberta, Jeanne, Panchito, Panchita, Antonio, Benja]
+juntas_de_vecinos = [JJVV_vina, JJVV_stgo, JJVV_ata, JJVV_puren]
 
-for usuario in JJVV:
-    print(f"Los datos del usuario {usuario['nombre']} son: {usuario['edad']}, {usuario['género']}, \
-{usuario['dirección']}, {usuario['teléfono']}, {usuario['correo']}, {usuario['ocupación']}, \
-{usuario['nombre_usuario']}, {usuario['id_unico']}, {usuario['antiguedad']}, {usuario['fecha_de_incorporacion']} ")
+#for usuario in JJVV:
+#    print(f"Los datos del usuario {usuario['nombre']} son: {usuario['edad']}, {usuario['género']}, \
+#{usuario['dirección']}, {usuario['teléfono']}, {usuario['correo']}, {usuario['ocupación']}, \
+#{usuario['nombre_usuario']}, {usuario['id_unico']}, {usuario['antiguedad']}, {usuario['fecha_de_incorporacion']} ")
 
+#A continuación, recorra su lista e imprima toda la información que posee la estructura de datos sobre
+for junta in juntas_de_vecinos:
+    for usuario in junta:
+        print(f"Imprimiendo datos sensibles de {usuario['nombre']}: {usuario}")
+        print("\n")
+print("\n fin del infodump...")
+#Imprima en pantalla la fecha de incorporación de todos los usuarios. """
+print("Listando fechas de incorporación de usuarios, por junta")
+for junta in juntas_de_vecinos:
+    for usuario in junta:
+        print(usuario["fecha_de_incorporacion"])
+    print("\n")
 
 #cuidado con dejar whitespace en prints seccionados como este, porque te lo imprime      
 #me sugieren hacerlo con este estilo por dinamismo
