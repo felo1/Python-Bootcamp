@@ -46,6 +46,14 @@ for junta in juntas_de_vecinos:
         print(usuario["fecha_de_incorporacion"])
     print("\n")
 
+
+#nos mostraron list comprehension
+#ej: dict = {"newkey": "new value" for item in new_dict } para insertar valores en diccionario iterativamente.
+
+#ej list_comprehension = [x for x in lista]
+#ej dicci = {cliente:random.randint(1,100) for cliente in clientes} usó por ej acá una lista clientes = ["juan","pepo","pepe"]
+#    print(dicci) -> y con eso le inserta a los clientes valores random entre 1 y 100. Quedó con {"juan":100, "pepo":50, etcetc}
+
 #cuidado con dejar whitespace en prints seccionados como este, porque te lo imprime      
 #me sugieren hacerlo con este estilo por dinamismo
    # print(f"user {usuario['nombre']}': {', '.join([f'{k}={v}'  for k,v in usuario.items() if k!='nombre'     ])}")
