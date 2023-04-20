@@ -2,6 +2,12 @@ import random
 import time
 #Guarde en una variable la siguiente información:
 
+#hay una libreria para crear ids parece
+#hay que hacer una valoracion que diga 
+#recorrer toda la lista de clientes, ver el ID, verificar si el nuevo randing existe y evitarlo.
+#sino, la libreria se llama uid que genera un id unico de forma alfanumerica (asi pierde la utilidad matematica supongo)
+#
+
 #Debe crear 10 clientes y 5 productos.
 #* Información de clientes: nombre, edad, identificador único.
 clientes = [{"id00001" : {"nombre": "Hugo", "edad" :25}},
