@@ -60,6 +60,13 @@ productos = [
     {"nombre": "CHAQUETA", "stock": 5, "precio": 100, "id": "prod5", "color": "azul" },
 ]
 
+def menu_ventas():
+    print("--------MENU--------")
+    print("Mostrar n° clientes = 1")
+    print("Solicitar compra = 2")
+    print("Revisar stock producto = 3")
+    print("Autorizar compra = 4")
+
 def menu_bodega():
     print("--------MENU--------")
     print("Agregar nuevo cliente = 1")
@@ -70,24 +77,16 @@ def menu_bodega():
     print("Mostrar y retornar las unidades disponibles de producto en particular = 6")
     print("Mostrar y retornar los productos que tienen > x numero de unidades = 7")
     print("Acceder a menu ventas = 8")
-
-def menu_ventas():
-    print("--------MENU--------")
-    print("Mostrar n° clientes = 1")
-    print("Solicitar compra = 2")
-    print("Revisar stock producto = 3")
-    print("Autorizar compra = 4")
-
-def selector(opcion):
+    opcion = input("Ingrese el número de la opción deseada: \n")
     switcher = {
-        1: agregar_cliente,
-        2: agregar_producto,
-        3: actualizar_stock,
-        4: listar_productos,
+        1: agregar_cliente(),
+        2: agregar_producto(),
+        3: actualizar_stock(),
+        4: listar_productos(),
         5: listar_stock,
-        6: listar_stock_item,
-        7: listar_productos_sobre_cantidad,
-        8: menu_ventas,
+        6: listar_stock_item(),
+        7: listar_productos_sobre_cantidad(),
+        8: menu_ventas(),
     }
     func = switcher.get(opcion)
     if func:
@@ -105,6 +104,7 @@ def solicitar_compra():
     #printear “Compra aprobada y en camino” en caso que exista el stock necesario.
     #retornar un mensaje “Compra cancelada” en caso que no exista el stock necesario.
     pass
+
 def agregar_cliente():
     nuevo_cliente = {}
     nom = input("Ingrese el nombre del cliente: ").lower()
@@ -146,7 +146,6 @@ def listar_productos():
 def listar_stock():
     print("Listado de Productos:")
     for producto in productos:
-        #ta malo esto, solo muestra 1
         print(f"Id: {producto['id']}:, stock: {producto['stock']}")
     time.sleep(2)
     menu_bodega() 
@@ -154,7 +153,9 @@ def listar_stock_item(item):
     pass
 def listar_productos_sobre_cantidad(cantidad):
     pass
+
 menu_bodega()
+
 """
 Control de Ventas
 Nuestro programa deberá tener las siguientes funciones:
