@@ -45,6 +45,7 @@ necesario.
 ● Recuerden comentar debidamente su código.
 """
 import time
+#====================================DICCIONARIOS HARD================================
 clientes = [
     {"nombre": "Cliente1", "edad": 25, "id": "id1"},
     {"nombre": "Cliente2", "edad": 32, "id": "id2"},
@@ -59,6 +60,7 @@ productos = [
     {"nombre": "POLERÓN", "stock": 3, "precio": 100, "id": "prod4", "color": "rosa" },
     {"nombre": "CHAQUETA", "stock": 5, "precio": 100, "id": "prod5", "color": "azul" },
 ]
+#====================================MENUS================================
 
 def menu_ventas():
     print("--------MENU--------")
@@ -66,6 +68,18 @@ def menu_ventas():
     print("Solicitar compra = 2")
     print("Revisar stock producto = 3")
     print("Autorizar compra = 4")
+    opcion = int(input("Ingrese el número de la opción deseada: \n"))
+    switcher = {
+        1: mostrar_n_clientes,
+        2: solicitar_compra,
+        3: revisar_stock_producto,
+        4: autorizar_compra,
+    }
+    funcion = switcher.get(opcion)
+    if funcion:
+        funcion()
+    else:
+        print("Opción no válida")
 
 def menu_bodega():
     print("--------MENU--------")
@@ -77,24 +91,42 @@ def menu_bodega():
     print("Mostrar y retornar las unidades disponibles de producto en particular = 6")
     print("Mostrar y retornar los productos que tienen > x numero de unidades = 7")
     print("Acceder a menu ventas = 8")
-    opcion = input("Ingrese el número de la opción deseada: \n")
-    switcher = {
-        1: agregar_cliente(),
-        2: agregar_producto(),
-        3: actualizar_stock(),
-        4: listar_productos(),
-        5: listar_stock,
-        6: listar_stock_item(),
-        7: listar_productos_sobre_cantidad(),
-        8: menu_ventas(),
-    }
-    func = switcher.get(opcion)
-    if func:
-        return func()
-    else:
-        print("Opción inválida")
 
-def solicitar_compra():
+    opcion = int(input("Ingrese el número de la opción deseada: \n"))
+    switcher = {
+        1: agregar_cliente,
+        2: agregar_producto,
+        3: actualizar_stock,
+        4: listar_productos,
+        5: listar_stock,
+        6: listar_stock_item,
+        7: listar_productos_sobre_cantidad,
+        8: menu_ventas,
+    }
+    funcion = switcher.get(opcion)
+    if funcion:
+        funcion()
+    else:
+        print("Opción no válida")
+#====================================FUNCIONALIDADES================================
+def mostrar_n_clientes():
+    print(f"N° total de clientes: {len(clientes)}")
+    time.sleep(2)
+    menu_bodega()
+
+def revisar_stock_producto():
+    busqueda = input(f"Ingrese el id del producto a consultar:\n")
+    for producto in productos:
+        if producto["id"] == busqueda:
+            print("Se encontró existencias")
+            return True
+    print("Búsqueda arrojó que no hay un producto con ese ID")
+    return False
+
+def autorizar_compra():
+    pass
+    
+def solicitar_compra(cliente, codigo, cantidad):
     #usando id cliente, id producto, unidades a comprar (por defecto 1)
     #verificar si hay stock necesario devolviendo bools.
     #funcionalidad que autoriza compra, no es necesario actualizar stock de la bodega virtual
@@ -122,18 +154,26 @@ def agregar_cliente():
     print(f"El cliente {nom} ha sido agregado.")
     time.sleep(2)
     menu_bodega()
-def agregar_producto():
-    nomp = input("Ingrese el nombre del producto: ").lower()
-    pr = int(input("Ingrese el precio: "))
-    idp = 222
-    co = input("Ingrese el color: ").lower()
-    nuevo_producto = {"nombre": nomp, "precio": pr, "id": idp, "color": co} #CORREGIR ID
-    productos.append(nuevo_producto)
-    print(f"El producto {nomp} ha sido agregado.")
+
+
+def agregar_producto(nombre, cantidad):
+    if nombre in productos:
+        productos[nombre] += cantidad #si ya existe el producto, solo aumenta la cantidad
+    else:
+        productos[nombre] = cantidad #si no existe el producto , agrega nombre y producto
     time.sleep(2)
     menu_bodega()
-def actualizar_stock():
-    pass
+
+def actualizar_stock(nombre, cantidad):
+    if nombre in productos:
+        productos[nombre] = cantidad # si ya existe el producto, reemplaza la cantidad
+    else:
+        print(f"El producto {nombre} no existe")# si no existe entrega mensaje de error
+
+    
+
+
+
 def listar_productos():
     print("Listado de Productos:")
     for producto in productos:
@@ -149,10 +189,21 @@ def listar_stock():
         print(f"Id: {producto['id']}:, stock: {producto['stock']}")
     time.sleep(2)
     menu_bodega() 
-def listar_stock_item(item):
-    pass
+def listar_stock_item():
+    busqueda = input(f"Ingrese el id del producto a consultar:\n")
+    for producto in productos:
+        if producto["id"] == busqueda:
+            print(f"El stock del producto consultado es {producto['stock']}")
+            break
+    print("Búsqueda arrojó que no hay un producto con ese ID")
+    menu_bodega()
 def listar_productos_sobre_cantidad(cantidad):
-    pass
+    valor_filtro = int(input(f"Indique el n° de stock sobre la cual desea filtrar items:\n"))
+    print(f"Items con stock sobre {valor_filtro}:")
+    for producto in productos:
+        if producto["stock"]>valor_filtro:
+            print(f"Producto id: {producto['id']} | stock: {producto['stock']}")
+    menu_bodega()
 
 menu_bodega()
 
