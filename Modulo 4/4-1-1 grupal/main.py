@@ -77,13 +77,17 @@ class Producto():
         self.Stock = Stock
         self.Valor_Neto = Valor_Neto
         self.__Impuesto = 1.19 
+#usuario_invitado = invitado("invitado", "invitado", "cuenta invitado")
+
+cliente1 = Cliente("id1", "Ignacio", "Fuentealba", "correo@gmail.com", "25-enero", 25000000)
+cliente2 = Cliente("id2", "Juan", "Perez", "pepo@hotmail.com", "15-enero", 0)
+cliente3 = Cliente("id3", "Pedro", "Gomez", "XXXXXXXXXXXXXXX", "20-enero", 0)
+cliente4 = Cliente("id4", "Maria", "Lopez", "XXXXXXXXXXXXXXX", "20-marzo", 0)
+cliente5 = Cliente("id5", "Luis", "Gonzalez", "XXXXXXXXXXXXXXX", "20-febrero", 0)
+
+
 
 """
-
-
-
-
-
 Desarrollar 5 instancias de cada clase creada en los puntos anteriores.
 Piensen en una forma de graficar las relaciones entre las diferentes clases, puede ser un diagrama o
 gráfica. Desarrollen el ejercicio de forma intuitiva.
@@ -91,11 +95,11 @@ gráfica. Desarrollen el ejercicio de forma intuitiva.
 
 import time
 #====================================DICCIONARIOS HARD================================
-clientes = [
-    {"nombre": "Cliente1", "edad": 25, "id": "id1"},
-    {"nombre": "Cliente2", "edad": 32, "id": "id2"},
-    {"nombre": "Cliente3", "edad": 19, "id": "id3"},
-    {"nombre": "Cliente4", "edad": 40, "id": "id4"},
+clientes_old = [
+#    {"nombre": "Cliente1", "edad": 25, "id": "id1"},
+#    {"nombre": "Cliente2", "edad": 32, "id": "id2"},
+#    {"nombre": "Cliente3", "edad": 19, "id": "id3"},
+#    {"nombre": "Cliente4", "edad": 40, "id": "id4"},
 ]
 #productos hardcodeados según lo solicitado
 productos = [
@@ -163,7 +167,7 @@ def menu_bodega():
         print("Opción no válida")
 #====================================FUNCIONALIDADES================================
 def mostrar_n_clientes():
-    print(f"N° total de clientes: {len(clientes)}")
+    print(f"N° total de clientes: {len(clientes_old)}")
     
     time.sleep(2)
     menu_bodega()
@@ -221,7 +225,7 @@ def autorizar_compra(solicitudes_compra = None):
 def existe_cliente(id_cliente):
     """Devuelve 'True' si el cliente indicado existe"""
     resultado = ""
-    for cliente in clientes:
+    for cliente in clientes_old:
         if (cliente["id"] == id_cliente):
             resultado = True
     if resultado == True:
@@ -291,13 +295,13 @@ def agregar_cliente():
     #idc = 
     #debe haber alguna mejor manera de llevar los ID que 
     #evite que eliminar IDs deje hoyos en el contador.
-    ultimo_id = clientes[-1]["id"]  
+    ultimo_id = clientes_old[-1]["id"]  
     #lo paso de alfanumerico a solo numero
     numeros = int(ultimo_id[2:]) 
     nuevo_numero = numeros + 1
     idc = "id" + str(nuevo_numero)
     nuevo_cliente = {"nombre": nom, "edad": ed, "id": idc}
-    clientes.append(nuevo_cliente)
+    clientes_old.append(nuevo_cliente)
     print(f"El cliente {nom} ha sido agregado.")
     time.sleep(2)
     menu_bodega()
@@ -354,14 +358,12 @@ def listar_productos_sobre_cantidad():
             print(f"Producto id: {producto['id']} | stock: {producto['stock']}")
     menu_bodega()
 
-menu_bodega()
-
 #Control de Ventas
 
 #mostrar y retornar el número de clientes registrados en la tienda.
 
 def listar_clientes():
-    print(f"{len(clientes)} Clientes registrados:\n")
+    print(f"{len(clientes_old)} Clientes registrados:\n")
 
-    for key, value in clientes:
+    for key, value in clientes_old:
         print(f"{key}: {value}")
