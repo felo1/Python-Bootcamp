@@ -13,13 +13,13 @@ Piensen en una forma de graficar las relaciones entre las diferentes clases, pue
 gráfica. Desarrollen el ejercicio de forma intuitiva.
 """
 usuarios = []
-class usuario:
+class Usuario:
     def __init__(self, nivel, nombre, desc):
         self.nivel = nivel
         self.nombre = nombre
         self.desc = desc
 
-class admin(usuario):
+class Admin(Usuario):
     respeto = "insuficiente"
     carisma = "ninguno"
     profesionalismo = "al debe"
@@ -34,9 +34,10 @@ class admin(usuario):
         print(f"he creado el usuario {usu}")
         for usuario in usuarios: print(usuario)
     def accion3():
-        pass
+                print("Esta es mi acción 3")
 
-class regular(usuario):
+
+class Regular(Usuario):
     regularidad = "total"
     personalidad = "neutra"
     comportamiento = "imprecedible"
@@ -45,12 +46,14 @@ class regular(usuario):
         print(f"Soy de clase {str(self.__class__)}\n")
         
     def accion2(self):
-        pass
+                print("Esta es mi acción 2")
+
         
     def accion3(self):
-        pass
+                print("Esta es mi acción 3")
 
-class invitado(usuario):
+
+class Invitado(Usuario):
     privilegios = "chequeados"
     estadia = "corta"
     fidelidad = "nula"
@@ -59,15 +62,16 @@ class invitado(usuario):
         print(f"Soy de clase {str(self.__class__)}\n")
         
     def accion2(self):
-        pass
+        print("Esta es mi acción 2")
         
     def accion3(self):
-        pass
+        print("Esta es mi acción 3")
+
 
 #acá hago la "instanciación". Creo instancias de objeto de las subclases admin, basico y invitado
-administrador = admin("administrativo", "admin", "cuenta administrativa")       
-usuario_basico = regular("regular", "usuario_regular", "cuenta regular")
-usuario_invitado = invitado("invitado", "invitado", "cuenta invitado")
+administrador = Admin("administrativo", "admin", "cuenta administrativa")       
+usuario_basico = Regular("regular", "usuario_regular", "cuenta regular")
+usuario_invitado = Invitado("invitado", "invitado", "cuenta invitado")
 
 administrador.accion1()
 usuario_basico.accion2()
