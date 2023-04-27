@@ -124,19 +124,18 @@ def menu_bodega():
 #se muestra el largo de la lista de diccionarios de cliente para reflejar la cantidad de clientes guardados.
 def mostrar_n_clientes():
     print(f"N° total de clientes: {len(clientes)}")
+    
     time.sleep(2)
     menu_bodega()
 
-#funcion que responde con booleanos sobre si hay stock, o stock suficiente, del item indicado por ID
 def revisar_stock_producto(sol_id_producto = None, sol_cantidad = None):  
     print("Revisando stock...")
     #esta es la funcion que solo puede devolver booleanos segun lo solicitado por la tarea
-    #este primer if es la ruta que toma si se entra desde el menu en vez de llamar a la funcion con parametros, no pedirá cantida
+    #este primer if es la ruta que toma si se entra desde el menu en vez de llamar a la funcion con parametros, no pedirá cantidad
     if sol_id_producto == None:
-        #si el parámetro que representa el ID del producto que está en proceso de solicitud es nulo, consulta por el.
         sol_id_producto = input(f"Ingrese el id del producto a consultar:\n")
         for producto in productos:
-            if producto["id"] == sol_id_producto and producto["stock"] >= 1: #si viene sin parametros solamente se revisa si hay existencias
+            if producto["id"] == sol_id_producto and producto["stock"] >= 1:
                 print("Se encontraron existencias")
                 time.sleep(2)
                 return True
@@ -147,7 +146,7 @@ def revisar_stock_producto(sol_id_producto = None, sol_cantidad = None):
         
     #Desde acá trabajaria si trae argumentos de antemano. No llegará a este punto si la funcion no viene prellenada desde solicitar_compra
     for producto in productos:
-        if producto["id"] == sol_id_producto and producto["stock"] >= sol_cantidad: #cumplimos con los dos requisitos de la tarea aplicando las dos condiciones
+        if producto["id"] == sol_id_producto and producto["stock"] >= sol_cantidad:
             print(f"Hay stock suficiente igual o mayor a {sol_cantidad}")
             time.sleep(2)
             return True
@@ -159,7 +158,6 @@ def revisar_stock_producto(sol_id_producto = None, sol_cantidad = None):
 def autorizar_compra(solicitudes_compra = None):
     while True:
         if solicitudes_compra == None:
-            #hacemos un chequeo de nulo para evitar que se caiga el programa si hacen una lectura a este diccionario estando vacío
             print("No hay solicitudes de compra pendientes de autorización")
             print("Saliendo del programa")
             time.sleep(2)
@@ -167,26 +165,20 @@ def autorizar_compra(solicitudes_compra = None):
         print("Los siguientes códigos de solicitudes de compra están pendientes de autorización:")
         for solicitud in solicitudes_compra:
             print(solicitud['id_venta'])
-        #muestra las solicitudes registradas, que pueden ser más de una en caso de no terminarse el proceso de autorización
-        #consulta por cual quiere autorizar
         autorizar = int(input(f"Ingrese la solicitud a autorizar, ingrese 0 para salir: \n"))
-        #evitamos que se caiga el programa por recibir un valor no entero o 0
         if  autorizar == 0:
             print("Volviendo al menú")
-        #si la encuentra, simulamos que se hace la gestión de autorización
         for solicitud in solicitudes_compra:
             if solicitud['id_venta'] == autorizar:
                 print("Compra aprobada y en camino")
                 time.sleep(2)
                 menu_bodega()
-            #no hacemos el descuento de stock, respetando lo que pidieron para la actividad
         else:
             print("Solicitud de compra rechazada")
             print("Saliendo del programa")
             time.sleep(2)    
 
 def existe_cliente(id_cliente):
-    #puede que aqui tengamos algunas redundancias por trabajar por separado en pocas tareas.
     """Devuelve 'True' si el cliente indicado existe"""
     resultado = ""
     for cliente in clientes:
@@ -208,14 +200,13 @@ def solicitar_compra():
     """ Pide datos al usuario para generar solicitud de compra, luego verifica stock y finalmente DEVUELVE orden de compra"""
     #serie de inputs que llenarán la variable solicitudes_compra, con los controles correspondientes a las entradas
     while True:
-        #hasta que el usuario ingrese un id de cliente válido existnete, consulta por datos
         sol_cliente = input("ingrese id de cliente que solicita: ").strip().lower()
         if existe_cliente(sol_cliente) == True:
             break
         else:
             print("cliente no existe, por favor ingrese nuevamente")
             time.sleep(2)
-        #hasta que el usuario ingrese un id de producto válido existente, consulta por datos
+    
     while True:    
         sol_id_producto = input("ingrese id de producto solicitado: ").strip().lower()
         if existe_producto(sol_id_producto) == True:
@@ -223,34 +214,27 @@ def solicitar_compra():
         else:
             print("El producto no existe. Ingrese otro producto.")
     while True:
-        #hasta que el usuario ingrese una cantidad positiva de n° entero, consulta por input
         sol_cantidad = input("Ingrese cantidad solicitada. Para salir ingrese '0' : ")
-        if sol_cantidad.isdigit() and sol_cantidad > 0:
+        if sol_cantidad.isdigit():
             sol_cantidad = int(sol_cantidad)
         else:
-            print("El valor ingresado no es un número entero positivo")
+            print("El valor ingresado no es un número entero")
             time.sleep(2)
-            continue
         if sol_cantidad == 0:
             print("Volviendo al menú...")
             break
-        #llegado a este punto, llama a otra funcion para chequear si el stock puede suplir esta solicitud.
         elif revisar_stock_producto(sol_id_producto, sol_cantidad) == True: 
-            #componemos un diccionario para subirlo a la lista con un append. 
-            #tiene por contenido un id de venta basado en un contador global que partirá en 0 con el programa
-            #y con los datos ingresados por el usuario como segundo valor.
+            #solicitudes_compra = {sol_cliente: {sol_id_producto: sol_cantidad}}
             solicitudes_compra.append({'id_venta':contador_solicitud+1,"datos":[sol_cliente, sol_id_producto, sol_cantidad]})
+            print(solicitudes_compra)
             print("Su solicitud ha sido ingresada y está a la espera de autorización")
-            #simulamos la interoperatividad de funciones de venta llamando directamente a autorizar compra con estos parámetros
-            #aunque podría no hacerse, el metodo autorizar_compra puede funcionar sin parametros.
+            #return(solicitudes_compra)
             autorizar_compra(solicitudes_compra)
         else:
             print("No existen suficientes unidades del producto. Ingrese otra cantidad o escriba 'salir'")
       
     time.sleep(2)
     menu_bodega()       
-
-    #------exigencias tarea parte 2----
     #usando id cliente, id producto, unidades a comprar (por defecto 1)
     #verificar si hay stock necesario devolviendo bools.
     #funcionalidad que autoriza compra, no es necesario actualizar stock de la bodega virtual
@@ -260,7 +244,7 @@ def solicitar_compra():
     #printear “Compra aprobada y en camino” en caso que exista el stock necesario.
     #retornar un mensaje “Compra cancelada” en caso que no exista el stock necesario.
     pass
-def agregar_cliente(**kwarlitogs):
+def agregar_cliente():
     nuevo_cliente = {}
     #solicitamos los datos del cliente, nombre (en lowercase) y edad (sanitizado)
     nom = input("Ingrese el nombre del cliente: ").lower()
@@ -325,7 +309,7 @@ def listar_stock_item():
     print("Búsqueda arrojó que no hay un producto con ese ID")
     menu_bodega()
 def listar_productos_sobre_cantidad():
-    valor_filtro = input(f"Indique el n° de stock sobre la cual desea filtrar items:\n")ww
+    valor_filtro = input(f"Indique el n° de stock sobre la cual desea filtrar items:\n")
     if valor_filtro.isdigit():
         valor_filtro = int(valor_filtro)
     else:
