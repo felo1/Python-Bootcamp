@@ -123,6 +123,30 @@ class Cliente:
 
     def mostrar_saldo(self):
         print(f"Saldo de cliente {self.Nombre} {self.Apellido} es: {self.__Saldo}")
+
+    @property
+    def saldo(self):
+        return self.__Saldo
+    
+    @saldo.setter
+    #recuerda incluir validaciones de que los saldos sean validos de actualizar
+    #igual que arriba, se asume la existencia de una lista de clientes (objetos)
+    def saldo_setter(self, cliente_consultado, cambio_saldo):
+        for cliente in clientes:
+            if cliente.ID_Cliente == cliente_consultado:
+                #si el producto existe, validar que la transaccio  no te lanza a negativos.
+                if (cliente.__Saldo + cambio_saldo)>0: #si la suma (considerando un negativo posiblemente) es mayor a 0
+                    cliente.__Saldo = cliente.saldo + cambio_saldo #entonces hace la suma (o resta) de stock.
+                    if cambio_saldo>=0: print(f"Saldo de {cliente.nombre} {cliente.apellido} actualizado, se agregó ${cambio_saldo} de saldo, nuevo saldo: {cliente.__Saldo}")
+                    if cambio_saldo<0: print(f"Saldo de {cliente.nombre} {cliente.apellido} actualizado, se descontó ${abs(cambio_saldo)} de saldo, nuevo saldo: {cliente.__Saldo}")
+                    break
+                else: 
+                    print("No hay saldo suficiente para ejecutar la transacción")
+                    break
+        #fin del loop
+        print("No se ha encontrado el cliente consultado indicado")
+
+#============================FIN CLASE CLIENTE==================================
 #Se debe crear métodos en la clase Cliente, lo cual puedan agregar y mostrar saldo.
 #Como se encuentra trabajando en el desarrollo del módulo de Python Básico, se solicita integrar
 #correctamente los métodos de las clases en las opciones del menú desarrollado.
@@ -134,7 +158,7 @@ class Vendedor:
         self.Apellido = Apellido
         self.Seccion = Seccion
         self.__Comision = 0
-
+#============================FIN CLASE VENDEDOR==================================
 class Producto:
     
     def __init__(self, SKU, Nombre, Categoria, Proveedor, Stock, Valor_Neto):
@@ -171,29 +195,7 @@ class Producto:
                         break
             #fin del loop
             print(f"No se ha encontrado un producto con el SKU {producto.SKU}")
-        
-    @property
-    def saldo(self):
-        return self.saldo
-    
-    @saldo.setter
-    #recuerda incluir validaciones de que los saldos sean validos de actualizar
-    #igual que arriba, se asume la existencia de una lista de clientes (objetos)
-    def saldo_setter(self, cliente_consultado, cambio_saldo):
-        for cliente in clientes:
-            if cliente.ID_Cliente == cliente_consultado:
-                #si el producto existe, validar que la transaccio  no te lanza a negativos.
-                if (cliente.saldo + cambio_saldo)>0: #si la suma (considerando un negativo posiblemente) es mayor a 0
-                    cliente.saldo = cliente.saldo + cambio_saldo #entonces hace la suma (o resta) de stock.
-                    if cambio_saldo>=0: print(f"Saldo de {cliente.nombre} {cliente.apellido} actualizado, se agregó ${cambio_saldo} de saldo, nuevo saldo: {cliente.saldo}")
-                    if cambio_saldo<0: print(f"Saldo de {cliente.nombre} {cliente.apellido} actualizado, se descontó ${abs(cambio_saldo)} de saldo, nuevo saldo: {cliente.saldo}")
-                    break
-                else: 
-                    print("No hay saldo suficiente para ejecutar la transacción")
-                    break
-        #fin del loop
-        print("No se ha encontrado el cliente consultado indicado")
-
+#============================FIN CLASE PRODUCTO==================================
 """
 instanciaciones de ejemplo
 """
