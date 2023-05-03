@@ -170,6 +170,14 @@ class Producto:
         
     #getset saldo
 
+    @property
+    def saldo(self):
+        return self.saldo
+    
+    @saldo.setter
+    #recuerda incluir validaciones de que los saldos sean validos de actualizar
+    def saldo_setter():
+        pass
 
     
 
