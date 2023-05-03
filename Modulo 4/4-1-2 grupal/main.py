@@ -100,6 +100,8 @@ mi trabajo es lo siguiente para la 412grupal:
 
 """
 productos = []
+clientes = []
+
 class Cliente:
     def __init__(self, ID_Cliente, Nombre, Apellido, Correo, Fecha_Registro, __Saldo):
         #tomo saldo como parametro porque en la tarea no le dan un valor por defecto
@@ -150,38 +152,47 @@ class Producto:
     
     @stock.setter
     #TODO: SOBRECARGAR ESTE METODO
-    def stock_setter(self, SKU_a_chequear, producto_nombre, modificacion_stock): 
+    def stock_setter(self, producto_nombre, modificacion_stock, skus): 
+        #skus vendria siendo una lista de los sku a consultar.
         #se asume la existencia de una lista de objetos producto  
         #llamada "productos" donde uno de sus valores es "sku"
         #la agregué arriba, sobre de la definicion de clases
-        for producto in productos:
-            if producto.SKU == SKU_a_chequear:
-                #si el producto existe, validar que la transaccio  no te lanza a negativos.
-                if (producto.Stock + modificacion_stock)>0: #si la suma (considerando un negativo posiblemente) es mayor a 0
-                    producto.Stock = producto.Stock + modificacion_stock #entonces hace la suma (o resta) de stock.
-                    if modificacion_stock>=0: print(f"Stock de {producto_nombre} actualizado, se agregaron {modificacion_stock}, nuevo stock: {(self.stock+modificacion_stock)}")
-                    if modificacion_stock<0: print(f"Stock de {producto_nombre} actualizado, se descontaron {abs(modificacion_stock)}, nuevo stock: {(self.stock+modificacion_stock)}")
-                    break
-                else: 
-                    print("No hay stock suficiente para cubrir la solicitud")
-                    break
-        #fin del loop
-        print("No se ha encontrado un producto con el SKU indicado")
+        for sku in skus:
+            for producto in productos:
+                if producto.SKU == sku:
+                    #si el producto existe, validar que la transaccio  no te lanza a negativos.
+                    if (producto.Stock + modificacion_stock)>0: #si la suma (considerando un negativo posiblemente) es mayor a 0
+                        producto.Stock = producto.Stock + modificacion_stock #entonces hace la suma (o resta) de stock.
+                        if modificacion_stock>=0: print(f"Stock de {producto_nombre} actualizado, se agregaron {modificacion_stock}, nuevo stock: {producto.Stock}")
+                        if modificacion_stock<0: print(f"Stock de {producto_nombre} actualizado, se descontaron {abs(modificacion_stock)}, nuevo stock: {producto.Stock}")
+                        break
+                    else: 
+                        print("No hay stock suficiente para cubrir la solicitud")
+                        break
+            #fin del loop
+            print(f"No se ha encontrado un producto con el SKU {producto.SKU}")
         
-    #getset saldo
-
     @property
     def saldo(self):
         return self.saldo
     
     @saldo.setter
     #recuerda incluir validaciones de que los saldos sean validos de actualizar
-    def saldo_setter():
-        pass
-
-    
-
-
+    #igual que arriba, se asume la existencia de una lista de clientes (objetos)
+    def saldo_setter(self, cliente_consultado, cambio_saldo):
+        for cliente in clientes:
+            if cliente.ID_Cliente == cliente_consultado:
+                #si el producto existe, validar que la transaccio  no te lanza a negativos.
+                if (cliente.saldo + cambio_saldo)>0: #si la suma (considerando un negativo posiblemente) es mayor a 0
+                    cliente.saldo = cliente.saldo + cambio_saldo #entonces hace la suma (o resta) de stock.
+                    if cambio_saldo>=0: print(f"Saldo de {cliente.nombre} {cliente.apellido} actualizado, se agregó ${cambio_saldo} de saldo, nuevo saldo: {cliente.saldo}")
+                    if cambio_saldo<0: print(f"Saldo de {cliente.nombre} {cliente.apellido} actualizado, se descontó ${abs(cambio_saldo)} de saldo, nuevo saldo: {cliente.saldo}")
+                    break
+                else: 
+                    print("No hay saldo suficiente para ejecutar la transacción")
+                    break
+        #fin del loop
+        print("No se ha encontrado el cliente consultado indicado")
 
 """
 instanciaciones de ejemplo
