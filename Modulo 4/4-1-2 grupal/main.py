@@ -112,6 +112,7 @@ class Cliente:
         self.Fecha_Registro = Fecha_Registro
         self.__Saldo = __Saldo #la encapsulacion la hago asi, con __ antes de la definicion del atributo de clase
 
+    #TODO: agregar_saldo seria redundante si saldo setter puede funcionar como suma y resta
     def agregar_saldo(self, saldo, ID_Cliente):
         if ID_Cliente == self.ID_Cliente:
             print("El saldo inicial es de: ", self.__Saldo)
