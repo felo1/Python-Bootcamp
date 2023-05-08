@@ -17,15 +17,15 @@ def email_coincidir(email):
         #if usuario["email"] == email: #recordatorio de que no estoy trabajando con diccionarios si no instancias de clase usuario
         if usuario.email == email:
             return True
-        else:
-            return False
+    else:
+        return False
         
-def user_coincidir(user): 
+def user_coincidir(nombre): 
     for usuario in usuarios:
-        if usuario.username == user:
+        if usuario.username == nombre:
             return True
-        else:
-            return False
+    else:
+        return False
         
 def validar_pass(password = None):
     #ocupemos sobrecarga
@@ -88,11 +88,9 @@ class Cuenta_de_usuario:
 
     def login(self, username, password):
         pass
-    
+
     def enviar_mensaje():
         pass
-
-
 
 class Administrador(Cuenta_de_usuario):
 
@@ -104,7 +102,7 @@ class Administrador(Cuenta_de_usuario):
              ]
         print("Eliga una opción")
         [print(opciones) for opcion in opciones]
-        print("Este perfil es un admin básico. Para efectos de este ejercicio no haré nada")
+        print("Este perfil es un admin básico. Para efectos de este ejercicio no hace nada, pero contrasta con el de superAdmin que sí tiene funcionalidad")
         pass
     #se me ocurre que los superadmin podrian sobrecargar el login para loguearse con la identidad de otro usuario para hacer cambios, dar soporte, etc.
 #superadmin debera ser diseñado como heredando de admin para tener 3 nivles de herencia.
@@ -136,7 +134,10 @@ class Superadmin(Administrador):
                         print("Usuario encontrado.")
                         while True:
                             nuevo_nombre = input("Ingrese nuevo nombre de usuario:\n")
-                            if user_coincidir(nuevo_nombre): return "modificación exitosa", time.sleep(2)
+                            if not user_coincidir(nuevo_nombre): 
+                                print("modificación exitosa")
+                                time.sleep(2)
+                                break
                             else: print("@ en uso"), time.sleep(2)
                     else: print("Usuario no encontrado, digitar otro?"), time.sleep(2)
             elif opcion == 2:
@@ -150,7 +151,7 @@ class Superadmin(Administrador):
                 pass
             elif opcion == 5:
                 #"imprimir users"
-                [print(user.username) for user in usuarios]
+                [print(user.username, user.estado) for user in usuarios]
             else:
                 print("Opción inválida")
                 import os
@@ -173,12 +174,11 @@ class Invitado:
             else: print("Email en uso, favor usar otro"), time.sleep(2)
         #while True:
             password = input("Ingrese su contraseña:\n")
-        #    if validar_pass(password): break #en este caso, false significa que no lo validó y necesita otra rep
-        #    else: os.system("cls")
-        #    print(f"Gracias por crear su cuenta, {nombre}")   
+            if validar_pass(password): break #en este caso, false significa que no lo validó y necesita otra rep
+            else: os.system("cls")
+            print(f"Gracias por crear su cuenta, {nombre}")   
             newUser = Usuario(nombre, email, password)
             usuarios.append(newUser)
-        
 
 class Usuario(Cuenta_de_usuario):
 
@@ -190,10 +190,13 @@ test_user = Usuario("test", "test@", "1234asdASD***")
 primer_superadmin = Superadmin("mainAdmin", "test", 1234, 0)
 primer_admin = Administrador("any", "aany@", 1234, 1)
 usuarios.append(primer_admin), usuarios.append(test_user), usuarios.append(primer_superadmin)
-#new_invitado = Invitado()
-#new_invitado.crear_cuenta()
-#print("Cuentas de usuario:")
-[print(user.username, user.estado) for user in usuarios]
-[print(user) for user in usuarios] #imprimirá el tipo de objeto adicionalmente
+
 primer_admin.modificar_usuario()
 primer_superadmin.modificar_usuario()
+
+print("prueba de funcionalidad de creación de cuentas por parte de invitado")
+print("Cuentas de usuario originales:")
+[print(user.username, user.estado) for user in usuarios]
+new_invitado = Invitado()
+new_invitado.crear_cuenta()
+print("Cuentas de usuario nuevas:")
