@@ -14,19 +14,15 @@ class Cliente:
         self.fecha_registro = fecha_Registro
         self.__saldo = __saldo #la encapsulacion la hago asi, con __ antes de la definicion del atributo de clase
 
-    #def agregar_saldo(self, saldo, id_cliente):
-    #  if id_cliente == self.id_cliente:
-    #      print("El saldo inicial es de: ", self.__saldo)
-    #       self.__saldo += saldo
-    #        print("Se agrego el saldo de: ", saldo)
-    #        print("El saldo nuevo es de: ", self.__saldo)
-    #    else:
-    #        print("No se encuentra el cliente indicado")
-    #def getter_temporal_saldo(self):
-    #    return self.__saldo
-    
-    #def setter_descontar_saldo(self, cantidad_a_restar):
-    #    self.__saldo -= cantidad_a_restar
+    #TODO: agregar_saldo seria redundante si saldo setter puede funcionar como suma y resta
+    def agregar_saldo(self, saldo, ID_Cliente):
+        if ID_Cliente == self.ID_Cliente:
+            print("El saldo inicial es de: ", self.__Saldo)
+            self.__Saldo += saldo
+            print("Se agrego el saldo de: ", saldo)
+            print("El saldo nuevo es de: ", self.__Saldo)
+        else:
+            print("No se encuentra el cliente indicado")
 
     def mostrar_saldo(self):
         print(f"Saldo de cliente {self.nombre} {self.apellido} es: {self.__saldo}")
