@@ -1,35 +1,128 @@
-#Se solicita que los atributos __Saldo (Cliente), __Impuesto (Producto) y __Comision (Bodeguero) se
-#encuentren encapsulados. (hecho ok)
+""" Exigencias 411 grupal 
+SOLUCIÓN
+Dados los antecedentes anteriores, es necesario desarrollar una solución tecnológica que cubra los
+procesos de negocio descritos y que propongagit  una mejora en la gestión, el control, la seguridad, y
+disponibilidad de información para el negocio y sus clientes. El sistema debe permitir presentar
+productos, tomar pedidos y hacer seguimiento de estos y la gestión de clientes. Además, se requiere
+que el sistema genere reportes y estadísticas que ayuden a tomar de decisiones y mejorar el
+rendimiento de la empresa, considerando la cantidad de clientes, y la demanda de éstos. Es
+imprescindible mantener comunicación con los encargados de entregar los pedidos, y darles la
+posibilidad de realizar todas sus actividades teniendo conectividad a través de dispositivos móviles.
 
+DESARROLLO - Continuación del trabajo.
+Como parte de este ejercicio se necesita crear clases utilizando sintaxis de Python
+En base al sistema desarrollado anteriormente en el módulo de Python básico, se solicita
+Incorporar la creación de las siguientes clases.
+● Clase Cliente.
+● Clase Producto.
+● Clase Bodeguero.
+
+La Clase Cliente deberá contar con los siguientes atributos:
+a. ID Cliente
+b. Nombre
+c. Apellido
+d. Correo
+e. Fecha Registro
+f. __Saldo
+
+"""
+"""Exigencias 412 grupal
+ El sistema debe permitir:
+ 
+Presentar producto
+Tomar pedidos
+Hacer seguimiento de estos
+Gestión de clientes. 
+
+Además, 
+
+generar reportes y estadísticas que ayuden a tomar de decisiones y mejorar el
+rendimiento de la empresa, considerando la cantidad de clientes, y la demanda de éstos. Es
+imprescindible mantener comunicación con los encargados de entregar los pedidos, y darles la
+posibilidad de realizar todas sus actividades teniendo conectividad a través de dispositivos móviles.
+
+DESARROLLO - Continuación del trabajo.
+
+Como parte de este ejercicio se necesita crear clases utilizando sintaxis de Python, para comprender
+las ventajas de la programación orientada a objetos.
+En vista a nuestro sistema desarrollado anteriormente se solicita lo siguiente:
+
+1. Agregar una clase Proveedor con los siguientes atributos:
+
+● RUT
+● Nombre Legal
+● Razón Social
+● País
+● Una distinción entre persona jurídica o persona natural
+
+2. A las clases creadas en la actividad anterior, incorpore un atributo opcional a cada una.
+Al momento de instanciar un objeto de la clase Producto, deberá existir una Composición con la clase
+Proveedor. Se solicita que existan condicionales para realizar validaciones correspondientes, como por ejemplo si
+no existe saldo suficiente en la clase Cliente, este deberá mostrar un mensaje indicando que no es
+posible adquirir el producto por saldo insuficiente, de la misma forma para el stock de productos.
+
+3. Se deberá crear un método vender de la clase Vendedor 
+Esta deberá descontar el valor del atributo stock de la clase Producto y calcular un 0.5% de comisión referente al valor_neto del producto y luego
+sumarlo al atributo comisión de la clase Vendedor. Luego el método deberá calcular el valor final del producto y descontarlo del atributo saldo de la clase Cliente.
+
+ Clase vendedor:
+    -método "vender": 
+        -descontar stock del producto
+        - calcular 0.5% comisión respecto a v. neto, y sumarlo, y luego descontar del SALDO
+
+
+4. Desarrolle cuatro métodos más para dinamizar la interacción entre diferentes clases e instancias. 
+    - setter comisión
+    - getter comisión
+
+    Todo Felipe:
+    - setter stock (para reflejar las ventas)
+    - getter stock (para validar el stock durante las ventas), me tinca acá usar la sobrecarga, para pedidos con n productos que consulten varios items
+    - getset saldo
+    Al menos uno de estos métodos debe aplicar los contenidos de ‘sobrecarga de métodos’.
+
+
+
+
+
+
+"""
+
+
+"""
+mi trabajo es lo siguiente para la 412grupal:
+
+    Todo Felipe:
+    - setter stock (para reflejar las ventas)
+    - getter stock (para validar el stock durante las ventas), me tinca acá usar la sobrecarga, para pedidos con n productos que consulten varios items
+    - getset saldo
+    Al menos uno de estos métodos debe aplicar los contenidos de ‘sobrecarga de métodos’.
+
+"""
 productos = []
 clientes = []
 
 class Cliente:
-    def __init__(self, id_cliente, nombre, apellido, correo, fecha_Registro, __saldo):
+    def __init__(self, ID_Cliente, Nombre, Apellido, Correo, Fecha_Registro, __Saldo):
         #tomo saldo como parametro porque en la tarea no le dan un valor por defecto
-        self.id_cliente = id_cliente
-        self.nombre = nombre
-        self.apellido = apellido
-        self.correo = correo
-        self.fecha_registro = fecha_Registro
-        self.__saldo = __saldo #la encapsulacion la hago asi, con __ antes de la definicion del atributo de clase
+        self.ID_Cliente = ID_Cliente
+        self.Nombre = Nombre
+        self.Apellido = Apellido
+        self.Correo = Correo
+        self.Fecha_Registro = Fecha_Registro
+        self.__Saldo = __Saldo #la encapsulacion la hago asi, con __ antes de la definicion del atributo de clase
 
-    #def agregar_saldo(self, saldo, id_cliente):
-    #  if id_cliente == self.id_cliente:
-    #      print("El saldo inicial es de: ", self.__saldo)
-    #       self.__saldo += saldo
-    #        print("Se agrego el saldo de: ", saldo)
-    #        print("El saldo nuevo es de: ", self.__saldo)
-    #    else:
-    #        print("No se encuentra el cliente indicado")
-    #def getter_temporal_saldo(self):
-    #    return self.__saldo
-    
-    #def setter_descontar_saldo(self, cantidad_a_restar):
-    #    self.__saldo -= cantidad_a_restar
+    def agregar_saldo(self, saldo, ID_Cliente):
+        if ID_Cliente == self.ID_Cliente:
+            print("El saldo inicial es de: ", self.__Saldo)
+            self.__Saldo += saldo
+            print("Se agrego el saldo de: ", saldo)
+            print("El saldo nuevo es de: ", self.__Saldo)
+        else:
+            print("No se encuentra el cliente indicado")
 
     def mostrar_saldo(self):
-        print(f"Saldo de cliente {self.nombre} {self.apellido} es: {self.__saldo}")
+        print(f"Saldo de cliente {self.Nombre} {self.Apellido} es: {self.__Saldo}")
 
     @property
     def saldo(self):
@@ -54,76 +147,29 @@ class Cliente:
         print("No se ha encontrado el cliente consultado indicado")
 
 #============================FIN CLASE CLIENTE==================================
-
 #Se debe crear métodos en la clase Cliente, lo cual puedan agregar y mostrar saldo.
 #Como se encuentra trabajando en el desarrollo del módulo de Python Básico, se solicita integrar
 #correctamente los métodos de las clases en las opciones del menú desarrollado.
-cliente1 = Cliente("id1", "Ignacio", "Fuentealba", "correo@gmail.com", "25-enero", 25000000)
-cliente2 = Cliente("id2", "Juan", "Perez", "pepo@hotmail.com", "15-enero", 0)
-cliente3 = Cliente("id3", "Pedro", "Gomez", "XXXXXXXXXXXXXXX", "20-enero", 0)
-cliente4 = Cliente("id4", "Maria", "Lopez", "XXXXXXXXXXXXXXX", "20-marzo", 0)
-cliente5 = Cliente("id5", "Luis", "Gonzalez", "XXXXXXXXXXXXXXX", "20-febrero", 0)
 
 class Vendedor:
-    def __init__(self, run, nombre, apellido, seccion, __comision):
-        self.run = run
-        self.nombre = nombre
-        self.apellido = apellido
-        self.seccion = seccion
-        self.__comision = __comision
-    
-    def set_comision(self, nueva_comision):
-        self.__comision = nueva_comision
-
-    def get_comision(self):
-        return self.__comision    
-    
-    def porcentaje_comision(self, run, porcentaje):
-        if run == self.run:
-            self.__comision = porcentaje
-            print(f"El vendedor RUT {run} tiene ahora un porcentaje de comisión del {self.__comision}%")
-        else:
-            print("Vendedor no existe, intente con otro RUT.")
-    def mostrar_comision(self, run):
-       print(f"El vendedor RUT {run} tiene un porcentaje de comisión del {self.__comision}%")
+    def __init__(self, RUN, Nombre, Apellido, Seccion):
+        self.RUN = RUN
+        self.Nombre = Nombre
+        self.Apellido = Apellido
+        self.Seccion = Seccion
+        self.__Comision = 0
 #============================FIN CLASE VENDEDOR==================================
-
-vendedor1 = Vendedor("12345677-1", "Hugo", "Araya", "Zapatería", 0.5)
-vendedor2 = Vendedor("12345688-2", "Paco", "Iriarte", "Deportes", 0.5)
-vendedor3 = Vendedor("12345699-3", "Luis", "Gómez", "Juguetería", 0.5)
-vendedor4 = Vendedor("12345655-4", "Ana", "Rodríguez", "Electro", 0.5)
-vendedor5 = Vendedor("12345622-5", "María", "González", "Menaje", 0.5)
-
-print('\nvendedor1.mostrar_comision("12345677-1")')
-vendedor1.mostrar_comision("12345677-1")
-
-print('\nvendedor1.porcentaje_comision("12345677-1", 2)')
-vendedor1.porcentaje_comision("12345677-1", 2)
-
 class Producto:
     
-    def __init__(self, sku, nombre, categoria, proveedor, stock, valor_neto):
-        self.sku = sku
-        self.nombre = nombre
-        self.categoria = categoria
-        self.proveedor = proveedor
-        self.valor_neto = valor_neto
-        self.__impuesto = 19
-        self.valor_total = valor_neto + int(round(valor_neto * (self.__impuesto/100)))
-        self.__stock = stock
-    
-    def definir_impuesto_producto(self, sku, porcentaje_impuesto):
-        if sku == self.sku:
-            self.__impuesto = porcentaje_impuesto
-        else:
-            print("No se encuentra ese producto")
+    def __init__(self, SKU, Nombre, Categoria, Proveedor, Stock, Valor_Neto):
+        self.SKU = SKU
+        self.Nombre = Nombre
+        self.Categoria = Categoria
+        self.Proveedor = Proveedor
+        self.Stock = Stock
+        self.Valor_Neto = Valor_Neto
+        self.__Impuesto = 1.19 
         
-    def mostrar_impuesto(self, sku):
-        print(f"El impuesto del producto SKU {sku} es {self.__impuesto}%")
-    
-    def lista(self):
-        pass
-
     @property
     def stock(self):
         return self.stock
@@ -151,34 +197,14 @@ class Producto:
             print(f"No se ha encontrado un producto con el SKU {producto.SKU}")
 #============================FIN CLASE PRODUCTO==================================
 """
-     
-def datos_venta(producto, cliente, vendedor, cantidad):
-    while True:
-        valor_total = input("Ingrese producto: ").valor_total()
-        valor_neto = input("Ingrese producto: ").valor_neto()
-        cliente = input("Ingrese cliente: ")
-        vendedor = input("Ingrese vendedor: ")
-        cantidad = input("Ingrese cantidad: ")
-
+instanciaciones de ejemplo
 """
-class Venta(Producto, Cliente, Vendedor):
-    def __init__(self, producto, cliente, vendedor, cantidad):
-       
-        self.producto = producto
-        self.cliente = cliente
-        self.vendedor = vendedor
-        self.cantidad = cantidad
-        self.valor_total = producto.valor_total()
-     
-        valor_a_pagar = int(round((self.valor_total +  (vendedor.get_comision()*self.valor_neto))*self.cantidad))
-        #revisa si saldo de puntos/dinero es suficiente
-        if  (valor_a_pagar <= cliente.getter_temporal_saldo()) and (self.__stock >= cantidad):
-            cliente.setter_descontar_saldo(valor_a_pagar)
-            self.__stock -= cantidad
-        else:
-            print(("No hay suficientes unidades o el cliente no tiene saldo suficiente"))
-        
 
+cliente1 = Cliente("id1", "Ignacio", "Fuentealba", "correo@gmail.com", "25-enero", 25000000)
+cliente2 = Cliente("id2", "Juan", "Perez", "pepo@hotmail.com", "15-enero", 0)
+cliente3 = Cliente("id3", "Pedro", "Gomez", "XXXXXXXXXXXXXXX", "20-enero", 0)
+cliente4 = Cliente("id4", "Maria", "Lopez", "XXXXXXXXXXXXXXX", "20-marzo", 0)
+cliente5 = Cliente("id5", "Luis", "Gonzalez", "XXXXXXXXXXXXXXX", "20-febrero", 0)
 
 producto1 = Producto("001", "Producto 1", "Menaje", "Proveedor1", 100, 19990)
 producto2 = Producto("002", "Producto 2", "Menaje", "Proveedor1", 100, 9990)
@@ -186,20 +212,19 @@ producto3 = Producto("003", "Producto 3", "Zapatería", "Proveedor3", 100, 8990)
 producto4 = Producto("004", "Producto 4", "Deportes", "Proveedor2", 100, 5990)
 producto5 = Producto("005", "Producto 5", "Electro", "Proveedor2", 100, 29990)
 
-#prueba de método mostrar y modificar saldo
-print('\ncliente2.mostrar_saldo()')
-cliente2.mostrar_saldo()
-print('\ncliente1.agregar_saldo(500, "id1")')
+vendedor1 = Vendedor("12345677-1", "Hugo", "Araya", "Zapatería")
+vendedor2 = Vendedor("12345688-2", "Paco", "Iriarte", "Deportes")
+vendedor3 = Vendedor("12345699-3", "Luis", "Gómez", "Juguetería")
+vendedor4 = Vendedor("12345655-4", "Ana", "Rodríguez", "Electro")
+vendedor5 = Vendedor("12345622-5", "María", "González", "Menaje")
+
 cliente1.agregar_saldo(500, "id1")
+cliente2.mostrar_saldo()
 
-
-#prueba de métodos de impuesto
-print('\nproducto1.mostrar_impuesto("001")')
-producto1.mostrar_impuesto("001")
-print('\nproducto1.definir_impuesto_producto("001", 18)')
-producto1.definir_impuesto_producto("001", 18)
-print('\nproducto1.mostrar_impuesto("001")')
-producto1.mostrar_impuesto("001")
+"""
+instanciaciones de ejemplo
+"""
+#TODO PENDIENTE:
 
 def menu_principal():
     print("--------Bienvenido a Telovendo SPA--------")
@@ -220,7 +245,6 @@ def menu_principal():
         funcion()
     else:
         print("Opción no válida") 
-
     
 def menu_clientes():
     print("")
@@ -288,9 +312,8 @@ def menu_ventas():
     else:
         print("Opción no válida")
 
-carrito = []
-def agregar_item_carrito(item):
-    item = input("Ingrese Número de Producto (sku): ")
+def agregar_item_carrito():
+    pass
 def eliminar_item_carrito():
     pass
 def ver_carrito():
@@ -334,8 +357,4 @@ def consultar_stock():
     pass
 def menu_principal():
     pass
-
-
-    
-
 
