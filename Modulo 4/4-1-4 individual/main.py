@@ -43,7 +43,7 @@ def validar_pass(password = None):
             #pattern es frase arbitraria para almacenar el patron de regex
             pattern = re.compile(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$') #holy shit
             #return bool(pattern.match(password)) sugerencia original, devuelve un bool segun lo que resulte
-            if not bool(pattern.match(password)): #es decir, en false te anota el error
+            if not pattern.match(password): #es decir, en false te anota el error
                 errores.append("Su contraseña debe contener al menos un caracter mayúscula, uno minúscula, uno numérico y un caracter especial")
             if len(errores) > 0:
                 print("\nSu contraseña no cumple con nuestros criterios, favor revisar lo siguiente:\n")
@@ -101,7 +101,7 @@ class Administrador(Cuenta_de_usuario):
             "Suspender Usuario\n"
              ]
         print("Eliga una opción")
-        [print(opciones) for opcion in opciones]
+        [print(opcion) for opcion in opciones]
         print("Este perfil es un admin básico. Para efectos de este ejercicio no hace nada, pero contrasta con el de superAdmin que sí tiene funcionalidad")
         pass
     #se me ocurre que los superadmin podrian sobrecargar el login para loguearse con la identidad de otro usuario para hacer cambios, dar soporte, etc.
@@ -172,7 +172,7 @@ class Invitado:
             email = input("Ingrese su correo:\n")
             if not email_coincidir(email): break 
             else: print("Email en uso, favor usar otro"), time.sleep(2)
-        #while True:
+        while True:
             password = input("Ingrese su contraseña:\n")
             if validar_pass(password): break #en este caso, false significa que no lo validó y necesita otra rep
             else: os.system("cls")
@@ -190,9 +190,8 @@ test_user = Usuario("test", "test@", "1234asdASD***")
 primer_superadmin = Superadmin("mainAdmin", "test", 1234, 0)
 primer_admin = Administrador("any", "aany@", 1234, 1)
 usuarios.append(primer_admin), usuarios.append(test_user), usuarios.append(primer_superadmin)
-
-primer_admin.modificar_usuario()
-primer_superadmin.modificar_usuario()
+#primer_admin.modificar_usuario()
+#primer_superadmin.modificar_usuario()
 
 print("prueba de funcionalidad de creación de cuentas por parte de invitado")
 print("Cuentas de usuario originales:")
