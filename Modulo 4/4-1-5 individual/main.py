@@ -1,17 +1,10 @@
-"""
-DESARROLLO - Continuación del trabajo.
-En base al diagrama de clases desarrollado en el ejercicio anterior, integra una estructura de herencia de
-tres niveles. Agregue un método por cada clase creada en su proyecto.
-Realice ejercicios para comprobar la herencia de métodos y atributos.
-Incorpore un ejemplo práctico de sobreescritura de métodos en su ejercicio individual.
-Como pista, una forma de identificar niveles dentro de su aplicación, se puede encontrar en base a
-diferentes tipos de usuarios con perfiles diferentes. Genere una clase principal, para luego desarrollar
-perfiles más particulares.
-"""
+
 import re, os, time
 usuarios = []
 
 def email_coincidir(email):
+    #email se espera que sea un string y lo usa para comparar la propiedad email de los usuarios. 
+
     for usuario in usuarios:
         #if usuario["email"] == email: #recordatorio de que no estoy trabajando con diccionarios si no instancias de clase usuario
         if usuario.email == email:
@@ -27,8 +20,6 @@ def user_coincidir(nombre):
         return False
         
 def validar_pass(password = None):
-    #acá uso sobrecarga
-    #si no recibe un pass de entrada, te atrapa hasta tener un password que pueda devolver
     if password == None:
         while(True):
             errores = []
@@ -215,13 +206,66 @@ test_user = Usuario("test", "test@", "1234asdASD***")
 primer_superadmin = Superadmin("mainAdmin", "test", 1234, 0)
 primer_admin = Administrador("any", "aany@", 1234, 1)
 usuarios.append(primer_admin), usuarios.append(test_user), usuarios.append(primer_superadmin)
-test_user.ticket()
-test_user.logoff()
+
+#test_user.ticket()
+#test_user.logoff()
 #test_user.login()
-#primer_admin.modificar_usuario()
-
 #print("prueba de funcionalidad de creación de cuentas por parte de invitado")
-primer_superadmin.modificar_usuario()
-
+#primer_superadmin.modificar_usuario()
 #new_invitado = Invitado()
 #new_invitado.crear_cuenta()
+
+
+diccionario_usuarios = {}
+diccionario_usuarios.update({"username" : "juan", "password" : "gabriel", "email" : "jb@hotmail.tk"})
+
+#index error
+try:
+    print("último usuario", usuarios[-1])
+except:
+    if len(usuarios)==0: print("Lista vacía")
+    else: print("error desconocido")
+
+#AttributeError
+try: 
+    print(usuarios[0].username)
+    print("Invertir lista de usuarios")
+    usuarios[0].username.reverse()
+    print(usuarios[0].username)
+except:
+    print("Atributo no apto para el tipo de variable")
+
+
+#type error
+try:
+    print(f"La mitad de nuestros usuarios asciende a {int((usuarios)/2)}")
+except: 
+    if len(usuarios)==0:print("No se puede dividir listas por integer")
+
+#KeyError
+try:
+    print(diccionario_usuarios['rut'])
+except:
+    
+    print("Key consultada no encontrada en el diccionario")
+
+#nameError
+def suma(a,b):
+    try:
+        total = a + c
+        return total
+    except:
+        print("Cuidado con el NameError")
+suma(1,2)
+
+"""
+DESARROLLO - Continuación del trabajo.
+En base al proyecto que estás desarrollando, identifica al menos seis posibles errores en la ejecución de
+su programa. Integre por lo menos IndexError, TypeError, KeyError.
+Ejecuta un Finally al final de cada manejo de error. Este debe entregar un mensaje que explique el error
+y la forma de solucionarlo.
+Describa cual es la utilidad de manejar los errores en la programación.
+Envíe el diagrama de Clases desde Object hasta los tipos de errores, tal como se muestra en los videos.
+Describa la estructura del diagrama de forma detallada.
+El entregable es un script .PY
+"""
