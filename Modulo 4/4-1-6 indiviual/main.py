@@ -1,17 +1,43 @@
 """
+
 DESARROLLO - Continuación del trabajo.
-En base al diagrama de clases desarrollado en el ejercicio anterior, integra una estructura de herencia de
-tres niveles. Agregue un método por cada clase creada en su proyecto.
-Realice ejercicios para comprobar la herencia de métodos y atributos.
-Incorpore un ejemplo práctico de sobreescritura de métodos en su ejercicio individual.
-Como pista, una forma de identificar niveles dentro de su aplicación, se puede encontrar en base a
-diferentes tipos de usuarios con perfiles diferentes. Genere una clase principal, para luego desarrollar
-perfiles más particulares.
+En vista a nuestro sistema desarrollado anteriormente se solicita lo siguiente:
+Incorporar un archivo CSV el cual se encargará de almacenar información de los colaboradores de tu
+aplicación en un archivo externo.
+En un script diferente será posible acceder al archivo y verificar la información de teléfono y edad.
+
+Así mismo se solicita contar con un registro de los usuarios de tu aplicación. Este registro debe contar
+con información del nombre, nombre de usuario, un identificador y la contraseña. Este registro debe ser
+serializado. Identifiquen la forma de desarrollarlo.
+En un script diferente, acceda a los diferentes datos registrados.
+Guarde información de 10 colaboradores y 10 usuarios.
+
 """
-import re, os, time
+import re, os, time, csv
 usuarios = []
 
+def escribir_a_csv(usuarios):
+    #eso del mode y newline aun no lo leo
+    with open('c:/temp/usuarios.csv', mode='a', newline='') as file:
+        #hay que hacer el error catching
+        #de file, y de type
+        for user in usuarios:
+            writer = csv.writer(file)
+            writer.writerow(user)
+def leer_a_csv():
+    with open(r'c:\temp\usuarios.csv', 'r') as file:
+        pass
+    # Create a CSV reader object
+    #csv_reader = csv.reader(file)
+
+    # Read each row of the CSV file
+    #for row in csv_reader:
+    #   print(row)
+    
+
 def email_coincidir(email):
+    #email se espera que sea un string y lo usa para comparar la propiedad email de los usuarios. 
+
     for usuario in usuarios:
         #if usuario["email"] == email: #recordatorio de que no estoy trabajando con diccionarios si no instancias de clase usuario
         if usuario.email == email:
@@ -25,10 +51,14 @@ def user_coincidir(nombre):
             return usuario #esto me sirve para que además de chequear si existe el usuario, me sirve tb para referenciarlo y manipularlo fuera de este metodo.
     else:
         return False
+
+def pass_coincidir(self, password):
+    if self.contraseña == password:
+        return True
+    else:
+        return False        
         
 def validar_pass(password = None):
-    #acá uso sobrecarga
-    #si no recibe un pass de entrada, te atrapa hasta tener un password que pueda devolver
     if password == None:
         while(True):
             errores = []
@@ -53,6 +83,7 @@ def validar_pass(password = None):
             else:
                 return password
     else:
+        
         #chequeo con contraseña preinserta, ej, para usuario creando cuenta.
         #debe devolver un boolean, true para validada, false para inválida con feedback.
             errores = []
@@ -86,8 +117,17 @@ class Cuenta_de_usuario:
         self.estado = "desconectado"
 
     def login(self, username, password):
-        pass
-
+        try:
+            if not type(password) == str or not type(username) == str:
+                raise TypeError("Error en la interpretación de las credenciales")
+        except Exception as err:
+            print(f"Ocurrió un error inesperado. Puede informar a su administrador que su inicio de sesión provocó un error de tipo {type(err).__name__} {err}")
+        finally:
+            if user_coincidir(username) and pass_coincidir(self, password):
+                self.estado = "logueado"
+                print("Has iniciado sesión en Myspace")
+            else:
+                print("Credenciales incorrectas")
     def enviar_mensaje():
         pass
 
@@ -196,7 +236,8 @@ class Invitado:
             else: os.system("cls")
             print(f"Gracias por crear su cuenta, {nombre}")   
             newUser = Usuario(nombre, email, password)
-            usuarios.append(newUser)
+            #usuarios.append(newUser)
+            escribir_a_csv(newUser)
 
 class Usuario(Cuenta_de_usuario):
 
@@ -204,24 +245,16 @@ class Usuario(Cuenta_de_usuario):
         for user in usuarios:
             if type(user) == Administrador or type(user) == Superadmin:
                 print(f"Acá hay un admin, te voy a espammear {user.username}")
-                user.inbox.append("SPAM")
-                for inboxItem in user.inbox:
-                    print(inboxItem)
+                
+
+                #AttributeError
+                try: 
+                    user.inbox.append("SPAM")
+                    for inboxItem in user.inbox:
+                        print(inboxItem)
+                except:
+                    print("Atributo no apto para el tipo de variable")
+                
         print("Campaña de spam completa")
             
-#TESTS=================================================
-
-test_user = Usuario("test", "test@", "1234asdASD***")
-primer_superadmin = Superadmin("mainAdmin", "test", 1234, 0)
-primer_admin = Administrador("any", "aany@", 1234, 1)
-usuarios.append(primer_admin), usuarios.append(test_user), usuarios.append(primer_superadmin)
-test_user.ticket()
-test_user.logoff()
-#test_user.login()
-#primer_admin.modificar_usuario()
-
-#print("prueba de funcionalidad de creación de cuentas por parte de invitado")
-primer_superadmin.modificar_usuario()
-
-#new_invitado = Invitado()
-#new_invitado.crear_cuenta()
+#EOP
