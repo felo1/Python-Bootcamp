@@ -298,9 +298,3 @@ print(LookupError.__base__)
 #Object->BaseException->Exception->Tipo de error específico (TypeError, etc). 
 #Salvo excepciones claro, como KeyError que heredan de otros lados , LookupError en ese caso.
 
-"""
-Hola Felipe, basicamente lo que pide es que envies el diagrama con la herencia que hace object hasta los distintos errores, 
-recorda lo que dije ayer que cada error es una clase que hereda de baseException y este de objects. 
-Si buscas en google lo vas a encontrar en seguida. Lo copias en un archivo word y lo explicas
-"""
-
