@@ -18,6 +18,12 @@ def user_coincidir(nombre):
             return usuario #esto me sirve para que además de chequear si existe el usuario, me sirve tb para referenciarlo y manipularlo fuera de este metodo.
     else:
         return False
+
+def pass_coincidir(self, password):
+    if self.contraseña == password:
+        return True
+    else:
+        return False        
         
 def validar_pass(password = None):
     if password == None:
@@ -44,6 +50,7 @@ def validar_pass(password = None):
             else:
                 return password
     else:
+        
         #chequeo con contraseña preinserta, ej, para usuario creando cuenta.
         #debe devolver un boolean, true para validada, false para inválida con feedback.
             errores = []
@@ -77,8 +84,17 @@ class Cuenta_de_usuario:
         self.estado = "desconectado"
 
     def login(self, username, password):
-        pass
-
+        try:
+            if not type(password) == str or not type(username) == str:
+                raise TypeError("Error en la interpretación de las credenciales")
+        except Exception as err:
+            print(f"Ocurrió un error inesperado. Puede informar a su administrador que su inicio de sesión provocó un error de tipo {type(err).__name__} {err}")
+        finally:
+            if user_coincidir(username) and pass_coincidir(self, password):
+                self.estado = "logueado"
+                print("Has iniciado sesión en Myspace")
+            else:
+                print("Credenciales incorrectas")
     def enviar_mensaje():
         pass
 
@@ -195,14 +211,21 @@ class Usuario(Cuenta_de_usuario):
         for user in usuarios:
             if type(user) == Administrador or type(user) == Superadmin:
                 print(f"Acá hay un admin, te voy a espammear {user.username}")
-                user.inbox.append("SPAM")
-                for inboxItem in user.inbox:
-                    print(inboxItem)
+                
+
+                #AttributeError
+                try: 
+                    user.inbox.append("SPAM")
+                    for inboxItem in user.inbox:
+                        print(inboxItem)
+                except:
+                    print("Atributo no apto para el tipo de variable")
+                
         print("Campaña de spam completa")
             
 #TESTS=================================================
 
-test_user = Usuario("test", "test@", "1234asdASD***")
+test_user = Usuario("test", "test", "panchitoA1AA22*")
 primer_superadmin = Superadmin("mainAdmin", "test", 1234, 0)
 primer_admin = Administrador("any", "aany@", 1234, 1)
 usuarios.append(primer_admin), usuarios.append(test_user), usuarios.append(primer_superadmin)
@@ -226,14 +249,7 @@ except:
     if len(usuarios)==0: print("Lista vacía")
     else: print("error desconocido")
 
-#AttributeError
-try: 
-    print(usuarios[0].username)
-    print("Invertir lista de usuarios")
-    usuarios[0].username.reverse()
-    print(usuarios[0].username)
-except:
-    print("Atributo no apto para el tipo de variable")
+
 
 
 #type error
@@ -255,17 +271,36 @@ def suma(a,b):
         total = a + c
         return total
     except:
-        print("Cuidado con el NameError")
+        print(f"esto causariá un nameError")
 suma(1,2)
 
+test_user.login("test","panchitoA1AA22*")
 """
 DESARROLLO - Continuación del trabajo.
 En base al proyecto que estás desarrollando, identifica al menos seis posibles errores en la ejecución de
 su programa. Integre por lo menos IndexError, TypeError, KeyError.
 Ejecuta un Finally al final de cada manejo de error. Este debe entregar un mensaje que explique el error
 y la forma de solucionarlo.
-Describa cual es la utilidad de manejar los errores en la programación.
+Describa cual es la utilidad de manejar los errores en la programación:
+    Me permite blindar a los programas de interrupciones por errores que son esperables (o no), para que puedan continuar su ejecución .
 Envíe el diagrama de Clases desde Object hasta los tipos de errores, tal como se muestra en los videos.
 Describa la estructura del diagrama de forma detallada.
 El entregable es un script .PY
 """
+
+print(BaseException.__base__)
+print(Exception.__base__)
+print(TypeError.__base__)
+print(KeyError.__base__)
+print(LookupError.__base__)
+
+#Entiendo entonces que la estructura de herencia desde Object hasta los distintos tipos de error podría ser
+#Object->BaseException->Exception->Tipo de error específico (TypeError, etc). 
+#Salvo excepciones claro, como KeyError que heredan de otros lados , LookupError en ese caso.
+
+"""
+Hola Felipe, basicamente lo que pide es que envies el diagrama con la herencia que hace object hasta los distintos errores, 
+recorda lo que dije ayer que cada error es una clase que hereda de baseException y este de objects. 
+Si buscas en google lo vas a encontrar en seguida. Lo copias en un archivo word y lo explicas
+"""
+
