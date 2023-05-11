@@ -1,6 +1,26 @@
 #link al drive
 #https://drive.google.com/file/d/1sLf1IH4NsgCmlTKttwDpa-znSJmu_lfV/view
+"""
+def abrir_archivo(archivo)
+try:
+	file = open(archivo)
+	raise Exception("no es del tipo correcto")
+excepto FileNotFoundError as e:
+	print("No es un archivo", e)
 
+esto sirve para identificar errores para debugging
+"""
+
+"""
+def division(dividendo, divisor)
+try:
+    resultado = dividendo / divisor
+	raise Exception("Error en numeros")
+excepto FileNotFoundError as err:
+	print("No es un archivo", err)
+Aqui el raise corre antes del except. En este caso lo identificamos pero no lo manejamos.
+
+"""
 class perro:
     def __init__(self, nombre, edad):
         self.nombre = nombre
