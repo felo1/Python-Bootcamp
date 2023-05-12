@@ -9,30 +9,71 @@ En un script diferente será posible acceder al archivo y verificar la informaci
 Así mismo se solicita contar con un registro de los usuarios de tu aplicación. Este registro debe contar
 con información del nombre, nombre de usuario, un identificador y la contraseña. Este registro debe ser
 serializado. Identifiquen la forma de desarrollarlo.
+
+
+
 En un script diferente, acceda a los diferentes datos registrados.
 Guarde información de 10 colaboradores y 10 usuarios.
 
 """
+
+
+"""
+ejemplkos del anibal:
+archivo = open ("nombres.txt", "r")
+print(archivo.read(3))
+
+archivo.readlines() me entrega una lista de strings. 
+para hacerlo más legible 
+
+archivo = open("nombres.txt", "w")
+archivo.writelines("Damian", "Hernan", "Hugo,\nRamiro, Sofíoa, Yamila")
+archivo.close()
+eso sería una lista 
+para eliminar un archivo.
+archivo.remove() (requiere import os)
+"""
 import re, os, time, csv
 usuarios = []
 
+#def escribir_a_csv_sinimport(usuarios):
+#    archivo = open("c:/temp/usuarios2.csv", "w")
+###    cabecera = ["nombre", "username", "id", "edad", "telefono", "password en texto plano"]
+#    archivo.writelines(cabecera)
+##    for user in usuarios:
+#            args = (user.name, user.username, user.id, user.edad, user.telefono, user.contraseña)
+#            archivo.writelines(args)
+
+def escribir_a_csv_sinimport(usuarios):
+    archivo = open("c:/temp/usuarios2.csv", "w")
+    cabecera = ["nombre", "username", "id", "edad", "telefono", "password en texto plano"]
+    archivo.writelines(';'.join(cabecera) + '\n')
+    for user in usuarios:
+        args = [user.name, user.username, str(user.id), str(user.edad), user.telefono, user.contraseña]
+        archivo.writelines(';'.join(args) + '\n')
+    archivo.close()
+
 def escribir_a_csv(usuarios):
     #eso del mode y newline aun no lo leo
-    with open('c:/temp/usuarios.csv', mode='a', newline='') as file:
+    with open('c:/temp/usuarios.csv', mode='w', newline='') as file:
+         #mode w = escribir 
         #hay que hacer el error catching
         #de file, y de type
+         writer = csv.writer(file, delimiter=';')
+         cabecera = ["nombre", "username", "id", "edad", "telefono", "password en texto plano"]        
+         writer.writerow(cabecera)
+         
+    with open('c:/temp/usuarios.csv', mode='a', newline='') as file:
+        #modo a = append
+        writer = csv.writer(file, delimiter=';')
         for user in usuarios:
-            writer = csv.writer(file)
-            writer.writerow(user)
-def leer_a_csv():
-    with open(r'c:\temp\usuarios.csv', 'r') as file:
-        pass
-    # Create a CSV reader object
-    #csv_reader = csv.reader(file)
+            args = (user.name, user.username, user.id, user.edad, user.telefono, user.contraseña)
+            writer.writerow(args)
 
-    # Read each row of the CSV file
-    #for row in csv_reader:
-    #   print(row)
+    #siempre debo cerrar el archivo 
+    file.close()
+
+
     
 
 def email_coincidir(email):
@@ -105,13 +146,18 @@ def validar_pass(password = None):
                 return True
 
 class Cuenta_de_usuario:
-    def __init__(self, username, email, contraseña, nivel=3):
+    def __init__(self, username, name, id, email, edad, contraseña, telefono, nivel=3):
         self.username = username
+        self.email = email
+        self.name = name
+        self.edad = edad
+        self.id = id
         self.email = email
         self.contraseña = contraseña
         self.nivel = nivel #3 = usuario base
         self.inbox = []
         self.estado = "nunca ha surfeado"
+        self.telefono = telefono
 
     def logoff(self):
         self.estado = "desconectado"
