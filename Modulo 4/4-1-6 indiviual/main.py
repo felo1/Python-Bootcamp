@@ -33,7 +33,7 @@ eso sería una lista
 para eliminar un archivo.
 archivo.remove() (requiere import os)
 """
-import re, os, time, csv
+import re, os, time, csv, json
 usuarios = []
 
 #def escribir_a_csv_sinimport(usuarios):
@@ -73,7 +73,22 @@ def escribir_a_csv(usuarios):
     #siempre debo cerrar el archivo 
     file.close()
 
+def escribir_a_json(usuarios):
+    with open('c:/temp/usuarios.json', 'w', encoding='utf-8') as file:
+        usuarios_json = {'usuarios': []}
+        for user in usuarios:
+            usuarios_json['usuarios'].append({
+                'nombre': user.name,
+                'username': user.username,
+                'id': user.id,
+                'edad': user.edad,
+                'telefono': user.telefono,
+                'contraseña': user.contraseña
+            })
+        json.dump(usuarios_json, file, indent=4, ensure_ascii=False) #el ensure_ascii me permite que el json respete las ñ.
 
+    # Close the file
+    file.close()
     
 
 def email_coincidir(email):

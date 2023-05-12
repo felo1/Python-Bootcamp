@@ -25,7 +25,7 @@ usuarios.append(Cuenta_de_usuario('user16', 'Laura Ramírez', '24978136', 'laura
 
 #escribir_a_csv(usuarios) <- ta weno, pero no es lo que pidieron. Quiero usar esto para otras tareas.
 escribir_a_csv_sinimport(usuarios)
-
+escribir_a_json(usuarios)
 def leer_a_csv():
     #with open(r'c:\temp\usuarios.csv', 'r') as file:
     with open(r'c:\temp\usuarios2.csv', 'r') as file:
