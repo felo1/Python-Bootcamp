@@ -17,7 +17,7 @@ o bien entrar en la carpeta venv que hice y luego
 
 INDENTACION:
 es con ctrl+ ?¿
-""""
+"""
 
 usuario = "felipe"
 fname = ""
