@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=E:\Estudios\Fullstack Python bootcamp\Python-bootcamp V2\Python-Bootcamp\Modulo 6\6-2i\.venv
+set VIRTUAL_ENV=C:\Users\Informática VDM\Documents\GitHub\Python-Bootcamp\Python-Bootcamp\Modulo 6\6-2i\.venv
 
 if not defined PROMPT set PROMPT=$P$G
 

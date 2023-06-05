@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="E:\Estudios\Fullstack Python bootcamp\Python-bootcamp V2\Python-Bootcamp\Modulo 6\6-2i\.venv"
+VIRTUAL_ENV="C:\Users\Informática VDM\Documents\GitHub\Python-Bootcamp\Python-Bootcamp\Modulo 6\6-2i\.venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -49,3 +49,14 @@
 10. Iniciar servidor en la terminal:
 ​
     python3 manage.py runserver
+
+11. adicionalmente querrás hacer py manage.py migrate  
+hecho esto se aplicarán a la DB los cambios necesarios de primer run para que por ejemplo
+podamos usar los contenidos de AUTH (para creacion de los primeros usuarios usando las funcionalidades integradas de django).
+
+12. Creating superusers¶
+Create superusers using the createsuperuser command:
+$ python manage.py createsuperuser --username=joe --email=joe@example.com
+
+13. modificando modelo de usuario:
+https://www.youtube.com/watch?v=kRJpQxi2jIo
