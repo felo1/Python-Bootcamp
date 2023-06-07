@@ -3,6 +3,7 @@
 ​
 2. Importar Django:
     pip install django
+#desde este punto en adelante, para poder retomar el trabajo en sesiones posteriores iniciar venv ( .\.venv\Scripts\activate, respetando estar posicionado en la carpeta que contenga .venv si ya existe) y luego pip install -r reqs.txt (o nombre correspondiente) para rearmar el ambiente virtual. 
 ​
 3. Guardar versiones y módulos importados:
     pip freeze > requirements.txt
