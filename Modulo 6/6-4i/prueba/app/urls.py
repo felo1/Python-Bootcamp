@@ -2,7 +2,8 @@ from django.urls import path
 from . import views # para que más abajo se pueda usar views.index
 
 urlpatterns = [
-    path("", views.index, name = "index")
+    path("", views.index, name = "index"),
+    path("busquedas.html", views.index, name = "busquedas")
     
     # "" es lo que sigue de la url principal, en este caso es solo /, 
     # el segundo parámetro es lo que se debe renderizar al ingresar allí.
