@@ -1,9 +1,12 @@
 1. Crear entorno virtual:
-    python3 -m venv .venv #. para que git lo ignore
+    py -m venv .venv #. para que git lo ignore
 ​
 2. Importar Django:
     pip install django
-#desde este punto en adelante, para poder retomar el trabajo en sesiones posteriores iniciar venv ( .\.venv\Scripts\activate, respetando estar posicionado en la carpeta que contenga .venv si ya existe) y luego pip install -r reqs.txt (o nombre correspondiente) para rearmar el ambiente virtual. 
+#desde este punto en adelante, para poder retomar el trabajo en sesiones posteriores iniciar venv ( .\.venv\Scripts\activate, 
+respetando estar posicionado en la carpeta que contenga .venv si ya existe) y luego pip install -r reqs.txt (o nombre correspondiente) 
+para rearmar el ambiente virtual. 
+Borrar la carpeta venv si ya estaba creada en el entorno si llega a ser necesario. Podrás rearmar todo desde el reqs.txt
 ​
 3. Guardar versiones y módulos importados:
     pip freeze > requirements.txt
