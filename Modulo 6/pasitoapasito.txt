@@ -29,8 +29,9 @@ Borrar la carpeta venv si ya estaba creada en el entorno si llega a ser necesari
     def index(request):
         return(render(request, "landing/index.html")) #se agrega render para indicar que debe renderizar el template indicado.
 ​
-    #esa ubicación dirige a un template (index.html) ubicado en la carpeta de la app/templates/app, que hay que crear.
-​
+    #esa ubicación dirige a un template (index.html) ubicado en la carpeta de la app/templates que hay que crear.
+​    #notese que en ejemplos anterioes usamos la estructura app/templates/app/<archivos> lo ctual
+    #chocaba directamente con los ejemplos posterioremente aprendidos.
 8. Crear urls.py de APP:
 ​
     from django.urls import path #para que pueda acceder al urls.py del PROYECTO
