@@ -14,7 +14,7 @@
     <header>
     </header>
     <nav style="padding-left: 3%;" class="fixed-top navbar navbar-expand-lg navbar-light bg-light navbar-static-top">
-        <a class="navbar-brand" href="#"> Noticias
+        <a class="navbar-brand" href="{% url 'index' %}"> TeloCompro
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-apple"
                 viewBox="0 0 16 16">
                 <path
@@ -29,18 +29,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#noticias-destacadas">Noticias Destacadas <span
-                            class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'users' %}">Nuestros usuarios<span
+                            class="sr-only"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#motores-de-busqueda">Sitios de Búsqueda</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#diarios">Diarios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#finanzas">Finanzas</a>
+                    <a class="nav-link" href="{% url 'forms' %}">Registro</a>
                 </li>
             </ul>
         </div>
@@ -50,33 +44,18 @@
 
         <div class="card col-xs-12 col-md-6 col-lg-4" style="width: 18rem;">
             <div class="card-body">
-                <h3>Registrar usuario:</h3>
+                
                 
                 {% block content %}
                 <!--vacío acá, llenaré externamente con contenido de otros html-->
+                Bienvenidos a nuestro sitio.
+                Este texto debería ser solo visible en el index.
+
                 {% endblock  %}
 
 
             </div>
         </div>
-
-        <div class="card col-xs-12 col-md-6 col-lg-4" style="width: 18rem;">
-            <div class="card-body">
-                <h3>Nuestros usuarios en la DB</h3>
-                <ul>
-                    <!--estos datos salen desde la vista de la aplicacion 
-                        en el metodo index def index(request)-->
-                    {% for user in users %}
-                    <ul>
-                        <li>{{ user.username }} | {{ user.email }}</li>
-                        
-                    </ul>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-
-
         
     </div>
 

@@ -7,11 +7,10 @@ from django.contrib import messages #neceasrio para los mensajes de exito
 # Create your views here.
 
 def index(request):
-
-    users = User.objects.all()
-    context = {"usuarios": users}
-
-    return render(request, "app/index.html", {'users': users})
+ 
+   users = User.objects.all()
+   context = {"usuarios": users}
+   return render(request, "index.html", {'users': users})
 #acá estoy al cargar mi index solicitando cargar en la variable users todos mis usuarios desde la BD
 #para luegos pasarselos al contexto (en una variable llamada igualmente users) para ser renderizada.
 #se agrega render para indicar que debe renderizar el template indicado
@@ -29,3 +28,9 @@ def forms(request):
     
     context = {'form': form}
     return render(request, 'formulario.html', context)
+
+def usuarios(request):
+    users = User.objects.all()
+    context = {"usuarios": users}
+    return render(request, "usuarios.html", {'users': users})
+    
