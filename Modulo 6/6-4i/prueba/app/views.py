@@ -22,7 +22,7 @@ def forms(request):
             form.save()
             username = form.cleaned_data['username']
             messages.success(request, f'Usuario {username} creado exitosamente!!')
-            return redirect('/index') #requiere import de django shortcuts (redirect)
+            return redirect('index') #requiere import de django shortcuts (redirect)
     else:
         form = UserRegistrationForm()
     
