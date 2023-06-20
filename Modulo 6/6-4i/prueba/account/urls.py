@@ -2,7 +2,10 @@ from django.urls import path
 from . import views # para que más abajo se pueda usar views.index
 
 urlpatterns = [
-    path('miembros', views.miembros, name='miembros')
+    path('login', views.login_view, name='login'),
+    path('welcome', views.welcome_view, name='welcome'),
+    path('logout', views.logout_view, name='logout'),
+    
     #por simpleza, usar el mismo nombre en views."forms" con el método a usar en la vista, 
     #y en el nombre del archivo que irá en los templates
     #path('register_user/', views.register_user, name='register_user'),

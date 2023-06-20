@@ -20,6 +20,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("app.urls")),
-     path('miembros/', include("account.urls")), #<- para agregar contenido a un load al root.,
+    path('', include("account.urls")), #<- para agregar contenido a un load al root.,
     
 ]
