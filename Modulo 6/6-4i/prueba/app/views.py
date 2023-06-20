@@ -22,7 +22,9 @@ def forms(request):
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
-            form.save()
+            group = form.cleaned_data['group']
+            user = form.save()
+            user.groups.add(group)
             messages.success(request, f'Usuario {username} creado exitosamente!!')
             return redirect('index') #requiere import de django shortcuts (redirect)
     else:
