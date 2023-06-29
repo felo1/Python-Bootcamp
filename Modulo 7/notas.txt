@@ -1,0 +1,1 @@
+estoy migrando a postgres, había olvidado instalarlo en el pc de la pga naturalmente, razon por la que no ve el servicio en el puerto 5432 (que es el default de postgre)
