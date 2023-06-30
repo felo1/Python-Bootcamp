@@ -20,11 +20,14 @@ creamos la BD, esta  vez directamente en postgres, para ello primero:
 asigmanos en settings.py la config de la BD.
 Engine sería django.db.backends.postgresql_pysopg2
 Ejemplo:
+Tutorial postgress+django primera instalacion:
+https://stackpython.medium.com/how-to-start-django-project-with-a-database-postgresql-aaa1d74659d8
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'your_database_name', #<- si no tengo un nomber, usar el default, q seria "db.sqlite3"
-        'USER': 'your_username',
+        'NAME': 'your_database_name', #<- el nombre de la BD que cree en el PGADMIN directamente para este proyecto
+        'USER': 'your_username', #<- el nombe de usuario. Integrado viene "postgres", aunque quizá lo renombré a "admin"
         'PASSWORD': 'your_password',
         'HOST': 'localhost',
         'PORT': '5432',
@@ -48,3 +51,11 @@ ahi por ejemplo creamos un div clase "post", y luego
 {{post.author.username}}
 Es importante recordar que makemigrations te pone en memoria los modelos, para que puedan ser sucesivamente migrados a la BD con migrate.
 Es importante agregar al admin.py los contenidos que quiero visualizar en la administración y poder manipularlos. Ej: admin.site.register(Post), from .models import Post (donde post es el nombre de uno de los modelos de ejemplo)
+
+#para cargar imagenes en django, necesito, aparentemente, realizar estas acciones:
+
+#Agregar esto a mi url.py principal del proyecto (no de la app).
+#from django.conf import settings #por sugerencia para que carguen las imagenes
+#from django.conf.urls.static import static #por sugerencia para que carguen las imagenes
+#al final (luego del cierre del corchete de urlpatterns) 
+# agregamos "+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)"
