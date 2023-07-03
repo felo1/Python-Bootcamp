@@ -7,10 +7,17 @@ from django.urls import reverse
 from django.shortcuts import render, redirect
 import datetime
 from django.contrib.auth.models import Group, User
+from .models import Tarea
+
 # Create your views here.
 
 def index(request):
     return render(request, 'app/index.html')
+
+@login_required
+def index(request):
+    tareas = Tarea.objects.filter(usuario=request.user).order_by('fecha_expiracion')
+    return render(request, 'app/bienvenida.html', {'tareas': tareas})
 
 def login_view(request): #el form está directo en el template login.html
     if 'next' in request.GET:
