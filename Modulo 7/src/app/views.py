@@ -14,6 +14,11 @@ from .models import Tarea
 def index(request):
     return render(request, 'app/index.html')
 
+def detalles_tarea(request):
+    tareas = Tarea.objects.filter(usuario=request.user).order_by('fecha_expiracion')
+    tarea = Tarea.objects.get(id=request.GET['id'])
+    return render(request, 'app/tarea.html', {'tareas': tareas}, {'tarea': tarea})
+
 @login_required
 def index(request):
     tareas = Tarea.objects.filter(usuario=request.user).order_by('fecha_expiracion')
@@ -27,13 +32,11 @@ def login_view(request): #el form está directo en el template login.html
     if request.method == "POST":
         username = request.POST["usuario"]
         password = request.POST["password"]
-
         user = authenticate(request, username=username, password=password)
 
         if user:
             
             login(request, user)
-          
             return HttpResponseRedirect(reverse("bienvenida"))
         else:
             context = ["Credenciales Inválidas"]#si no lo hago como lista, itera por cada caracter del string.
@@ -44,7 +47,6 @@ def login_view(request): #el form está directo en el template login.html
 def bienvenida(request):
     context = {
         'username': request.user.username,
-        # add other context variables if needed
     }
     return render(request, "app/bienvenida.html", context)
 

@@ -2,26 +2,19 @@
 
 {% block body %}
 <div class= "mt-1 ml-1">
-
-<h1> ¡Hola, {{user}}!</h1>
-<button title="Agregar tarea">Agregar tarea</button>
-</div>
-
-<div>
-<h3>Tus tareas pendientes asignadas: </h3>
-
+<h6>Tus tareas pendientes asignadas: 
     {% for tarea in tareas %}
     <div class="border border-primary bg-light p-3">
         <p>
-        
-        Tarea n° {{ forloop.counter }}: {{ tarea.name }}</a> | <a href="{% url 'detalles_tarea' tarea.id %}" class="btn btn-primary">Ver tarea</a></p>
+        <a href="{% url 'detalles_tarea' tarea.id %}">
+        Tarea n° {{ forloop.counter }}: {{ tarea.name }}</a></p>
         <p>Responsable: {{ tarea.usuario }} | Prioridad: {{ tarea.prioridad }}</p>
         <p>Fecha de creación: {{ tarea.fecha_creacion }} | Fecha de expiración: {{ tarea.fecha_expiracion }}</p>
         <hr>
     </div>
     {% empty %}
-    <p>Buen trabajo, no hay tareas asignadas pendientes</p>
+    <p>No hay tareas pendientes</p>
     {% endfor %}
 </div>
-
+</h3>
 {% endblock %}
