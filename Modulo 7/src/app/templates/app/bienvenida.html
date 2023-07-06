@@ -9,11 +9,9 @@
 
 <div>
 <h3>Tus tareas pendientes asignadas: </h3>
-
     {% for tarea in tareas %}
     <div class="border border-primary bg-light p-3">
         <p>
-        
         Tarea n° {{ forloop.counter }}: {{ tarea.name }}</a> | <a href="{% url 'detalles_tarea' tarea.id %}" class="btn btn-primary">Ver tarea</a></p>
         <p>Responsable: {{ tarea.usuario }} | Prioridad: {{ tarea.prioridad }}</p>
         <p>Fecha de creación: {{ tarea.fecha_creacion }} | Fecha de expiración: {{ tarea.fecha_expiracion }}</p>

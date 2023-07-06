@@ -12,17 +12,16 @@ from .models import Tarea
 # Create your views here.
 
 def index(request):
-    return render(request, 'app/index.html')
+    if request.user.is_authenticated:
+        tareas = Tarea.objects.filter(usuario=request.user).order_by('fecha_expiracion')
+        return render(request, 'app/bienvenida.html', {'tareas': tareas})
+    else:
+        return render(request, 'app/index.html')
 
-def detalles_tarea(request):
+def detalles_tarea(request, id):
     tareas = Tarea.objects.filter(usuario=request.user).order_by('fecha_expiracion')
     tarea = Tarea.objects.get(id=request.GET['id'])
     return render(request, 'app/tarea.html', {'tareas': tareas}, {'tarea': tarea})
-
-@login_required
-def index(request):
-    tareas = Tarea.objects.filter(usuario=request.user).order_by('fecha_expiracion')
-    return render(request, 'app/bienvenida.html', {'tareas': tareas})
 
 def login_view(request): #el form está directo en el template login.html
     if 'next' in request.GET:
@@ -33,23 +32,26 @@ def login_view(request): #el form está directo en el template login.html
         username = request.POST["usuario"]
         password = request.POST["password"]
         user = authenticate(request, username=username, password=password)
-
         if user:
             
             login(request, user)
-            return HttpResponseRedirect(reverse("bienvenida"))
+            tareas = Tarea.objects.filter(usuario=request.user).order_by('fecha_expiracion')
+            return render(request, 'app/bienvenida.html', {'tareas': tareas})
+            #return HttpResponseRedirect(reverse("bienvenida"), {'tareas': tareas})
         else:
             context = ["Credenciales Inválidas"]#si no lo hago como lista, itera por cada caracter del string.
             return render(request, "app/login.html", {"messages": context})
 
     return render(request, "app/login.html") #view del login
 
+@login_required
 def bienvenida(request):
     context = {
         'username': request.user.username,
     }
     return render(request, "app/bienvenida.html", context)
 
+@login_required
 def logout_view(request):
     
     logout(request)

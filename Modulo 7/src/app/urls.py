@@ -23,5 +23,7 @@ urlpatterns = [
     path("login", views.login_view, name='login'),
     path("logout", views.logout_view, name="logout"),
     path("bienvenida", views.bienvenida, name="bienvenida"),
-    path('detalles_tarea/<int:tarea_id>/', views.detalles_tarea, name="detalles_tarea"),
+    #path('detalles_tarea/<int:tarea_id>/', views.detalles_tarea, name="detalles_tarea"),
+    path('detalles_tarea/<id>/', views.detalles_tarea, name="detalles_tarea"),
+
 ]
