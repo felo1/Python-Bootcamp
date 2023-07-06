@@ -22,8 +22,13 @@ urlpatterns = [
     path("", views.index, name = "index"),
     path("login", views.login_view, name='login'),
     path("logout", views.logout_view, name="logout"),
-    path("bienvenida", views.bienvenida, name="bienvenida"),
+    #path("bienvenida", views.bienvenida, name="bienvenida"),
+    path("crear_tarea", views.crear_tarea, name="crear_tarea"),
+    path("bienvenida", views.TareasListView.as_view(), name="bienvenida"),
+    path("listview_tareas", views.TareasListView.as_view(), name="tareas-list"),
     #path('detalles_tarea/<int:tarea_id>/', views.detalles_tarea, name="detalles_tarea"),
     path('detalles_tarea/<id>/', views.detalles_tarea, name="detalles_tarea"),
+    path('tareas/<int:pk>/edit/', views.TareaEditView.as_view(), name='tareas-edit'),
+    path('tareas/<int:pk>/delete/', views.TareaDeleteView.as_view(), name='tareas-delete'),
 
 ]

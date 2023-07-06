@@ -1,13 +1,21 @@
 from django.db import models
+from django import forms
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.forms import ModelForm
+from django.contrib.admin.widgets import AdminDateWidget, AdminTimeWidget
 
 # Create your models here.
+
+
+
+
 class Tarea(models.Model):
     name = models.CharField(max_length=255, verbose_name="Nombre de la actividad")
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     fecha_creacion = models.DateField(auto_now_add=True)
     fecha_expiracion = models.DateField(default=None, null=True, blank=True)
+    observaciones = models.TextField(max_length=1024, null=True, blank=True)
     PRIORIDAD_opciones = (
         ('baja', 'Baja'),
         ('media', 'Media'),
@@ -24,6 +32,14 @@ class Tarea(models.Model):
     estado = models.CharField(max_length=15, choices=estado_opciones, verbose_name="Estado de la actividad")
     def __str__(self):
         return self.name + ' | Responsable: ' + str(self.usuario)
+    
+class TareaForm(forms.ModelForm):#heredamos de ModelForm, que genera un formulario a partir del modelo indicado en el Meta
+    fecha_expiracion = forms.DateField(widget=AdminDateWidget(attrs={'type': 'date'})) #indicamos la utilización del widget del admin para elegir fecha
+          
+    class Meta:
+        model = Tarea
+        fields = ['name', 'fecha_expiracion', 'estado', 'prioridad', 'observaciones']
+
     
 class ListaTarea(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
