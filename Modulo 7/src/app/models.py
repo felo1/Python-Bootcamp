@@ -6,7 +6,7 @@ from django.urls import reverse
 class Tarea(models.Model):
     name = models.CharField(max_length=255, verbose_name="Nombre de la actividad")
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
-    fecha_creacion = models.DateField(auto_now_add=True)
+    fecha_creacion = models.DateField(auto_now=True)
     fecha_expiracion = models.DateField(default=None, null=True, blank=True)
     PRIORIDAD_opciones = (
         ('baja', 'Baja'),
