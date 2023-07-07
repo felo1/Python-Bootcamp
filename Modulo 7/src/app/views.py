@@ -19,10 +19,29 @@ def index(request):
     else:
         return render(request, 'app/index.html')
 
+# original del gran rodri
+#def detalles_tarea(request, id):
+#    tareas = Tarea.objects.filter(usuario=request.user).order_by('fecha_expiracion')
+#    tarea = Tarea.objects.get(id=request.GET['id'])
+#    return render(request, 'app/tarea.html', {'tareas': tareas}, {'tarea': tarea})
+
+#cambiado para tarea indi 3
 def detalles_tarea(request, id):
     tareas = Tarea.objects.filter(usuario=request.user).order_by('fecha_expiracion')
-    tarea = Tarea.objects.get(id=request.GET['id'])
-    return render(request, 'app/tarea.html', {'tareas': tareas}, {'tarea': tarea})
+    tarea = Tarea.objects.get(id=id)
+
+    if request.method == 'POST':
+        estado = request.POST.get('estado')
+        if estado == 'completada':
+            tarea.estado = 'Completada'
+        elif estado == 'vista':
+            tarea.estado = 'Vista'
+        tarea.save()
+        messages.success(request, 'Tarea editada exitosamente.')
+        return HttpResponseRedirect(reverse('tareas-edit', args=[tarea.id]))
+
+    return render(request, 'app/tarea.html', {'tareas': tareas, 'tarea': tarea})
+
 
 def login_view(request): #el form está directo en el template login.html
     if 'next' in request.GET:

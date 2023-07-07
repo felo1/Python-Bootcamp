@@ -1,6 +1,16 @@
 {% extends "app/base.html" %}
 {% block body %}
+<div>
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
 <h1>Tareas de {{user}}</h1>
+
 <form id="selector-estado" method="get" action="{% url 'bienvenida' %}">
   {% csrf_token %}
   <label for="estado_filter">Estado:</label>
@@ -80,17 +90,8 @@
             <form method="post" action="{% url 'bienvenida' %}">
               {% csrf_token %}
               <a class="btn btn-outline-primary" href="{% url 'tareas-edit' tarea.id %}" role="button">Editar</a>
-              <a class="btn btn-outline-danger" href="#" role="button" onclick="confirmDelete('{{ tarea.id }}', '{{ tarea.name }}')">Eliminar</a>
+              <a class="btn btn-outline-danger" href="{% url 'tareas-delete' tarea.id %}" role="button">Eliminar</a>
             </form>
-            <script>
-                function confirmDelete(tareaId, tareaName) {
-                  var confirmationMessage = 'Seguro de que deseas borrar la tarea: ' + tareaName + '?';
-                  if (confirm(confirmationMessage)) {
-                    document.getElementById('delete-form-' + tareaId).submit();
-                  }
-                }
-              </script>
-           
           </td>
           <td>
                 {%if tarea.observaciones %}
