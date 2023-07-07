@@ -1,25 +1,113 @@
 {% extends "app/base.html" %}
-
 {% block body %}
-<div class= "mt-1 ml-1">
-
-<h1> ¡Hola, {{user}}!</h1>
-<button title="Agregar tarea">Agregar tarea</button>
-</div>
-
-<div>
-<h3>Tus tareas pendientes asignadas: </h3>
-    {% for tarea in tareas %}
-    <div class="border border-primary bg-light p-3">
-        <p>
-        Tarea n° {{ forloop.counter }}: {{ tarea.name }}</a> | <a href="{% url 'detalles_tarea' tarea.id %}" class="btn btn-primary">Ver tarea</a></p>
-        <p>Responsable: {{ tarea.usuario }} | Prioridad: {{ tarea.prioridad }}</p>
-        <p>Fecha de creación: {{ tarea.fecha_creacion }} | Fecha de expiración: {{ tarea.fecha_expiracion }}</p>
-        <hr>
-    </div>
-    {% empty %}
-    <p>Buen trabajo, no hay tareas asignadas pendientes</p>
+<h1>Tareas de {{user}}</h1>
+<form id="selector-estado" method="get" action="{% url 'bienvenida' %}">
+  {% csrf_token %}
+  <label for="estado_filter">Estado:</label>
+  <select name="estado_filter" id="estado_filter">
+    <option value="">Todas</option>
+    {% for choice in tarea_form.fields.estado.choices %}
+      <option value='{{ choice.0 }}' {% if choice.0 == request.GET.estado_filter %}selected{% endif %}>
+        {{ choice.1 }}
+      </option>
     {% endfor %}
-</div>
+  </select>
+  <button type="submit">Ver</button>
+</form>
 
+<label for="prioridad_filter">Prioridad:</label>
+<select name="prioridad_filter" id="prioridad_filter">
+  <option value="">Todes</option>
+  {% for choice in tarea_form.fields.prioridad.choices %}
+    <option value="{{ choice.0 }}" {% if choice.0 == request.GET.prioridad_filter %}selected{% endif %}>
+      {{ choice.1 }}
+    </option>
+  {% endfor %}
+</select>
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Título</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+        <th>Prioridad</th>
+        <th>Acciones</th>
+        <th>Observaciones<th>
+        <th>
+            <form action="{% url 'crear_tarea' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Crear tarea</button>
+            </form>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for tarea in object_list %}
+        <tr>
+          <td>{{ tarea.name }}</td>
+          <td>{{ tarea.fecha_expiracion|date:"d-m-Y" }}</td>
+          <td>
+            <form method="post" action="{% url 'bienvenida' %}">
+              {% csrf_token %}
+              {{ tarea.estado }}
+              <select name="estado" onchange="this.form.submit()">
+                {% for choice in tarea_form.fields.estado.choices %}
+                  <option value="{{ choice.0 }}" {% if choice.0 == tarea.estado %}selected{% endif %}>
+                    {{ choice.1 }}
+                  </option>
+                {% endfor %}
+              </select>
+              <input type="hidden" name="tarea_id" value="{{ tarea.id }}">
+            </form>
+          </td>
+          <td>
+            <form method="post" action="{% url 'bienvenida' %}">
+              {% csrf_token %}
+              {{ tarea.prioridad }}
+              <select name="prioridad" onchange="this.form.submit()">
+                {% for choice in tarea_form.fields.prioridad.choices %}
+                  <option value="{{ choice.0 }}" {% if choice.0 == tarea.prioridad %}selected{% endif %}>
+                    {{ choice.1 }}
+                  </option>
+                {% endfor %}
+              </select>
+              <input type="hidden" name="tarea_id" value="{{ tarea.id }}">
+            </form>
+          </td>
+          <td>
+           
+            <form method="post" action="{% url 'bienvenida' %}">
+              {% csrf_token %}
+              <a class="btn btn-outline-primary" href="{% url 'tareas-edit' tarea.id %}" role="button">Editar</a>
+              <a class="btn btn-outline-danger" href="#" role="button" onclick="confirmDelete('{{ tarea.id }}', '{{ tarea.name }}')">Eliminar</a>
+            </form>
+            <script>
+                function confirmDelete(tareaId, tareaName) {
+                  var confirmationMessage = 'Seguro de que deseas borrar la tarea: ' + tareaName + '?';
+                  if (confirm(confirmationMessage)) {
+                    document.getElementById('delete-form-' + tareaId).submit();
+                  }
+                }
+              </script>
+           
+          </td>
+          <td>
+                {%if tarea.observaciones %}
+                <form method="post" id="formulario-obs-{{tarea.id}}" action="{% url 'bienvenida'%}">
+                  {% csrf_token %}
+                  <input type="hidden" name="tarea_id" value="{{ tarea.id }}">
+                <label for="observaciones"></label>
+                <textarea class="form-control" type="text" id="observaciones"  name="observaciones">{{tarea.observaciones}}</textarea>
+                <button  onclick="this.form.submit()" class="btn btn-outline-success" type="submit">Guardar</button>
+              </form>
+                {%else%}
+                Sin observaciones.
+                {%endif%}
+       
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock %}
