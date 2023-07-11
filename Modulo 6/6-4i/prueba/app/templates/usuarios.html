@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+        <h3>Nuestros usuarios en la DB</h3>
+        <ul>
+            <!--estos datos salen desde la vista de la aplicacion 
+                en el metodo index def index(request)-->
+            {% for user in users %}
+            <ul>
+                <li>{{ user.username }} | {{ user.email }}</li>
+                
+            </ul>
+            {% endfor %}
+        </ul>
+
+
+{% endblock  %}

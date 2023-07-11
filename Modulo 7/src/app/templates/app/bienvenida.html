@@ -1,0 +1,113 @@
+{% extends "app/base.html" %}
+{% block body %}
+<div>
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+<h1>Tareas de {{user}}</h1>
+
+<form id="selector-estado" method="get" action="{% url 'bienvenida' %}">
+  {% csrf_token %}
+  <label for="estado_filter">Estado:</label>
+  <select name="estado_filter" id="estado_filter">
+    <option value="">Todas</option>
+    {% for choice in tarea_form.fields.estado.choices %}
+      <option value='{{ choice.0 }}' {% if choice.0 == request.GET.estado_filter %}selected{% endif %}>
+        {{ choice.1 }}
+      </option>
+    {% endfor %}
+  </select>
+
+<label for="categoria_filter">Categoria:</label>
+<select name="categoria_filter" id="categoria_filter">
+  <option value="">Todes</option>
+  {% for choice in tarea_form.fields.categoria.choices %}
+    <option value="{{ choice.0 }}" {% if choice.0 == request.GET.categoria_filter %}selected{% endif %}>
+      {{ choice.1 }}
+    </option>
+  {% endfor %}
+</select>
+<button type="submit">Buscar</button>
+</form>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Título</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+        <th>Categoría</th>
+        <th>Acciones</th>
+        <th>Observaciones<th>
+        <th>
+            <form action="{% url 'crear_tarea' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Crear tarea</button>
+            </form>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for tarea in object_list %}
+        <tr>
+          <td>{{ tarea.name }}</td>
+          <td>{{ tarea.fecha_expiracion|date:"d-m-Y" }}</td>
+          <td>
+            <form method="post" action="{% url 'bienvenida' %}">
+              {% csrf_token %}
+              {{ tarea.estado }}
+              <select name="estado" onchange="this.form.submit()">
+                {% for choice in tarea_form.fields.estado.choices %}
+                  <option value="{{ choice.0 }}" {% if choice.0 == tarea.estado %}selected{% endif %}>
+                    {{ choice.1 }}
+                  </option>
+                {% endfor %}
+              </select>
+              <input type="hidden" name="tarea_id" value="{{ tarea.id }}">
+            </form>
+          </td>
+          <td>
+            <form method="post" action="{% url 'bienvenida' %}">
+              {% csrf_token %}
+              {{ tarea.categoria }}
+              <select name="categoria" onchange="this.form.submit()">
+                {% for choice in tarea_form.fields.categoria.choices %}
+                  <option value="{{ choice.0 }}" {% if choice.0 == tarea.categoria %}selected{% endif %}>
+                    {{ choice.1 }}
+                  </option>
+                {% endfor %}
+              </select>
+              <input type="hidden" name="tarea_id" value="{{ tarea.id }}">
+            </form>
+          </td>
+          <td>
+           
+            <form method="post" action="{% url 'bienvenida' %}">
+              {% csrf_token %}
+              <a class="btn btn-outline-primary" href="{% url 'tareas-edit' tarea.id %}" role="button">Editar</a>
+              <a class="btn btn-outline-danger" href="{% url 'tareas-delete' tarea.id %}" role="button">Eliminar</a>
+            </form>
+          </td>
+          <td>
+                {%if tarea.observaciones %}
+                <form method="post" id="formulario-obs-{{tarea.id}}" action="{% url 'bienvenida'%}">
+                  {% csrf_token %}
+                  <input type="hidden" name="tarea_id" value="{{ tarea.id }}">
+                <label for="observaciones"></label>
+                <textarea class="form-control" type="text" id="observaciones"  name="observaciones">{{tarea.observaciones}}</textarea>
+                <button  onclick="this.form.submit()" class="btn btn-outline-success" type="submit">Guardar</button>
+              </form>
+                {%else%}
+                Sin observaciones.
+                {%endif%}
+       
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "app/base.html" %}
+
+{% block body %}
+<div class= "mt-1 ml-1">
+<h6>Tus tareas pendientes asignadas: 
+    {% for tarea in tareas %}
+    <div class="border border-primary bg-light p-3">
+        <p>
+        <a href="{% url 'detalles_tarea' tarea.id %}">
+        Tarea n° {{ forloop.counter }}: {{ tarea.name }}</a></p>
+        <p>Responsable: {{ tarea.usuario }} | Prioridad: {{ tarea.prioridad }}</p>
+        <p>Fecha de creación: {{ tarea.fecha_creacion }} | Fecha de expiración: {{ tarea.fecha_expiracion }}</p>
+        <hr>
+    </div>
+    {% empty %}
+    <p>No hay tareas pendientes</p>
+    {% endfor %}
+</div>
+</h3>
+{% endblock %}

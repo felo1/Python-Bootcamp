@@ -1,0 +1,67 @@
+1. Crear entorno virtual:
+    py -m venv .venv #. para que git lo ignore
+​
+2. Importar Django:
+    pip install django
+#desde este punto en adelante, para poder retomar el trabajo en sesiones posteriores iniciar venv ( .\.venv\Scripts\activate, 
+respetando estar posicionado en la carpeta que contenga .venv si ya existe) y luego pip install -r reqs.txt (o nombre correspondiente) 
+para rearmar el ambiente virtual. 
+Borrar la carpeta venv si ya estaba creada en el entorno si llega a ser necesario. Podrás rearmar todo desde el reqs.txt
+​
+3. Guardar versiones y módulos importados:
+    pip freeze > requirements.txt
+​
+4. Crear proyecto:
+    django-admin startproject sitio
+​
+5. Crear app (las apps deben estar al mismo nivel que el MANAGE.PY)
+    django-admin startapp sitio_app
+    #es posible moverlas para corregir posteriormente, considerando corregir las referencias a estas
+
+​
+6. agregar APP a settings.py:
+    agregar 'landing' a la lista 'INSTALLED_APPS'
+​
+7. modificar views.py en carpeta de APP:
+  
+   -Request representa el request que hace el usuario al servidor
+​
+    def index(request):
+        return(render(request, "landing/index.html")) #se agrega render para indicar que debe renderizar el template indicado.
+​
+    #esa ubicación dirige a un template (index.html) ubicado en la carpeta de la app/templates que hay que crear.
+​    #notese que en ejemplos anterioes usamos la estructura app/templates/app/<archivos> lo ctual
+    #chocaba directamente con los ejemplos posterioremente aprendidos.
+8. Crear urls.py de APP:
+​
+    from django.urls import path #para que pueda acceder al urls.py del PROYECTO
+    from . import views #para que se pueda acceder a views.py
+    urlpatterns = [
+        path("", views.index, name = "index")]
+​
+        # "" está vacío porque no se le dará argumentos al final de la ruta
+        # views.index es la función de views.py, que define qué se mostrará
+        # name = "index" se le da nombre, para poder referenciarlo desde otras apps.
+​
+9. Modificar urls.py de PROYECTO:
+​
+    -agregar 'include' al import de django.urls:
+        from django.urls import include, path
+​
+    -agregar un item a url_patterns:
+        path('landing', include("landing.urls")) # para poder usar urls.py de la APP
+    
+10. Iniciar servidor en la terminal:
+​
+    python3 manage.py runserver
+
+11. adicionalmente querrás hacer py manage.py migrate  
+hecho esto se aplicarán a la DB los cambios necesarios de primer run para que por ejemplo
+podamos usar los contenidos de AUTH (para creacion de los primeros usuarios usando las funcionalidades integradas de django).
+
+12. Creating superusers¶
+Create superusers using the createsuperuser command:
+$ python manage.py createsuperuser --username=joe --email=joe@example.com
+
+13. modificando modelo de usuario:
+https://www.youtube.com/watch?v=kRJpQxi2jIo
