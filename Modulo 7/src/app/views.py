@@ -127,7 +127,6 @@ class TareasListView(ListView): #listview es un class-based-view de django, que 
         #si se cumplen las siguientes pruebas lógicas, se realiza un queryset con los parámetros indicados por los choicefields:
 
         if estado_filter and categoria_filter: # si el usuario ha filtrado por estado Y categoría
-            print("POTO")    
             queryset = queryset.filter(estado=estado_filter, categoria=categoria_filter,usuario=user)
         elif estado_filter:  # si el usuario ha filtrado sólo por estado,
             # Filtering by estado only
