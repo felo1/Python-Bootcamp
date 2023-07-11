@@ -22,26 +22,25 @@
       </option>
     {% endfor %}
   </select>
-  <button type="submit">Ver</button>
-</form>
 
-<label for="prioridad_filter">Prioridad:</label>
-<select name="prioridad_filter" id="prioridad_filter">
+<label for="categoria_filter">Categoria:</label>
+<select name="categoria_filter" id="categoria_filter">
   <option value="">Todes</option>
-  {% for choice in tarea_form.fields.prioridad.choices %}
-    <option value="{{ choice.0 }}" {% if choice.0 == request.GET.prioridad_filter %}selected{% endif %}>
+  {% for choice in tarea_form.fields.categoria.choices %}
+    <option value="{{ choice.0 }}" {% if choice.0 == request.GET.categoria_filter %}selected{% endif %}>
       {{ choice.1 }}
     </option>
   {% endfor %}
 </select>
-
+<button type="submit">Buscar</button>
+</form>
   <table class="table">
     <thead class="thead-dark">
       <tr>
         <th>Título</th>
         <th>Fecha</th>
         <th>Estado</th>
-        <th>Prioridad</th>
+        <th>Categoría</th>
         <th>Acciones</th>
         <th>Observaciones<th>
         <th>
@@ -74,10 +73,10 @@
           <td>
             <form method="post" action="{% url 'bienvenida' %}">
               {% csrf_token %}
-              {{ tarea.prioridad }}
-              <select name="prioridad" onchange="this.form.submit()">
-                {% for choice in tarea_form.fields.prioridad.choices %}
-                  <option value="{{ choice.0 }}" {% if choice.0 == tarea.prioridad %}selected{% endif %}>
+              {{ tarea.categoria }}
+              <select name="categoria" onchange="this.form.submit()">
+                {% for choice in tarea_form.fields.categoria.choices %}
+                  <option value="{{ choice.0 }}" {% if choice.0 == tarea.categoria %}selected{% endif %}>
                     {{ choice.1 }}
                   </option>
                 {% endfor %}

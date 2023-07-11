@@ -117,7 +117,7 @@ class TareasListView(ListView): #listview es un class-based-view de django, que 
 
     def get_queryset(self): #override del método de la clase padre para obtener los queryset que necesitemos para dar la funcionalidad de filtrado
         queryset = super().get_queryset() #super() a la clase padre, para obtener el queryset inicial
-        prioridad_filter = self.request.GET.get('prioridad_filter')
+        categoria_filter = self.request.GET.get('categoria_filter')
         estado_filter = self.request.GET.get('estado_filter') #si se ha seleccionado un filtro de estado, se asigna a esta variable
         #categoria_filter = self.request.GET.get('categoria_filter') #si se ha seleccionado un filtro de categoría, se asigna a esta variable
         #estas variables no se asignan si el usuario no selecciona filtros
@@ -126,12 +126,13 @@ class TareasListView(ListView): #listview es un class-based-view de django, que 
 
         #si se cumplen las siguientes pruebas lógicas, se realiza un queryset con los parámetros indicados por los choicefields:
 
-        if estado_filter and prioridad_filter: # si el usuario ha filtrado por estado Y categoría            
-            queryset = queryset.filter(estado=estado_filter, prioridad=prioridad_filter,usuario=user)
+        if estado_filter and categoria_filter: # si el usuario ha filtrado por estado Y categoría
+            print("POTO")    
+            queryset = queryset.filter(estado=estado_filter, categoria=categoria_filter,usuario=user)
         elif estado_filter:  # si el usuario ha filtrado sólo por estado,
             # Filtering by estado only
             queryset = queryset.filter(estado=estado_filter, usuario=user)
-        elif prioridad_filter:
+        elif categoria_filter:
             queryset = queryset.filter(estado=estado_filter, usuario=user)
         else: #si el usuario no ha seleccionado filtros:
             queryset = queryset.filter(usuario=user)
@@ -145,8 +146,8 @@ class TareasListView(ListView): #listview es un class-based-view de django, que 
 
         if 'estado' in request.POST: #si en el POST viene un campo 'estado':
             tarea.estado = request.POST['estado'] #actualiza el campo con el valor correspondiente
-        elif 'prioridad' in request.POST: #si en el POST viene un campo 'categoría':
-            tarea.prioridad = request.POST['prioridad'] #acrualiza el campo con el valor correspondiente
+        elif 'categoria' in request.POST: #si en el POST viene un campo 'categoría':
+            tarea.categoria = request.POST['categoria'] #acrualiza el campo con el valor correspondiente
         elif 'observaciones' in request.POST:
             tarea.observaciones = request.POST['observaciones']
         else:

@@ -16,12 +16,13 @@ class Tarea(models.Model):
     fecha_creacion = models.DateField(auto_now=True)
     fecha_expiracion = models.DateField(default=None, null=True, blank=True)
     observaciones = models.TextField(max_length=1024, null=True, blank=True)
-    PRIORIDAD_opciones = (
-        ('baja', 'Baja'),
-        ('media', 'Media'),
-        ('máxima', 'Máxima'),
+    categoria_opciones = (
+        ('trabajo', 'trabajo'),
+        ('casa', 'casa'),
+        ('estudio', 'estudio'),
+        ('etc', 'etc'),
     )
-    prioridad = models.CharField(max_length=10, choices=PRIORIDAD_opciones)
+    categoria = models.CharField(max_length=10, choices=categoria_opciones)
     estado_opciones = (
         ('asignada', 'Asignada'),
         ('vista', 'Vista'),
@@ -38,7 +39,7 @@ class TareaForm(forms.ModelForm):#heredamos de ModelForm, que genera un formular
           
     class Meta:
         model = Tarea
-        fields = ['name', 'fecha_expiracion', 'estado', 'prioridad', 'observaciones']
+        fields = ['name', 'fecha_expiracion', 'estado', 'categoria', 'observaciones']
 
     
 class ListaTarea(models.Model):
