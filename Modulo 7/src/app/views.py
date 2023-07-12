@@ -66,17 +66,26 @@ def login_view(request): #el form está directo en el template login.html
 
 @login_required
 def bienvenida(request):
-
-    tareas = Tarea.objects.exclude(estado="COMPLETADA").filter(usuario__username=request.user) #excluye completadas y luego filtra solo usuario logueado
- 
-    #ordering = ['-fecha_expiracion'] # el signo - es para ordenar de manor a mayor
-    #return render(request, 'app/lista_tareas.html')
-
-    context = {
-        'username': request.user.username,
-        'tareas': tareas
-    }
-    return render(request, "app/bienvenida.html", context)
+    """
+    if request.method == 'POST':
+        if 'completar' in request.POST: 
+            tarea_id = request.POST.get('tarea_id')
+            tarea = Tarea.objects.get(id=tarea_id)
+            tarea.estado = 'Completada'  
+            tarea.save()
+            messages.success(request, 'Tarea marcada como completada.')
+            return redirect('bienvenida') 
+    #todo esto era innecesario para ejecutar un cambio directo de estado en la vista principal. Bastaba con ingresarle un value como resultado del submit
+    #en el mismo boton + el input field vacio."""
+    
+    #esto tb estaba de más, se está rellenando desde listview.
+    #tareas = Tarea.objects.exclude(estado="completada").filter(usuario__username=request.user) 
+    #excluye completadas y luego filtra solo usuario logueado
+    #context = {
+    #    'username': request.user.username,
+    #    'tareas': tareas
+    #}
+    #return render(request, "app/bienvenida.html", context)
 
 @login_required
 def logout_view(request):
@@ -135,13 +144,30 @@ class TareasListView(ListView): #listview es un class-based-view de django, que 
             queryset = queryset.filter(estado=estado_filter, usuario=user)
         else: #si el usuario no ha seleccionado filtros:
             queryset = queryset.filter(usuario=user)
+
+        #Los usuarios podrán ver cuántas tareas tienen pendientes, cuántas han completado, cuántas están en
+        #progreso y cuántas han vencido.
+        #define a way for the user to know in module bienvenida.html how many tasks are pending, how many have been completed,
+        #how many are in progress and how many have expired.
+        context = {
+            'pendientes': queryset.filter(estado__in=['asignada', 'vista', 'en reasignación', 'anulada']).count,
+            'completadas': queryset.filter(estado='completada').count(),
+            'expired': queryset.filter(estado='vencida').count()
+            }
+            
+        self.request.session['context'] = context #se guarda el contexto en la sesión de usuario.
+            #en cualquier caso, se filtran las marcadas como "completada" a menos que sean el filtro específico solicitado, para cumplir con lo
+        #especificado en la tarea
+        if estado_filter != 'completada':
+            queryset = queryset.exclude(estado='completada')
         return queryset
 
     def post(self, request, *args, **kwargs): #override de post de la clase padre (ListView)
         tarea_id = request.POST.get('tarea_id') #obtiene el tarea_ide de los parámetros del POST, cada vez que se presiona "Completar" o "Eliminar"
-        print(f"tarea_id = {tarea_id}")
+        #print(f"tarea_id = {tarea_id}")
+        
         tarea = Tarea.objects.get(id=tarea_id) #obtiene el objeto Tarea asociado al tarea_id obtenido en la línea anterior.
-        print(f"tarea = {tarea}")       
+        #print(f"tarea = {tarea}")       
 
         if 'estado' in request.POST: #si en el POST viene un campo 'estado':
             tarea.estado = request.POST['estado'] #actualiza el campo con el valor correspondiente
@@ -152,6 +178,7 @@ class TareasListView(ListView): #listview es un class-based-view de django, que 
         else:
             tarea.save()    
         tarea.save() #guarda
+    
         return redirect('bienvenida') #redirige al listview, reflejándose el cambio de inmediato.
 
 class TareaEditView(UpdateView): #Updateview es un class-based view usado para actualizar datos
@@ -176,7 +203,11 @@ class TareaDeleteView(DeleteView): #para borrar una tarea
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["tarea"] = self.object.id
+        context["tarea"] = self.object
+        #cambié esto porque no estaba recibiendo la tarea entera para 
+        #referirme a ella por nombre
+#        context["tarea"] = self.object.id
+
         return context
 
     def delete(self, request, *args, **kwargs):

@@ -1,9 +1,9 @@
 {% extends "app/base.html" %}
 
 {% block body %}
-<h3>Eliminar Tarea</h3>
+<h3>Confirmación de eliminación de actividad</h3>
 
-<p>Confirmar eliminación de tarea <b>{{tarea.name}}</b>:</p>
+<p>Por favor confirme que desea eliminar la tarea nombre <b>"{{tarea.name}}"</b></p>
 
 <form method="POST">
     {% csrf_token %}

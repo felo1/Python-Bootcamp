@@ -7,9 +7,6 @@ from django.contrib.admin.widgets import AdminDateWidget, AdminTimeWidget
 
 # Create your models here.
 
-
-
-
 class Tarea(models.Model):
     name = models.CharField(max_length=255, verbose_name="Nombre de la actividad")
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
