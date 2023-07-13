@@ -19,6 +19,8 @@ class Tarea(models.Model):
         ('estudio', 'estudio'),
         ('etc', 'etc'),
     )
+    #TODO:
+    #pendiente: ACTUALIZAR LOS NOMBRES PARA REFLEJAR EXACTO LO DE LA TAREA
     categoria = models.CharField(max_length=10, choices=categoria_opciones)
     estado_opciones = (
         ('asignada', 'Asignada'),
