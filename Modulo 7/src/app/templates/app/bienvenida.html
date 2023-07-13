@@ -10,6 +10,8 @@
     {% endif %}
   </div>
 <h1>Tareas de {{user}}</h1>
+<p>Resumen: pendientes({{ pendientes }}) | completadas({{ completadas }}) | en progreso({{ progreso }}) | 
+expiradas({{ expiradas }})</p>
 
 <form id="selector-estado" method="get" action="{% url 'bienvenida' %}">
   {% csrf_token %}
