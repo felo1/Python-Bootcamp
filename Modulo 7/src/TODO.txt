@@ -1,0 +1,54 @@
+Considera el readme: para el readme explicar la razon de ser del proyecto, diseñar markup bonito para el readme, como instalarlo, qué dependencias tiene, etc.
+Paginas:
+Tendrá sección de venta de insumos (partir con esto, con productos listos al menos)
+Menu: Inicio | Productos (Insumos & empaquetados) | Catálogo (Una vista con el catálogo hecho a mano) | Diseños a pedido (Simulador de cotizaciones) | Contacto (+Quienes somos)
+ 
+En el landing si sale todo bien podria tener una llamada a al instagram con instaPI. Probablemente mejor verlo después de la entrega.
+Quienes somos (mapa), Cotizacion, Cómo comprar (guia, mapa referencial de ubicacion), Contacto (Form de contacto real, @instagram)
+Perfil de usuario: Mis pedidos anteriores con su respectivo detalle.
+Que hacer una cotización involucre una breve creación de usuario para invitarlo a un newsletter de ofertas y todo, para engancharlo. Debe ser opt-OUT pero debe poder no inscribirse, o inscribiirse después.
+Popup de advertencia de pedidos minimo 2 semanas de antelacion cuando se abre la ficha de iniciar proceso de cotización.
+En la vista de cotización, mostrar un widget con el calendario vinculado a Google para publico para tener un marco de referencia de disponibilidad. Al lado mostrar nuevamente el texto de las 2 semanas de anticipación.
+En la vista de cotización, incluír un selector que permita al usuario elegir entre un catálogo de presets (productos preconfigurados) que generan su precio inmediatamente al ser seleccionados y le dan al usuario un marco
+de referencia (ej: torta biscocho chocolate cubierta fondant + mensaje personalizado para 20 personas)
+Recordatorio por email automático de que tienen una entrega a retirar próximamente.
+Administracion: 
+Anotar fecha de última actualización de precio de insumo, y con alertas por email automaticas en el home del administrador para evitar sub-valoración prolongada por inevitable inflación
+Poder editar las URL de los productos directo en la administracion, que contenga varias por producto.
+
+Hacerlo desde 0, no entregar algo con multiples carpetas de unidades anteriores.
+Que tenga varios Presets que se pueden diseñar, o guardar incluso al hacer una cotización manual. Que el sistema sirva para cotizar o para diseñar propuestas uno mismo como trabajador.
+Considerar mano de obra como ingrediente
+Consumo d energía asociado a costos de luz?
+Que el buscador de preset tenga un selector que permita digitar parte del nombre y te ayude a encontrarlo rápido. Los preset llenan por tu el formulario pero permiten editarlo!
+Agregar un field para multiplicador arbitrario (10% de recargo por ejemplo, para tuneo a criterio del vendedor)
+Permitir rescatar cotizaciones desde la administración y transformarlas en Presets.
+Los preset deben poder modificarse y eliminarse.
+Exportar a PDF sin necesariamente concretar una cotización. 
+Cotizaciones deben poder dejarse incompletas temporalmente, es decir, podrán guardarse en su modelo pero antes de considerarse ventas deben pagar por un filtro de completitud.
+
+La interfaz del cliente no ve ingredientes si no componentes base de la torta (compuestos a su vez por los ingredientes). Ejemplo, un bizcocho de zanahoria ensambla su precio en base al costo de los ingredientes, sin que le sea transparente. 
+Dado lo fino del detalle, hacer que los precios resultantes sean redondeados (hacía arriba o abajo, para que sean múltiples de 500clp, o múltiplos de 250.)
+
+Modelos:
+Cliente (customUser)
+Insumo (sería la materia prima)
+Componente (heredará Insumo)
+Producto (heredará Insumo, Componente)
+
+instapi (pa ver el feed):
+
+Efectos estupidos lindos de pastelitos / galletas SVG que tapan la pantalla, chicos o uno gigante para las transiciones del DOM (con cierto chance % de ocurrir solamente, será posible hacer algo así? como un easter egg)
+Tiempo activo y tiempo pasivo de un insumo (aproximarlo). Que todo sea ajustable en la administración. Lo que registrará será las horas hombre.
+Registrará los precios de cada insumo y lo calculará en base al gramaje usado.
+Considerará como insumos las figuritas, pensar en una forma de cuantificar su valor: dificultad, dimensiones, cantidad de colores.
+Agregados (con precio individual)
+Técnicas aplicadas (como valorizar, con un modificador?)
+
+Permite aceptar pedidos, consultar un calendario conectado a Google Calendar.
+Permite conexion con instagram para desplegar los posts.
+
+=======
+A futuro, respecto de la IA:
+Te muestra una torta parecida con alguna logica para representar el diseño que vas pidiendo. Esta será la función estrella el día de mañana cuando pueda hacerlo más profesional, quizá incluso con diseños de IA (conexion con google colab free, entrenado en un dataset de puras tortas de la lore)
+La cotización misma es la que va afinando el prompt, el cual NO será manipulable por el usuario (finalmente, el prompt es la decisión final sobre la simulación y el render es el "compromiso" de venta, con lo que le presentan a la lore su propuesta)
