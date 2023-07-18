@@ -7,9 +7,6 @@ from django.contrib.admin.widgets import AdminDateWidget, AdminTimeWidget
 
 # Create your models here.
 
-
-
-
 class Tarea(models.Model):
     name = models.CharField(max_length=255, verbose_name="Nombre de la actividad")
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -22,6 +19,8 @@ class Tarea(models.Model):
         ('estudio', 'estudio'),
         ('etc', 'etc'),
     )
+    #TODO:
+    #pendiente: ACTUALIZAR LOS NOMBRES PARA REFLEJAR EXACTO LO DE LA TAREA
     categoria = models.CharField(max_length=10, choices=categoria_opciones)
     estado_opciones = (
         ('asignada', 'Asignada'),

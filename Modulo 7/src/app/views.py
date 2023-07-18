@@ -9,6 +9,7 @@ from django.contrib.auth.models import Group, User
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Tarea, TareaForm
 from django.views.generic import ListView, UpdateView, DeleteView
+from datetime import date
 
 # Create your views here.
 
@@ -67,16 +68,31 @@ def login_view(request): #el form está directo en el template login.html
 @login_required
 def bienvenida(request):
 
-    tareas = Tarea.objects.exclude(estado="COMPLETADA").filter(usuario__username=request.user) #excluye completadas y luego filtra solo usuario logueado
- 
-    #ordering = ['-fecha_expiracion'] # el signo - es para ordenar de manor a mayor
-    #return render(request, 'app/lista_tareas.html')
+    tareas = Tarea.objects.filter(usuario=request.user).order_by('fecha_expiracion')
+    pending_count = tareas.filter(estado__in=['asignada', 'vista', 'en reasignación', 'anulada']).count()
+    completed_count = tareas.filter(estado='completada').count()
+    expired_count = tareas.filter(fecha_expiracion__lt=date.today()).count()
 
     context = {
-        'username': request.user.username,
-        'tareas': tareas
+        'tareas': tareas,
+        'pending_count': pending_count,
+        'completed_count': completed_count,
+        'expired_count': expired_count,
     }
-    return render(request, "app/bienvenida.html", context)
+
+    if request.method == 'POST':
+        tarea_form = TareaForm(request.POST)
+        if tarea_form.is_valid():
+            tarea = tarea_form.save(commit=False)
+            tarea.usuario = request.user
+            tarea.save()
+            messages.success(request, 'Tarea creada exitosamente.')
+            return redirect('bienvenida')
+    else:
+        tarea_form = TareaForm()
+
+    context['tarea_form'] = tarea_form
+    return render(request, 'app/bienvenida.html', context)
 
 @login_required
 def logout_view(request):
@@ -108,13 +124,6 @@ class TareasListView(ListView): #listview es un class-based-view de django, que 
     template_name = "app/bienvenida.html" #nombre del template
     ordering = ['fecha_expiracion'] #orden, se dan dos keys, porque la fecha y hora en mi modelo son dos variables separadas
 
-    def get_context_data(self, **kwargs): #override del método de la clase padre, que es un generador de contexto para pasarlo al template
-        context = super().get_context_data(**kwargs) #llama al método de la clase padre ListView usando super()
-        tarea_form = TareaForm() #se instancia un formulario TareaForm vacío
-        context['tarea_form'] = tarea_form #se agrega el tarea_form al dict de contexto 
-        
-        return context #contexto final
-
     def get_queryset(self): #override del método de la clase padre para obtener los queryset que necesitemos para dar la funcionalidad de filtrado
         queryset = super().get_queryset() #super() a la clase padre, para obtener el queryset inicial
         categoria_filter = self.request.GET.get('categoria_filter')
@@ -135,13 +144,47 @@ class TareasListView(ListView): #listview es un class-based-view de django, que 
             queryset = queryset.filter(estado=estado_filter, usuario=user)
         else: #si el usuario no ha seleccionado filtros:
             queryset = queryset.filter(usuario=user)
+
+        #Los usuarios podrán ver cuántas tareas tienen pendientes, cuántas han completado, cuántas están en
+        #progreso y cuántas han vencido.
+        #define a way for the user to know in module bienvenida.html how many tasks are pending, how many have been completed,
+        #how many are in progress and how many have expired.
+        
+            
+        #self.request.session['context'] = context 
+        #se guarda el contexto en la sesión de usuario.
+        #en cualquier caso, se filtran las marcadas como "completada" a menos que sean el filtro específico solicitado, para cumplir con lo
+        #especificado en la tarea
+        if estado_filter != 'completada':
+            queryset = queryset.exclude(estado='completada')
         return queryset
+    
+    def get_context_data(self, **kwargs): #override del método de la clase padre, que es un generador de contexto para pasarlo al template
+        context = super().get_context_data(**kwargs) #llama al método de la clase padre ListView usando super()
+        user = self.request.user
+        #recibo todas las tareas y las filtro por las 3 condiciones:
+        tareas = Tarea.objects.filter(usuario=user)
+        #alimento los contadores
+        pendientes = tareas.filter(estado__in=['vista', 'en reasignación', 'anulada']).count()
+        completadas = tareas.filter(estado='completada').count()
+        progreso =  tareas.filter(estado='asignada').count()
+        expiradas = tareas.filter(fecha_expiracion__lt=date.today()).count()
+        #el __lt es una funcion para diferenciar con las que son "later" (posterior a)
+        tarea_form = TareaForm() #se instancia un formulario TareaForm vacío
+        
+        context['tarea_form'] = tarea_form #se agrega el tarea_form al dict de contexto 
+        context['pendientes'] = pendientes
+        context['completadas'] = completadas
+        context['expiradas'] = expiradas
+        context['progreso'] = progreso
+        return context #contexto final
 
     def post(self, request, *args, **kwargs): #override de post de la clase padre (ListView)
         tarea_id = request.POST.get('tarea_id') #obtiene el tarea_ide de los parámetros del POST, cada vez que se presiona "Completar" o "Eliminar"
-        print(f"tarea_id = {tarea_id}")
+        #print(f"tarea_id = {tarea_id}")
+        
         tarea = Tarea.objects.get(id=tarea_id) #obtiene el objeto Tarea asociado al tarea_id obtenido en la línea anterior.
-        print(f"tarea = {tarea}")       
+        #print(f"tarea = {tarea}")       
 
         if 'estado' in request.POST: #si en el POST viene un campo 'estado':
             tarea.estado = request.POST['estado'] #actualiza el campo con el valor correspondiente
@@ -152,6 +195,7 @@ class TareasListView(ListView): #listview es un class-based-view de django, que 
         else:
             tarea.save()    
         tarea.save() #guarda
+    
         return redirect('bienvenida') #redirige al listview, reflejándose el cambio de inmediato.
 
 class TareaEditView(UpdateView): #Updateview es un class-based view usado para actualizar datos
@@ -176,7 +220,11 @@ class TareaDeleteView(DeleteView): #para borrar una tarea
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["tarea"] = self.object.id
+        context["tarea"] = self.object
+        #cambié esto porque no estaba recibiendo la tarea entera para 
+        #referirme a ella por nombre
+#        context["tarea"] = self.object.id
+
         return context
 
     def delete(self, request, *args, **kwargs):
